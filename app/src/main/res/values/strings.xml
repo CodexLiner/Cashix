@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">crepaid</string>
+    <string name="loginskip">Skip Login</string>
+    <string name="send_otp_button_text">SEND OTP</string>
+    <string name="login_mobile_hint">Enter Mobile Number</string>
+    <string name="accept_privacy_policy">accept privacy policy</string>
+    <string name="let_s_begin_enter_your_number">Let\'s Begin - Enter Your Number</string>
+    <string name="a_single_step_to_go">One More Step To Finish</string>
+    <string name="force_exit">Force Exit</string>
+    <string name="continue_here">CONTINUE</string>
+    <string name="account_succesfully_created">Account Created Successfully</string>
+    <string name="kyc_response">Later</string>
+    <string name="kyc_response_complete_kyc">Complete Kyc</string>
+    <string name="complete_yout_kyc_to_start_investing_quickly">Complete Your Kyc In Few Minuts </string>
+    <string name="top_currencies">Top Currencies</string>
+    <string name="see_all">SEE ALL</string>
+    <string name="recent_views">Recent Views</string>
+    <string name="begin_trading_line">Choose your perfect coin with India\'s best crypto trading app and start earning with zero fees</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_setting">setting_activity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="id_number">ID Number</string>
+</resources>

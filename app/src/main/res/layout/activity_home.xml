@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Home_Activity">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+      <RelativeLayout
+          android:background="@drawable/home_activity_shape_all"
+          android:layout_margin="10dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <LinearLayout
+              android:layout_alignParentTop="true"
+              android:id="@+id/headingLayout"
+              android:layout_width="match_parent"
+              android:layout_height="60dp"
+              android:orientation="horizontal">
+              <TextView
+                  android:textColor="@color/black"
+                  android:drawableTint="@color/black"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:text="EXIT"
+                  android:drawableLeft="@drawable/ic_baseline_chevron_left_24"
+                  android:drawablePadding="0dp"
+                  android:layout_gravity="center"
+                  android:gravity="center|left"
+                  android:textStyle="bold"
+                  android:textSize="15sp"
+                  android:layout_marginStart="0dp" />
+          </LinearLayout>
+
+          <LinearLayout
+              android:layout_marginBottom="20dp"
+              android:id="@+id/transaction"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/headingLayout"
+              android:orientation="vertical">
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="10dp"
+                  android:text="Overall Transactions"
+                  android:textColor="@color/black"
+                  android:textSize="15sp" />
+
+              <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="10dp"
+                  android:layout_marginTop="10dp"
+                  android:fontFamily="sans-serif-black"
+                  android:text="RS.1050"
+                  android:textColor="@color/black"
+                  android:textSize="25sp" />
+
+          </LinearLayout>
+
+      </RelativeLayout>
+      <RelativeLayout
+          android:id="@+id/optinLayout"
+          android:layout_marginStart="10dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginTop="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/home_activity_shape_all">
+
+          <TextView
+              android:visibility="gone"
+              android:id="@+id/newTransaction"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="10dp"
+              android:text="New Transactions"
+              android:textColor="@color/black"
+              android:textSize="15sp" />
+          <LinearLayout
+              android:gravity="center"
+              android:layout_marginTop="10dp"
+              android:layout_marginStart="0dp"
+              android:layout_marginEnd="0dp"
+              android:layout_below="@id/newTransaction"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+              <LinearLayout
+                  android:background="@drawable/radius_background"
+                  android:layout_weight="1"
+                  android:gravity="center"
+                  android:layout_gravity="center"
+                  android:layout_marginTop="5dp"
+                  android:layout_marginStart="5dp"
+                  android:layout_marginBottom="5dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+                      android:gravity="center"
+                      android:layout_gravity="center"
+                      android:layout_width="50dp"
+                      android:layout_height="50dp"
+                      android:src="@drawable/ic_tranfer"/>
+                  <TextView
+                      android:layout_margin="5dp"
+                      android:gravity="center"
+                      android:layout_gravity="center"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Bank Transfer"/>
+              </LinearLayout>
+              <LinearLayout
+                  android:background="@drawable/radius_background"
+                  android:layout_weight="1"
+                  android:gravity="center"
+                  android:layout_gravity="center"
+                  android:layout_marginTop="5dp"
+                  android:layout_marginStart="5dp"
+                  android:layout_marginBottom="5dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+                      android:gravity="center"
+                      android:layout_gravity="center"
+                      android:layout_width="50dp"
+                      android:layout_height="50dp"
+                      android:src="@drawable/ic_rent"/>
+                  <TextView
+                      android:layout_margin="5dp"
+                      android:gravity="center"
+                      android:layout_gravity="center"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Pay Rent"/>
+              </LinearLayout>
+              <LinearLayout
+                  android:background="@drawable/radius_background"
+                  android:layout_weight="1"
+                  android:gravity="center"
+                  android:layout_gravity="center"
+                  android:layout_marginEnd="5dp"
+                  android:layout_marginTop="5dp"
+                  android:layout_marginStart="5dp"
+                  android:layout_marginBottom="5dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+                      android:gravity="center"
+                      android:layout_gravity="center"
+                      android:layout_width="50dp"
+                      android:layout_height="50dp"
+                      android:src="@drawable/personal"/>
+                  <TextView
+                      android:layout_margin="5dp"
+                      android:gravity="center"
+                      android:layout_gravity="center"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="View Profile"/>
+              </LinearLayout>
+          </LinearLayout>
+      </RelativeLayout>
+      <RelativeLayout
+          android:layout_marginEnd="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginStart="10dp"
+          android:layout_marginTop="5dp"
+          android:background="@drawable/home_activity_shape_all"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:src="@drawable/ic_no_data_rafiki" />
+      </RelativeLayout>
+  </LinearLayout>
+</ScrollView>

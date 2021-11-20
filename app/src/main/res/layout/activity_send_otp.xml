@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/ScrollOtp"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/limeWhite"
+    tools:context=".Send_Otp_Activity">
+    <RelativeLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/headingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+            <!--    heading edit here -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/force_exit"
+                    android:textColor="#000000"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:padding="20dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/vectorImage"
+            android:layout_below="@id/headingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--    vector image edit here-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_otpver2" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vectorImage"
+            android:padding="10dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/a_single_step_to_go"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <com.chaos.view.PinView
+                    android:id="@+id/firstPinView"
+                    style="@style/PinWidget.PinView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:cursorVisible="true"
+                    android:inputType="text"
+                    android:itemBackground="@drawable/login_mobile_number_bg"
+                    android:padding="10dp"
+                    android:textColor="#808080"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:cursorColor="@color/black"
+                    app:cursorWidth="2dp"
+                    app:hideLineWhenFilled="true"
+                    app:itemCount="6"
+                    app:itemHeight="48dp"
+                    app:itemRadius="4dp"
+                    app:itemSpacing="8dp"
+                    app:itemWidth="48dp"
+                    app:lineColor="@color/greyish"
+                    app:lineWidth="1dp"
+                    app:viewType="rectangle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="Resend code in 30 sec"
+                        android:textColor="#000000"
+                        android:textFontWeight="20"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/submit_otp_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/basic_shape"
+                    android:text="@string/continue_here"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>
