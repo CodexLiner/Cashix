@@ -96,6 +96,7 @@
               android:layout_height="wrap_content"
               android:orientation="horizontal">
               <LinearLayout
+                  android:id="@+id/BankTransfer"
                   android:background="@drawable/radius_background"
                   android:layout_weight="1"
                   android:gravity="center"

@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Crepaid">
         <activity
-            android:name=".Home_Activity"
-            android:exported="true" >
+            android:name=".bankTransfer"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,8 +19,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Home_Activity"
+            android:exported="false">
+
+        </activity>
+        <activity
             android:name=".add_bank_details"
             android:exported="false">
+
         </activity>
         <activity
             android:name=".Send_Otp_Activity"
@@ -29,8 +35,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" >
-
+            android:windowSoftInputMode="adjustResize">
         </activity>
 
         <meta-data

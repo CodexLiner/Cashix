@@ -3,17 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/card_drop_shape.xml" value="0.23657407407407408" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/currecncy_rec_bg.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/design_shape.xml" value="0.23657407407407408" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/down.xml" value="0.23657407407407408" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/home_activity_shape_all.xml" value="0.23657407407407408" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_cash_payment_pana.xml" value="0.23657407407407408" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_no_data_rafiki.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_pencil.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_rent.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_right.xml" value="0.23657407407407408" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_tranfer.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout-v26/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_add_bank_details.xml" value="0.25" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_bank_transfer.xml" value="0.2222222222222222" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_send_otp.xml" value="0.25" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/custom_keyboard.xml" value="0.2222222222222222" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/key_preview.xml" value="0.25" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/my_oard.xml" value="0.25" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/xml/number_pad.xml" value="0.25" />
