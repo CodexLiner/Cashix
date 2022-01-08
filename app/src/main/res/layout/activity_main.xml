@@ -47,6 +47,7 @@
                 android:layout_gravity="center"
                 android:gravity="center">
                 <ImageView
+
                     android:layout_weight="1"
                     android:layout_width="300dp"
                     android:layout_height="300dp"
@@ -72,7 +73,7 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/let_s_begin_enter_your_number"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <EditText

@@ -28,6 +28,9 @@ android {
 }
 
 dependencies {
+    implementation 'com.stripe:stripe-android:18.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.5.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.jackandphantom.android:circularimageview:1.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'io.github.chaosleung:pinview:1.4.4'

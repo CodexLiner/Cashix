@@ -73,17 +73,18 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/a_single_step_to_go"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <com.chaos.view.PinView
+
                     android:id="@+id/firstPinView"
                     style="@style/PinWidget.PinView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:cursorVisible="true"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:itemBackground="@drawable/login_mobile_number_bg"
                     android:padding="10dp"
                     android:textColor="#808080"

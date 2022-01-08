@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:overScrollMode="never"
     android:scrollbars="none"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:background="@color/limeWhite"
+    android:layout_height="match_parent"
     tools:context=".Home_Activity">
   <LinearLayout
       android:layout_width="match_parent"
@@ -60,7 +61,7 @@
                   android:layout_marginStart="10dp"
                   android:layout_marginTop="10dp"
                   android:fontFamily="sans-serif-black"
-                  android:text="RS.1050"
+                  android:text="₹ 1050"
                   android:textColor="@color/black"
                   android:textSize="25sp" />
 
@@ -105,7 +106,7 @@
                   android:layout_marginStart="5dp"
                   android:layout_marginBottom="5dp"
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
+                  android:layout_height="100dp"
                   android:orientation="vertical">
                   <ImageView
                       android:gravity="center"
@@ -114,11 +115,11 @@
                       android:layout_height="50dp"
                       android:src="@drawable/ic_tranfer"/>
                   <TextView
-                      android:layout_margin="5dp"
+                      android:layout_margin="0dp"
                       android:gravity="center"
                       android:layout_gravity="center"
                       android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
+                      android:layout_height="20dp"
                       android:text="Bank Transfer"/>
               </LinearLayout>
               <LinearLayout
@@ -130,7 +131,7 @@
                   android:layout_marginStart="5dp"
                   android:layout_marginBottom="5dp"
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
+                  android:layout_height="100dp"
                   android:orientation="vertical">
                   <ImageView
                       android:gravity="center"
@@ -139,11 +140,11 @@
                       android:layout_height="50dp"
                       android:src="@drawable/ic_rent"/>
                   <TextView
-                      android:layout_margin="5dp"
+                      android:layout_margin="0dp"
                       android:gravity="center"
                       android:layout_gravity="center"
                       android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
+                      android:layout_height="20dp"
                       android:text="Pay Rent"/>
               </LinearLayout>
               <LinearLayout
@@ -169,11 +170,19 @@
                       android:gravity="center"
                       android:layout_gravity="center"
                       android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
+                      android:layout_height="20dp"
                       android:text="View Profile"/>
               </LinearLayout>
           </LinearLayout>
       </RelativeLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="TRANSACTION HISTORY"
+          android:layout_gravity="start"
+          android:textColor="@color/black"
+          android:textStyle="bold"
+          android:layout_marginStart="15dp" />
       <RelativeLayout
           android:layout_marginEnd="10dp"
           android:layout_marginBottom="10dp"
@@ -183,10 +192,18 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent">
 
+          <androidx.recyclerview.widget.RecyclerView
+              android:overScrollMode="never"
+              android:id="@+id/TransactionRecycler"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" />
+
           <ImageView
+              android:visibility="gone"
+              android:id="@+id/recyclerImage"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_no_data_rafiki" />
       </RelativeLayout>
   </LinearLayout>
-</ScrollView>
+</LinearLayout>

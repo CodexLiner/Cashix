@@ -13,7 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.crepaid.constants.APIs;
+import com.crepaid.constants.Async_task_otp_send;
+
 import java.util.Locale;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -55,9 +59,24 @@ public class MainActivity extends AppCompatActivity {
                 String mobile = mobileText.getText().toString().toLowerCase(Locale.ROOT).trim();
                 Intent intent = new Intent(MainActivity.this , Send_Otp_Activity.class);
                 intent.putExtra("mobileNumber" , mobile);
+                intent.putExtra("otpCode" , GenrateOtp(mobile));
                 startActivity(intent);
                 overridePendingTransition(0,0);
             }
         });
+    }
+
+    private int GenrateOtp(String mobile) {
+        Random random = new Random();
+        int low = 111111;
+        int high = 999999;
+        int otpIs = (int) ((Math.random()*900000)+100000);
+        sendToUser(mobile ,otpIs);
+        return otpIs;
+    }
+    private void sendToUser(String mobile, int otp) {
+        Async_task_otp_send send = new Async_task_otp_send(mobile , otp);
+        send.execute();
+//        APIs.sendOtp(mobile,otp);
     }
 }
