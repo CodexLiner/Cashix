@@ -31,9 +31,9 @@ public class TransactionAdapters extends RecyclerView.Adapter<TransactionAdapter
     public void onBindViewHolder(@NonNull Holder holder, int position) {
        if (modelArrayList!=null){
            if (modelArrayList.get(position).getStatus().equals("success")){
-               holder.imageView.setImageResource(R.drawable.check);
+               holder.imageView.setImageResource(R.drawable.ic_mright);
            }else if (modelArrayList.get(position).getStatus().equals("failed")){
-               holder.imageView.setImageResource(R.drawable.close);
+               holder.imageView.setImageResource(R.drawable.ic_mcross);
            }else {
                holder.imageView.setImageResource(R.drawable.pending);
            }

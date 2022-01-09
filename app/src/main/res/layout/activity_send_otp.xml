@@ -21,16 +21,18 @@
             android:layout_alignParentTop="true">
             <!--    heading edit here -->
             <LinearLayout
+                android:gravity="end"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/ForceExit"
                     android:textAllCaps="true"
                     android:textStyle="bold"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/force_exit"
                     android:textColor="#000000"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:gravity="right"
                     android:padding="20dp"/>
             </LinearLayout>
@@ -47,11 +49,13 @@
                 android:layout_gravity="center"
                 android:gravity="center">
                 <ImageView
+                    android:padding="30dp"
+                    android:layout_margin="30dp"
                     android:layout_weight="1"
                     android:layout_width="300dp"
                     android:layout_height="300dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_otpver2" />
+                    android:src="@drawable/ic_two_factor_authentication_rafiki2" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -73,7 +77,7 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/a_single_step_to_go"
                     android:textColor="@color/black"
-                    android:textSize="23sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <com.chaos.view.PinView
@@ -110,15 +114,28 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/resendOtp"
                         android:layout_width="0dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
-                        android:gravity="center|left"
+                        android:textSize="12sp"
+                        android:gravity="center|start"
                         android:text="Resend code in 30 sec"
                         android:textColor="#000000"
-                        android:textFontWeight="20"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/resendOtpButton"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:gravity="center|start"
+                        android:text="RESEND OTP"
+                        android:textColor="#0124EC"
                         android:textStyle="normal" />
 
 
@@ -132,8 +149,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/basic_shape"
-                    android:text="@string/continue_here"
-                    android:textColor="#000000" />
+                    android:text="@string/continue_here" />
 
             </LinearLayout>
         </RelativeLayout>

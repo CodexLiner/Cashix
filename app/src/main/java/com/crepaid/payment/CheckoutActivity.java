@@ -6,6 +6,7 @@ import android.util.Log;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.crepaid.R;
+import com.crepaid.constants.STATIC;
+import com.google.gson.Gson;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
 import com.stripe.android.paymentsheet.PaymentSheetResult;
@@ -20,7 +23,10 @@ import okhttp3.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+import java.util.UUID;
 
 public class CheckoutActivity extends AppCompatActivity {
     private static final String TAG = "CheckoutActivity";
@@ -28,31 +34,54 @@ public class CheckoutActivity extends AppCompatActivity {
 
     private String paymentIntentClientSecret;
     private PaymentSheet paymentSheet;
-    private String payAmount;
+    private int payAmount ;
+    private double CreditableMoney;
     Dialog alertDialog;
     private Button payButton;
-
+    private Bundle bundle;
+    TextView payAmountView , CreditAmount;
+    private  String UUIDs;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_checkout);
-        payAmount = getIntent().getStringExtra("amount");
-        // Hook up the pay button
+        bundle = getIntent().getExtras();
+        payAmount = bundle.getInt(STATIC.Amount);
+        // Hook up the view
         payButton = findViewById(R.id.pay_button);
-//        payButton.setOnClickListener(this::onPayClicked);
+        payAmountView = findViewById(R.id.payAmount);
+        CreditAmount = findViewById(R.id.creditAmount);
+        payButton.setOnClickListener(this::onPayClicked);
         payButton.setEnabled(false);
-
+        UUIDs = UUID.randomUUID().toString();
         paymentSheet = new PaymentSheet(this, this::onPaymentSheetResult);
         PaymentConfiguration.init(
                 this,
-                "pk_live_51JxaLNSBlkdvTJctb6Ke8yLG2u38p7Uy8kdhc9zk9ZukfWevAKXTSTdjhWOeelZTmj9L9d5cV1FeN3G8bIUQGPOo00Z7TSfXVz");
+                "pk_test_51JxaLNSBlkdvTJct8dWOuZDvclYdcTyyRqtl4eZL19AorkVIkFfFfsHzdUcGvraVIf3IJmbrVz1wPLkFczhv0NT700m1r6pkPv");
         alertDialog = new Dialog(this );
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         alertDialog.setContentView(R.layout.dialog);
-        alertDialog.setCancelable(false);
-        alertDialog.show();
+        alertDialog.setCancelable(true);
+//        alertDialog.show();
+        updatePaymentinfo(payAmount);
         fetchPaymentIntent();
+    }
+
+    private void updatePaymentinfo(int payAmount) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                payAmountView.setText(String.valueOf(payAmount));
+                CreditableMoney =  5 * (payAmount / (double) 100);
+                Log.d(TAG, "runUi: "+CreditableMoney);
+                CreditAmount.setText(String.valueOf(payAmount - CreditableMoney));
+            }
+        });
+
+    }
+
+    private void onPayClicked(View view) {
+        onPayClicked();
     }
 
     private void showAlert(String title, @Nullable String message) {
@@ -72,14 +101,15 @@ public class CheckoutActivity extends AppCompatActivity {
 
     private void fetchPaymentIntent() {
         final String shoppingCartContent = "{\"items\": [ {\"id\":\"500000\"}]}";
-
-        final RequestBody requestBody = RequestBody.create(
-                shoppingCartContent,
-                MediaType.get("application/json; charset=utf-8")
-        );
+        Map<String , String> map = new HashMap<>();
+        map.put(STATIC.TransactionID , UUIDs);
+        map.put(STATIC.Amount , String.valueOf(payAmount * 100));
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(map);
+        final RequestBody requestBody = RequestBody.create(jsonString, MediaType.get(STATIC.mediaType));
 
         Request request = new Request.Builder()
-                .url(BACKEND_URL + "/create-payment-intent")
+                .url(STATIC.baseUrlbackend + "create-payment-intent")
                 .post(requestBody)
                 .build();
 
@@ -98,10 +128,9 @@ public class CheckoutActivity extends AppCompatActivity {
                         } else {
                             final JSONObject responseJson = parseResponse(response.body());
                             paymentIntentClientSecret = responseJson.optString("clientSecret");
-//                            runOnUiThread(() -> payButton.setEnabled(true));
+                            runOnUiThread(() -> payButton.setEnabled(true));
                             alertDialog.dismiss();
-                            onPayClicked();
-                            Log.i(TAG, "Retrieved PaymentIntent");
+//                            onPayClicked();
                         }
                     }
                 });
@@ -133,19 +162,45 @@ public class CheckoutActivity extends AppCompatActivity {
         Log.d(TAG, "onPayClicked: " + configuration.getDefaultBillingDetails().getAddress().toString());
     }
 
-    private void onPaymentSheetResult(
-            final PaymentSheetResult paymentSheetResult
-    ) {
+    private void onPaymentSheetResult(final PaymentSheetResult paymentSheetResult) {
         if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
             showToast("Payment complete!");
+            addTransactionstoDb("success" , UUIDs);
             Log.d(TAG, "onPaymentSheetResult: " + paymentSheetResult.toString());
         } else if (paymentSheetResult instanceof PaymentSheetResult.Canceled) {
+            addTransactionstoDb("canceled" , UUIDs);
             Log.i(TAG, "Payment canceled!");
             finish();
             overridePendingTransition(0,0);
         } else if (paymentSheetResult instanceof PaymentSheetResult.Failed) {
+            addTransactionstoDb("failed" , UUIDs);
             Throwable error = ((PaymentSheetResult.Failed) paymentSheetResult).getError();
             showAlert("Payment failed", error.getLocalizedMessage());
         }
+    }
+
+    private void addTransactionstoDb(String tStatus, String Tid) {
+        Map<String , String> map = new HashMap<>();
+        map.put(STATIC.TransactionID , Tid);
+        map.put(STATIC.Amount , String.valueOf(payAmount));
+        map.put(STATIC.TransactionType , "bundle.getString(STATIC.TransactionType)");
+        map.put(STATIC.TransactionStatus , tStatus);
+        map.put(STATIC.AuthKey , "bundle.getString(STATIC.AuthKey)");
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(map);
+
+        final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+        Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").post(requestBody).build();
+        new OkHttpClient().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+            }
+        });
     }
 }

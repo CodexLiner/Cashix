@@ -1,17 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
     tools:context=".payment.CheckoutActivity">
-    <Button
-        android:visibility="gone"
-        android:id="@+id/pay_button"
-        android:text="Pay now"
+    <LinearLayout
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/headingLayout"
+            android:background="@drawable/home_activity_shape_all"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="start"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:drawablePadding="0dp"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="Payment Confirmation"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:drawableTint="@color/black" />
+            </LinearLayout>
+
+        </RelativeLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_invoice_rafiki"/>
+
+            <TextView
+                android:letterSpacing="0.01"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="0dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|center"
+                android:layout_gravity="center"
+                android:text="Confirm Details"
+                android:textColor="#DC000000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:drawableTint="@color/black" />
+            <TextView
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.1"
+                android:lineHeight="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="0dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|center"
+                android:layout_gravity="center"
+                android:text="@string/paymentComplete"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_activity_shape_all">
+            <TextView
+                android:id="@+id/payAmount"
+                android:drawableStart="@drawable/ic_rupee"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="0dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|bottom"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:text="450"
+                android:textSize="29sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|center"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:text="Transfering to bank"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_mright" />
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|center"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:text="5% charges"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_mright" />
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|center"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:text="Offer applied"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_mright" />
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/home_activity_shape_all"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:gravity="start|center"
+                    android:layout_weight="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/Timage"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_rupee"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="start"
+                            android:layout_gravity="start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amount to be credited"/>
+                        <TextView
+                            android:id="@+id/creditAmount"
+                            android:gravity="start"
+                            android:layout_gravity="start"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="2000"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/home_activity_shape_all"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:gravity="start|center"
+                    android:layout_weight="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_marginStart="10dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/check"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/Ttype"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="start"
+                            android:layout_gravity="start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bank Transfer"/>
+                        <TextView
+                            android:id="@+id/Tdate"
+                            android:gravity="start"
+                            android:layout_gravity="start"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="2000"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <Button
+            android:background="@drawable/button_shape_3"
+            android:visibility="visible"
+            android:id="@+id/pay_button"
+            android:text="Pay now"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+</ScrollView>

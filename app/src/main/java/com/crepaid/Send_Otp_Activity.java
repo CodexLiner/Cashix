@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.chaos.view.PinView;
 import com.crepaid.constants.STATIC;
@@ -24,6 +27,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -35,11 +39,14 @@ import okhttp3.Response;
 
 public class Send_Otp_Activity extends AppCompatActivity {
     private String mMobileNumber;
+    private TextView resendOtp , resendOtpButton , ForceExit;
     private int mOtp;
     private Editable uOtp;
     private PinView pinView;
     private Button cButton;
     private ScrollView ScrollOtp;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
 
     @Override
@@ -49,6 +56,12 @@ public class Send_Otp_Activity extends AppCompatActivity {
         ScrollOtp = findViewById(R.id.ScrollOtp);
         pinView = findViewById(R.id.firstPinView);
         cButton = findViewById(R.id.submit_otp_button);
+        resendOtp = findViewById(R.id.resendOtp);
+        ForceExit = findViewById(R.id.ForceExit);
+        resendOtpButton = findViewById(R.id.resendOtpButton);
+        sharedPreferences = getSharedPreferences("Crepaid", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        Log.d("TAG", "onCreateShared: "+sharedPreferences.getString("login" , "nhi aaya"));
         pinView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +80,7 @@ public class Send_Otp_Activity extends AppCompatActivity {
         });
         mMobileNumber = getIntent().getStringExtra("mobileNumber" );
         mOtp = getIntent().getIntExtra("otpCode" , 0 );
-
+        ResendOtpCounter();
         cButton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -75,9 +88,8 @@ public class Send_Otp_Activity extends AppCompatActivity {
               int lastEntered = - 1;
               RelativeLayout relativeLayout = findViewById(R.id.mainLayout);
               if (uOtp == null || uOtp.toString().equals("")){
-                  Snackbar.make(relativeLayout, "Please enter otp !" ,  BaseTransientBottomBar.LENGTH_LONG).show();
+                  Snackbar.make(relativeLayout, "PLEASE ENTER OTP !" ,  BaseTransientBottomBar.LENGTH_LONG).show();
               }
-
               if (uOtp != null) {
                   String uOtpString = uOtp.toString();
                   if (!uOtpString.equals("")){
@@ -96,6 +108,18 @@ public class Send_Otp_Activity extends AppCompatActivity {
 //              overridePendingTransition(0,0);
           }
       });
+        resendOtpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                STATIC.makeToast(getApplicationContext() , "otp sent successfully");
+            }
+        });
+        ForceExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishAffinity();
+            }
+        });
 
     }
 
@@ -118,10 +142,17 @@ public class Send_Otp_Activity extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     JSONObject jsonObject = null;
                     try {
+
                         jsonObject = new JSONObject(response.body().string());
+//                        putting on sharedPref
+                        editor.putString(STATIC.AuthKey , jsonObject.optString("authkey"));
+                        editor.putString(STATIC.UserNumber , jsonObject.optString("mobile"));
+
+//                        putting on Bundle
                         bundle.putString(STATIC.AuthKey ,jsonObject.optString("authkey") );
                         bundle.putString(STATIC.UserNumber ,jsonObject.optString("mobile") );
                         Log.d("TAG", "onResponse: "+jsonObject.optString("authkey"));
+
                         Intent intent = new Intent(Send_Otp_Activity.this ,add_bank_details.class );
                         intent.putExtras(bundle);
                         startActivity(intent);
@@ -149,8 +180,13 @@ public class Send_Otp_Activity extends AppCompatActivity {
                 try {
                     Bundle bundle = new Bundle();
                     JSONObject jsonObject = new JSONObject(response.body().string());
+//                    putting on SharedPreferences
+                    editor.putString(STATIC.AuthKey , jsonObject.optString("authkey"));
+                    editor.putString(STATIC.UserNumber , jsonObject.optString("mobile"));
+//                    putting on Bundle
                     bundle.putString(STATIC.AuthKey ,jsonObject.optString("authkey") );
                     bundle.putString(STATIC.UserNumber ,jsonObject.optString("mobile") );
+
                     Log.d("TAG", "onResponse: "+jsonObject.optString("authkey"));
                     Intent intent = new Intent(Send_Otp_Activity.this ,add_bank_details.class );
                     intent.putExtras(bundle);
@@ -163,5 +199,27 @@ public class Send_Otp_Activity extends AppCompatActivity {
             }
         });
 
+    }
+    public void ResendOtpCounter(){
+        new CountDownTimer(60000 , 1000){
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String s = "RESEND OTP IN "+millisUntilFinished / 1000;
+                        resendOtp.setText(s);
+                    }
+                });
+            }
+
+            @Override
+            public void onFinish() {
+                Log.d("TAG", "onTick: ");
+                resendOtp.setVisibility(View.GONE);
+                resendOtpButton.setVisibility(View.VISIBLE);
+            }
+        }.start();
     }
 }

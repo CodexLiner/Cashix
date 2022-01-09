@@ -14,29 +14,29 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".payment.CheckoutActivity"
-            android:exported="true">
-
+            android:exported="false">
         </activity>
         <activity
             android:name=".payment.cardActivity"
             android:exported="false" />
         <activity
             android:name=".bankTransfer"
-            android:exported="false">
-
-        </activity>
-        <activity
-            android:name=".Home_Activity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".Home_Activity"
+            android:exported="false" >
+
+        </activity>
+        <activity
             android:name=".add_bank_details"
-            android:exported="false" />
+            android:exported="false" >
+
+        </activity>
         <activity
             android:name=".Send_Otp_Activity"
             android:exported="false"

@@ -17,6 +17,10 @@ public class STATIC {
     public static final String UserKycIdType = "UserKycIdType";
     public static final String UserAccount = "UserAccount";
     public static final String UserIfsc = "UserIfsc";
+    public static final String Amount = "amount";
+    public static final String TransactionID = "transactionId";
+    public static final String TransactionType = "type";
+    public static final String TransactionStatus = "status";
 
     public static final String baseUrlbackend= "http://192.168.0.108:3000/";
     public static final String baseUrlstripe= "";
@@ -30,4 +34,5 @@ public class STATIC {
         Snackbar.make(context ,viewGroup, msg,  Snackbar.LENGTH_LONG).show();
 
     }
+
 }

@@ -3,6 +3,7 @@ package com.crepaid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.crepaid.constants.APIs;
 import com.crepaid.constants.Async_task_otp_send;
+import com.crepaid.constants.STATIC;
 
 import java.util.Locale;
 import java.util.Random;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "";
     private EditText mobileText;
     private Button send_button;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
         mobileText = findViewById(R.id.mobileText);
         send_button = findViewById(R.id.send_otp_button);
         send_button.setEnabled(false);
+        sharedPreferences = getSharedPreferences("Crepaid" ,MODE_PRIVATE);
+        if (sharedPreferences.contains(STATIC.AuthKey)) {
+            Bundle bundle = new Bundle();
+            bundle.putString(STATIC.AuthKey , sharedPreferences.getString(STATIC.AuthKey , "NaN"));
+            bundle.putString(STATIC.UserNumber , sharedPreferences.getString(STATIC.UserNumber , "NaN"));
+            Intent intent = new Intent(getApplicationContext() , Home_Activity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            overridePendingTransition(0,0);
+        }
 //        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         mobileText.addTextChangedListener(new TextWatcher() {
             @Override

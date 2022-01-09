@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:overScrollMode="never"
     android:scrollbars="none"
@@ -25,18 +25,25 @@
               android:layout_height="60dp"
               android:orientation="horizontal">
               <TextView
+                  android:layout_weight="1"
                   android:textColor="@color/black"
-                  android:drawableTint="@color/black"
-                  android:layout_width="match_parent"
+                  android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   android:text="EXIT"
-                  android:drawableLeft="@drawable/ic_baseline_chevron_left_24"
                   android:drawablePadding="0dp"
                   android:layout_gravity="center"
-                  android:gravity="center|left"
+                  android:gravity="center|start"
                   android:textStyle="bold"
                   android:textSize="15sp"
-                  android:layout_marginStart="0dp" />
+                  android:layout_marginStart="0dp"
+                  app:drawableLeftCompat="@drawable/ic_baseline_chevron_left_24"
+                  app:drawableTint="@color/black" />
+              <ImageView
+                  android:layout_marginEnd="5dp"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/menu_ic"
+                  android:layout_gravity="center"/>
           </LinearLayout>
 
           <LinearLayout
@@ -68,6 +75,13 @@
           </LinearLayout>
 
       </RelativeLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="CHOOSE ACTION"
+          android:layout_gravity="start"
+          android:textStyle="bold"
+          android:layout_marginStart="15dp" />
       <RelativeLayout
           android:id="@+id/optinLayout"
           android:layout_marginStart="10dp"
@@ -87,100 +101,97 @@
               android:text="New Transactions"
               android:textColor="@color/black"
               android:textSize="15sp" />
+
           <LinearLayout
-              android:gravity="center"
-              android:layout_marginTop="10dp"
-              android:layout_marginStart="0dp"
-              android:layout_marginEnd="0dp"
-              android:layout_below="@id/newTransaction"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:layout_below="@id/newTransaction"
+              android:layout_marginStart="0dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginEnd="0dp"
+              android:gravity="center"
               android:orientation="horizontal">
+
               <LinearLayout
                   android:id="@+id/BankTransfer"
-                  android:background="@drawable/radius_background"
-                  android:layout_weight="1"
-                  android:gravity="center"
-                  android:layout_gravity="center"
-                  android:layout_marginTop="5dp"
-                  android:layout_marginStart="5dp"
-                  android:layout_marginBottom="5dp"
                   android:layout_width="match_parent"
-                  android:layout_height="100dp"
+                  android:layout_height="90dp"
+                  android:layout_gravity="center"
+                  android:layout_weight="1"
+                  android:layout_margin="2dp"
+                  android:background="@drawable/radius_background"
+                  android:gravity="center"
                   android:orientation="vertical">
+
                   <ImageView
-                      android:gravity="center"
-                      android:layout_gravity="center"
-                      android:layout_width="50dp"
-                      android:layout_height="50dp"
-                      android:src="@drawable/ic_tranfer"/>
-                  <TextView
-                      android:layout_margin="0dp"
-                      android:gravity="center"
-                      android:layout_gravity="center"
                       android:layout_width="wrap_content"
-                      android:layout_height="20dp"
-                      android:text="Bank Transfer"/>
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:src="@drawable/ic_wbank" />
               </LinearLayout>
+
               <LinearLayout
-                  android:background="@drawable/radius_background"
-                  android:layout_weight="1"
-                  android:gravity="center"
-                  android:layout_gravity="center"
-                  android:layout_marginTop="5dp"
-                  android:layout_marginStart="5dp"
-                  android:layout_marginBottom="5dp"
+                  android:layout_margin="2dp"
                   android:layout_width="match_parent"
-                  android:layout_height="100dp"
+                  android:layout_height="90dp"
+                  android:layout_gravity="center"
+                  android:layout_weight="1"
+                  android:background="@drawable/radius_background"
+                  android:gravity="center"
                   android:orientation="vertical">
+
                   <ImageView
-                      android:gravity="center"
-                      android:layout_gravity="center"
-                      android:layout_width="50dp"
-                      android:layout_height="50dp"
-                      android:src="@drawable/ic_rent"/>
-                  <TextView
-                      android:layout_margin="0dp"
-                      android:gravity="center"
-                      android:layout_gravity="center"
                       android:layout_width="wrap_content"
-                      android:layout_height="20dp"
-                      android:text="Pay Rent"/>
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:src="@drawable/ic_wrent" />
               </LinearLayout>
+
               <LinearLayout
-                  android:background="@drawable/radius_background"
-                  android:layout_weight="1"
-                  android:gravity="center"
-                  android:layout_gravity="center"
-                  android:layout_marginEnd="5dp"
-                  android:layout_marginTop="5dp"
-                  android:layout_marginStart="5dp"
-                  android:layout_marginBottom="5dp"
+                  android:layout_margin="2dp"
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
+                  android:layout_height="90dp"
+                  android:layout_gravity="center"
+                  android:layout_weight="1"
+                  android:background="@drawable/radius_background"
+                  android:gravity="center"
                   android:orientation="vertical">
+
                   <ImageView
-                      android:gravity="center"
-                      android:layout_gravity="center"
-                      android:layout_width="50dp"
-                      android:layout_height="50dp"
-                      android:src="@drawable/personal"/>
-                  <TextView
-                      android:layout_margin="5dp"
-                      android:gravity="center"
-                      android:layout_gravity="center"
                       android:layout_width="wrap_content"
-                      android:layout_height="20dp"
-                      android:text="View Profile"/>
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:src="@drawable/ic_wwall" />
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_margin="2dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="90dp"
+                  android:layout_gravity="center"
+                  android:layout_weight="1"
+                  android:background="@drawable/radius_background"
+                  android:gravity="center"
+                  android:orientation="vertical">
+
+                  <ImageView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:src="@drawable/ic_wmore" />
               </LinearLayout>
           </LinearLayout>
       </RelativeLayout>
+
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="TRANSACTION HISTORY"
+          android:text="@string/last_four_transaction"
           android:layout_gravity="start"
-          android:textColor="@color/black"
           android:textStyle="bold"
           android:layout_marginStart="15dp" />
       <RelativeLayout
@@ -193,17 +204,78 @@
           android:layout_height="match_parent">
 
           <androidx.recyclerview.widget.RecyclerView
-              android:overScrollMode="never"
               android:id="@+id/TransactionRecycler"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" />
+              android:layout_height="265dp"
+              android:overScrollMode="ifContentScrolls"
+              tools:listitem="@layout/t_list" />
 
           <ImageView
               android:visibility="gone"
               android:id="@+id/recyclerImage"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="265dp"
               android:src="@drawable/ic_no_data_rafiki" />
       </RelativeLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="160dp"
+          android:layout_below="@+id/recentVisited"
+          android:layout_marginStart="12dp"
+          android:layout_marginTop="0dp"
+          android:layout_marginEnd="12dp"
+          android:layout_marginBottom="10dp"
+          android:background="@drawable/home_activity_shape_all"
+          android:elevation="0.5dp"
+          android:orientation="vertical">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center|left"
+              android:layout_margin="0dp"
+              android:orientation="horizontal"
+              android:padding="0dp">
+
+              <ImageView
+                  android:padding="20sp"
+                  android:layout_width="150dp"
+                  android:layout_height="150dp"
+                  android:layout_gravity="center|start"
+                  android:src="@drawable/ic_undraw_credit_card_payment" />
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:orientation="vertical">
+
+                  <TextView
+                      android:gravity="bottom"
+                      android:textSize="13sp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center|bottom"
+                      android:fontFamily="@font/poppins"
+                      android:text="@string/begin_trading_line"
+                      android:textColor="@color/black"
+                      android:textStyle="normal" />
+
+                  <Button
+                      android:textSize="11sp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="40dp"
+                      android:layout_gravity="bottom|end"
+                      android:layout_marginTop="5dp"
+                      android:layout_marginEnd="5dp"
+                      android:background="@drawable/radius_background"
+                      android:gravity="center"
+                      android:text="@string/read_more"
+                      android:textColor="@color/purple_700"/>
+              </LinearLayout>
+          </LinearLayout>
+
+      </LinearLayout>
   </LinearLayout>
-</LinearLayout>
+</ScrollView>

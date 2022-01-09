@@ -36,6 +36,7 @@ public class Home_Activity extends AppCompatActivity {
     RecyclerView TransactionRecycler;
     TransactionAdapters transactionAdapters;
     TransactionModel model;
+    RecyclerView.LayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +47,22 @@ public class Home_Activity extends AppCompatActivity {
         TransactionRecycler = findViewById(R.id.TransactionRecycler);
 
 //        adding Recycler
-        TransactionRecycler.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.VERTICAL , false));
+        layoutManager = new LinearLayoutManager(this){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        TransactionRecycler.setLayoutManager(layoutManager);
         ArrayList<TransactionModel> list = getTransactions();
 
         BankTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startActivity(new Intent(getApplicationContext() , bankTransfer.class));
-               overridePendingTransition(0 ,0);
+                Intent intent = new Intent(getApplicationContext() , bankTransfer.class);
+//                intent.putExtras(bundle);
+                startActivity(intent);
+                overridePendingTransition(0 ,0);
             }
         });
     }
@@ -104,7 +113,7 @@ public class Home_Activity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            recyclerImage.setVisibility(View.VISIBLE);
+//                            recyclerImage.setVisibility(View.VISIBLE);
                         }
                     });
                     Log.d("TAG", "jsonResponseERR: "+e);

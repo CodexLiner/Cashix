@@ -80,7 +80,7 @@ public class add_bank_details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext() , Home_Activity.class);
-                intent.putExtras(bundle);
+//                intent.putExtras(bundle);
                 startActivity(intent);
                 overridePendingTransition(0,0);
             }
