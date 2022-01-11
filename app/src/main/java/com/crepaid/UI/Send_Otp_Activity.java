@@ -1,4 +1,4 @@
-package com.crepaid;
+package com.crepaid.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.chaos.view.PinView;
+import com.crepaid.R;
 import com.crepaid.constants.STATIC;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,7 +28,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;

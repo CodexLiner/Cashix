@@ -1,4 +1,4 @@
-package com.crepaid;
+package com.crepaid.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,21 +7,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.crepaid.constants.APIs;
+import com.crepaid.R;
 import com.crepaid.constants.Async_task_otp_send;
 import com.crepaid.constants.STATIC;
 
 import java.util.Locale;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "";

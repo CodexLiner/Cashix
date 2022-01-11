@@ -7,7 +7,7 @@
     android:scrollbars="none"
     android:layout_height="match_parent"
     android:background="@color/limeWhite"
-    tools:context=".add_bank_details">
+    tools:context=".UI.add_bank_details">
     <RelativeLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"

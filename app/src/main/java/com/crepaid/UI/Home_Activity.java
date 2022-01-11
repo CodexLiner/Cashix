@@ -1,10 +1,11 @@
-package com.crepaid;
+package com.crepaid.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +13,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.crepaid.R;
 import com.crepaid.adapters.TransactionAdapters;
 import com.crepaid.adapters.TransactionModel;
 import com.crepaid.constants.STATIC;
+import com.crepaid.database.userDatabaseHelper;
+import com.crepaid.database.userDatabaseModel;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -30,7 +34,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class Home_Activity extends AppCompatActivity {
-    ImageView recyclerImage ;
+    ImageView recyclerImage , popUpMenu;
     private static final String TAG = "TAGS";
     private Bundle bundle ;
     RecyclerView TransactionRecycler;
@@ -41,10 +45,14 @@ public class Home_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        popUpMenu = findViewById(R.id.popUpMenu);
         bundle = getIntent().getExtras();
         LinearLayout BankTransfer = findViewById(R.id.BankTransfer);
         recyclerImage = findViewById(R.id.recyclerImage);
         TransactionRecycler = findViewById(R.id.TransactionRecycler);
+        userDatabaseHelper db = new userDatabaseHelper(this);
+        userDatabaseModel userDatabaseModel = db.getNote(1);
+        Log.d(TAG, "onCreate: "+userDatabaseModel.toString());
 
 //        adding Recycler
         layoutManager = new LinearLayoutManager(this){
@@ -65,7 +73,18 @@ public class Home_Activity extends AppCompatActivity {
                 overridePendingTransition(0 ,0);
             }
         });
+        popUpMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMenu(getApplicationContext() , v);
+            }
+        });
     }
+
+    private void showMenu(Context context, View v) {
+
+    }
+
 
     private ArrayList<TransactionModel> getTransactions()  {
         boolean bool = true;

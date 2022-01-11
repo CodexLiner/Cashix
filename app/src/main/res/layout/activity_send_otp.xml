@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/limeWhite"
-    tools:context=".Send_Otp_Activity">
+    tools:context=".UI.Send_Otp_Activity">
     <RelativeLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.crepaid;
+package com.crepaid.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,7 @@ import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.crepaid.R;
 import com.crepaid.constants.STATIC;
 import com.crepaid.keyboard.custom_keyboard;
 import com.crepaid.payment.CheckoutActivity;

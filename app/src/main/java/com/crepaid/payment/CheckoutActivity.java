@@ -44,6 +44,7 @@ public class CheckoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_checkout);
         bundle = getIntent().getExtras();
         payAmount = bundle.getInt(STATIC.Amount);
@@ -57,7 +58,7 @@ public class CheckoutActivity extends AppCompatActivity {
         paymentSheet = new PaymentSheet(this, this::onPaymentSheetResult);
         PaymentConfiguration.init(
                 this,
-                "pk_test_51JxaLNSBlkdvTJct8dWOuZDvclYdcTyyRqtl4eZL19AorkVIkFfFfsHzdUcGvraVIf3IJmbrVz1wPLkFczhv0NT700m1r6pkPv");
+                "pk_live_51JxaLNSBlkdvTJctb6Ke8yLG2u38p7Uy8kdhc9zk9ZukfWevAKXTSTdjhWOeelZTmj9L9d5cV1FeN3G8bIUQGPOo00Z7TSfXVz");
         alertDialog = new Dialog(this );
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         alertDialog.setContentView(R.layout.dialog);
