@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -22,7 +23,7 @@ import com.crepaid.payment.CheckoutActivity;
 
 public class bankTransfer extends AppCompatActivity {
     EditText ammoutText;
-    LinearLayout swipePayButton;
+    Button swipePayButton;
     Bundle bundle ;
 
     @Override
@@ -32,24 +33,27 @@ public class bankTransfer extends AppCompatActivity {
         bundle = new Bundle();
         ammoutText = (EditText) findViewById(R.id.ammoutText);
         swipePayButton = findViewById(R.id.swipePayButton);
+        swipePayButton.setEnabled(false);
         ammoutText.setRawInputType(InputType.TYPE_CLASS_TEXT);
         ammoutText.setTextIsSelectable(false);
         ammoutText.setShowSoftInputOnFocus(false);
-        ammoutText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        ammoutText.addTextChangedListener(
+        new TextWatcher() {
+          @Override
+          public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+          @Override
+          public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (s.length() >= 1 && !s.equals("0")) {
+              Log.d("TAG", "onTextChanged: true");
+                swipePayButton.setEnabled(true);
+            }else {
+                swipePayButton.setEnabled(false);
             }
+          }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+          @Override
+          public void afterTextChanged(Editable s) {}
         });
         custom_keyboard customKeyboard = (custom_keyboard) findViewById(R.id.customKeyboard);
         InputConnection ic = ammoutText.onCreateInputConnection(new EditorInfo());
@@ -73,5 +77,11 @@ public class bankTransfer extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ammoutText.setText("");
     }
 }

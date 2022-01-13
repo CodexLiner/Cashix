@@ -26,7 +26,7 @@
 
             <ImageView
                 android:id="@+id/Timage"
-                android:layout_width="35dp"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:src="@drawable/ic_mright" />
@@ -41,13 +41,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:id="@+id/Ttype"
                     android:textColor="@color/black"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="start"
                     android:layout_gravity="start"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Bank Transfer"/>
                 <TextView

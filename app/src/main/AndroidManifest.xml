@@ -13,30 +13,29 @@
         android:theme="@style/Theme.Crepaid"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".payment.CheckoutActivity"
-            android:exported="false">
+            android:name=".UI.payRent"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".payment.CheckoutActivity"
+            android:exported="false" />
         <activity
             android:name=".payment.cardActivity"
             android:exported="false" />
         <activity
             android:name=".UI.bankTransfer"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".UI.Home_Activity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".UI.add_bank_details"
-            android:exported="false" >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".UI.Send_Otp_Activity"
             android:exported="false"

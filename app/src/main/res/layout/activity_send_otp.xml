@@ -77,40 +77,41 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/a_single_step_to_go"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <com.chaos.view.PinView
-
+                    android:layout_marginBottom="0dp"
                     android:id="@+id/firstPinView"
                     style="@style/PinWidget.PinView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
                     android:cursorVisible="true"
+                    android:hint="0000"
                     android:inputType="number"
                     android:itemBackground="@drawable/login_mobile_number_bg"
-                    android:padding="10dp"
-                    android:textColor="#808080"
-                    android:textSize="18sp"
+                    android:padding="8dp"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:cursorColor="@color/black"
                     app:cursorWidth="2dp"
                     app:hideLineWhenFilled="true"
-                    app:itemCount="6"
-                    app:itemHeight="48dp"
-                    app:itemRadius="4dp"
-                    app:itemSpacing="8dp"
-                    app:itemWidth="48dp"
+                    app:itemCount="4"
+                    app:itemHeight="60dp"
+                    app:itemRadius="5dp"
+                    app:itemSpacing="11dp"
+                    app:itemWidth="75dp"
                     app:lineColor="@color/greyish"
-                    app:lineWidth="1dp"
-                    app:viewType="rectangle" />
+                    app:lineWidth="12dp"
+                    app:viewType="none" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -118,15 +119,16 @@
                         android:layout_width="0dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="-2dp"
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
-                        android:textSize="12sp"
+                        android:tooltipText="RESEND OTP IN #) SEC"
                         android:gravity="center|start"
-                        android:text="Resend code in 30 sec"
                         android:textColor="#000000"
+                        android:textSize="12sp"
                         android:textStyle="normal" />
+
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/resendOtpButton"
                         android:layout_width="0dp"
                         android:layout_height="25dp"
@@ -136,7 +138,8 @@
                         android:gravity="center|start"
                         android:text="RESEND OTP"
                         android:textColor="#0124EC"
-                        android:textStyle="normal" />
+                        android:textStyle="normal"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>
@@ -149,6 +152,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/basic_shape"
+                    android:gravity="center"
                     android:text="@string/continue_here" />
 
             </LinearLayout>

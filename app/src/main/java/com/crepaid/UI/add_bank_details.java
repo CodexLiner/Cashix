@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.crepaid.R;
 import com.crepaid.constants.STATIC;
+import com.crepaid.database.userDatabaseHelper;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -78,12 +79,55 @@ public class add_bank_details extends AppCompatActivity {
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                registerWithMobileOnly(bundle.getString("token") , bundle.getString("mobile"));
                 Intent intent = new Intent(getApplicationContext() , Home_Activity.class);
 //                intent.putExtras(bundle);
-                startActivity(intent);
-                overridePendingTransition(0,0);
+//                startActivity(intent);
+//                overridePendingTransition(0,0);
             }
         });
+    }
+
+    private void registerWithMobileOnly(String token ,String mobile) {
+        Log.d("TAG", "registerWithMobileOnly: a"+token);
+        Map<String , String> map = new HashMap<>();
+        map.put("mobiles" , "mymobile");
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(map);
+        final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+        Request request = new Request.Builder().url(STATIC.baseUrlbackend +"crepaid_login/add_bank").addHeader("authorization" , "Bearer "+token).post(requestBody).build();
+    new OkHttpClient()
+        .newCall(request)
+        .enqueue(
+            new Callback() {
+              @Override
+              public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                  runOnUiThread(
+                    new Runnable() {
+                      @Override
+                      public void run() {
+                        Log.d("TAG", "registerWithMobileOnly: a"+e.getMessage());
+                        STATIC.makeToast(getApplicationContext(), "something went wrong");
+                      }
+                    });
+              }
+
+              @Override
+              public void onResponse(@NonNull Call call, @NonNull Response response)
+                  throws IOException {
+                  if (response.code() == 200) {
+                  userDatabaseHelper db = new userDatabaseHelper(getApplicationContext());
+                  long res = db.insertNote(bundle.getString("mobile"), token, 1);
+                  if (res > -1) {
+                    startActivity(new Intent(getApplicationContext(), Home_Activity.class));
+                    overridePendingTransition(0, 0);
+                    finishAffinity();
+                  }
+                } else {
+                  Log.d("TAG", "registerWithMobileOnly: else ");
+                }
+              }
+            });
     }
 
     private void postbankDetails(String accountNumber, String ifscCode, String idNumber, String idType) {
@@ -109,6 +153,7 @@ public class add_bank_details extends AppCompatActivity {
 
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
 
                 }
             });

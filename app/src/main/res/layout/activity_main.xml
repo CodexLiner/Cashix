@@ -56,11 +56,12 @@
                     android:src="@drawable/m_insert" />
             </LinearLayout>
         </RelativeLayout>
+
         <RelativeLayout
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/vectorImage">
+            android:layout_below="@id/vectorImage"
+            android:padding="10dp">
 
             <LinearLayout
 
@@ -74,11 +75,12 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/let_s_begin_enter_your_number"
                     android:textColor="@color/black"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:textSize="15sp"
+                    android:drawableStart="@drawable/ic_wflag"
+                    android:drawablePadding="10dp"
                     android:id="@+id/mobileText"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -88,15 +90,16 @@
                     android:hint="@string/login_mobile_hint"
                     android:inputType="numberDecimal"
                     android:maxLength="10"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:textSize="17sp" />
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <CheckBox
                         android:layout_width="25dp"

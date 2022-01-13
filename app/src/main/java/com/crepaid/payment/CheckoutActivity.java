@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.crepaid.R;
 import com.crepaid.constants.STATIC;
+import com.crepaid.database.userDatabaseHelper;
+import com.crepaid.database.userDatabaseModel;
 import com.google.gson.Gson;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
@@ -41,6 +43,8 @@ public class CheckoutActivity extends AppCompatActivity {
     private Bundle bundle;
     TextView payAmountView , CreditAmount;
     private  String UUIDs;
+    userDatabaseModel model;
+    userDatabaseHelper db ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,9 @@ public class CheckoutActivity extends AppCompatActivity {
         payButton.setOnClickListener(this::onPayClicked);
         payButton.setEnabled(false);
         UUIDs = UUID.randomUUID().toString();
+        //local dp
+        db = new userDatabaseHelper(getApplicationContext());
+        model = db.getNote(1);
         paymentSheet = new PaymentSheet(this, this::onPaymentSheetResult);
         PaymentConfiguration.init(
                 this,
@@ -167,41 +174,78 @@ public class CheckoutActivity extends AppCompatActivity {
         if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
             showToast("Payment complete!");
             addTransactionstoDb("success" , UUIDs);
+            if (bundle!=null && bundle.getBoolean("renType", false)){
+                addTransactioForTransferBank(UUIDs);
+            }
             Log.d(TAG, "onPaymentSheetResult: " + paymentSheetResult.toString());
         } else if (paymentSheetResult instanceof PaymentSheetResult.Canceled) {
             addTransactionstoDb("canceled" , UUIDs);
-            Log.i(TAG, "Payment canceled!");
-            finish();
-            overridePendingTransition(0,0);
+//            Log.i(TAG, "Payment canceled!");
+//            finish();
+//            overridePendingTransition(0,0);
         } else if (paymentSheetResult instanceof PaymentSheetResult.Failed) {
-            addTransactionstoDb("failed" , UUIDs);
+
+          //   addTransactionstoDb("failed" , UUIDs);
             Throwable error = ((PaymentSheetResult.Failed) paymentSheetResult).getError();
             showAlert("Payment failed", error.getLocalizedMessage());
         }
     }
 
+    private void addTransactioForTransferBank(String uuiDs) {
+        try{
+            Map<String , String> map = new HashMap<>();
+            map.put("transactionAmount" , String.valueOf(bundle.getInt("amount")));
+            map.put("transactionDesc" , bundle.getString("uDecription"));
+            map.put("transactionDate" , bundle.getString(""));
+            map.put("transactionAC", bundle.getString("uAccount"));
+            map.put("transactionIfsc", bundle.getString("uIfsc"));
+            map.put("transactionName", bundle.getString("uName"));
+//        TODO: to implement this function
+            Gson gson = new Gson();
+            String jsonString = gson.toJson(map);
+            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+            new OkHttpClient().newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                }
+            });
+        }catch (Exception ignored){}
+    }
+
     private void addTransactionstoDb(String tStatus, String Tid) {
-        Map<String , String> map = new HashMap<>();
-        map.put(STATIC.TransactionID , Tid);
-        map.put(STATIC.Amount , String.valueOf(payAmount));
-        map.put(STATIC.TransactionType , "bundle.getString(STATIC.TransactionType)");
-        map.put(STATIC.TransactionStatus , tStatus);
-        map.put(STATIC.AuthKey , "bundle.getString(STATIC.AuthKey)");
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(map);
+        try{
+            Map<String , String> map = new HashMap<>();
+            map.put(STATIC.TransactionID , Tid);
+            map.put(STATIC.Amount , String.valueOf(payAmount));
+            map.put(STATIC.TransactionType , bundle.getString(STATIC.TransactionType , "Transfer"));
+            map.put(STATIC.TransactionStatus , tStatus);
+            map.put(STATIC.AuthKey , model.getMobile());
+            Gson gson = new Gson();
+            String jsonString = gson.toJson(map);
 
-        final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-        Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").post(requestBody).build();
-        new OkHttpClient().newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+      new OkHttpClient()
+          .newCall(request)
+          .enqueue(
+              new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    Log.d(TAG, "onResponse: payment failed for some reason");
+                }
 
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
-            }
-        });
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                 Log.d(TAG, "onResponse: payment successfull");
+                }
+              });
+        }catch (Exception ignored){ }
     }
 }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.chaos.view.PinView;
 import com.crepaid.R;
 import com.crepaid.constants.STATIC;
+import com.crepaid.database.userDatabaseHelper;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
@@ -45,6 +46,7 @@ public class Send_Otp_Activity extends AppCompatActivity {
     private PinView pinView;
     private Button cButton;
     private ScrollView ScrollOtp;
+    Bundle bundle;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -59,9 +61,11 @@ public class Send_Otp_Activity extends AppCompatActivity {
         resendOtp = findViewById(R.id.resendOtp);
         ForceExit = findViewById(R.id.ForceExit);
         resendOtpButton = findViewById(R.id.resendOtpButton);
+        bundle = getIntent().getExtras();
         sharedPreferences = getSharedPreferences("Crepaid", MODE_PRIVATE);
         editor = sharedPreferences.edit();
         Log.d("TAG", "onCreateShared: "+sharedPreferences.getString("login" , "nhi aaya"));
+
         pinView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,16 +100,9 @@ public class Send_Otp_Activity extends AppCompatActivity {
                       lastEntered = Integer.parseInt(uOtpString);
                   }
               }
-              if (lastEntered > 0 && lastEntered == mOtp){
-                  STATIC.makeToast(getApplicationContext() , "Login Success");
-//                  startActivity(new Intent(Send_Otp_Activity.this , add_bank_details.class));
-                  overridePendingTransition(0,0);
-                  validUser(mMobileNumber);
-              }else
-                 STATIC.makeToast(getApplicationContext() , String.valueOf(mOtp));
-
-//              startActivity(new Intent(Send_Otp_Activity.this , add_bank_details.class));
-//              overridePendingTransition(0,0);
+              if (bundle!=null){
+                  UserValidator( bundle.getString("mobile") ,bundle.getString("token") , uOtp.toString().trim());
+              }
           }
       });
         resendOtpButton.setOnClickListener(new View.OnClickListener() {
@@ -123,83 +120,105 @@ public class Send_Otp_Activity extends AppCompatActivity {
 
     }
 
-    private void UserValidator(String mMobileNumber) {
+    private void UserValidator(String mMobileNumber , String token ,String code) {
         Map<String , String> map = new HashMap<>();
         map.put("mobile" , mMobileNumber);
+        map.put("code" , code);
         Gson gson = new Gson();
         String jsonString = gson.toJson(map);
-//        Log.d("TAG", "UserValidator: "+jsonString);
             final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"crepaid_login").post(requestBody).build();
-            new OkHttpClient().newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"crepaid_login/validator").addHeader("authorization" , "Bearer "+token).post(requestBody).build();
+    new OkHttpClient()
+        .newCall(request)
+        .enqueue(
+            new Callback() {
+              @Override
+              public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                runOnUiThread(
+                    new Runnable() {
+                      @Override
+                      public void run() {
+                        runOnUiThread(
+                            new Runnable() {
+                              @Override
+                              public void run() {
+                                STATIC.makeToast(getApplicationContext(), "something went wrong");
+                              }
+                            });
+                      }
+                    });
+              }
 
-                }
-
-                @Override
-                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                    Bundle bundle = new Bundle();
-                    JSONObject jsonObject = null;
-                    try {
-
-                        jsonObject = new JSONObject(response.body().string());
-//                        putting on sharedPref
-                        editor.putString(STATIC.AuthKey , jsonObject.optString("authkey"));
-                        editor.putString(STATIC.UserNumber , jsonObject.optString("mobile"));
-
-//                        putting on Bundle
-                        bundle.putString(STATIC.AuthKey ,jsonObject.optString("authkey") );
-                        bundle.putString(STATIC.UserNumber ,jsonObject.optString("mobile") );
-                        Log.d("TAG", "onResponse: "+jsonObject.optString("authkey"));
-
-                        Intent intent = new Intent(Send_Otp_Activity.this ,add_bank_details.class );
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                        overridePendingTransition(0,0);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-
-    }
-
-    private void validUser(String mMobileNumber) {
-        Request request = new Request.Builder().url(STATIC.baseUrlbackend+"crepaid_login/"+mMobileNumber).get().build();
-        new OkHttpClient().newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.d("TAG", "onFailure: login failed ");
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
+              @Override
+              public void onResponse(@NonNull Call call, @NonNull Response response)
+                  throws IOException {
+                Bundle bundle = new Bundle();
                 try {
-                    Bundle bundle = new Bundle();
-                    JSONObject jsonObject = new JSONObject(response.body().string());
-//                    putting on SharedPreferences
-                    editor.putString(STATIC.AuthKey , jsonObject.optString("authkey"));
-                    editor.putString(STATIC.UserNumber , jsonObject.optString("mobile"));
-//                    putting on Bundle
-                    bundle.putString(STATIC.AuthKey ,jsonObject.optString("authkey") );
-                    bundle.putString(STATIC.UserNumber ,jsonObject.optString("mobile") );
 
-                    Log.d("TAG", "onResponse: "+jsonObject.optString("authkey"));
-                    Intent intent = new Intent(Send_Otp_Activity.this ,add_bank_details.class );
+                  JSONObject jsonObject;
+                  jsonObject = new JSONObject(response.body().string());
+                  if (jsonObject.getBoolean("oldUser")) {
+                    bundle.putString("token", jsonObject.optString("token"));
+                    bundle.putString("mobile", mMobileNumber);
+                    userDatabaseHelper db = new userDatabaseHelper(getApplicationContext());
+                    long res = db.insertNote(mMobileNumber, jsonObject.optString("token"), 1);
+                    Intent intent = new Intent(getApplicationContext(), Home_Activity.class);
                     intent.putExtras(bundle);
                     startActivity(intent);
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(0, 0);
+                  } else {
+                    Log.d("TAG", "token is : "+jsonObject.optString("token"));
+                    bundle.putString("token", jsonObject.optString("token"));
+                    bundle.putString("mobile", mMobileNumber);
+                    Intent intent = new Intent(getApplicationContext(), add_bank_details.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                  }
 
-                }catch (Exception e){
-                    UserValidator(mMobileNumber);
+                } catch (JSONException e) {
+                  if (response.code() == 406) {
+                    STATIC.makeToast(getApplicationContext(), "invalid otp");
+                  }
                 }
-            }
-        });
-
+              }
+            });
     }
+
+//    private void validUser(String mMobileNumber) {
+//        Request request = new Request.Builder().url(STATIC.baseUrlbackend+"crepaid_login/"+mMobileNumber).get().build();
+//        new OkHttpClient().newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//                Log.d("TAG", "onFailure: login failed ");
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//
+//                try {
+//                    Bundle bundle = new Bundle();
+//                    JSONObject jsonObject = new JSONObject(response.body().string());
+////                    putting on SharedPreferences
+//                    editor.putString(STATIC.AuthKey , jsonObject.optString("authkey"));
+//                    editor.putString(STATIC.UserNumber , jsonObject.optString("mobile"));
+////                    putting on Bundle
+//                    bundle.putString(STATIC.AuthKey ,jsonObject.optString("authkey") );
+//                    bundle.putString(STATIC.UserNumber ,jsonObject.optString("mobile") );
+//
+//                    Log.d("TAG", "onResponse: "+jsonObject.optString("authkey"));
+//                    Intent intent = new Intent(Send_Otp_Activity.this ,add_bank_details.class );
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//                    overridePendingTransition(0,0);
+//
+//                }catch (Exception e){
+//                    UserValidator(mMobileNumber);
+//                }
+//            }
+//        });
+//
+//    }
     public void ResendOtpCounter(){
         new CountDownTimer(60000 , 1000){
 

@@ -22,6 +22,7 @@ public class STATIC {
     public static final String TransactionType = "type";
     public static final String TransactionStatus = "status";
 
+    public static final String STRIPEKEY = "";
     public static final String baseUrlbackend= "http://192.168.0.108:3000/";
     public static final String baseUrlstripe= "";
     public static final String mediaType = "application/json; charset=utf-8";

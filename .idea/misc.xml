@@ -11,6 +11,9 @@
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/card_drop_shape.xml" value="0.23657407407407408" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/certification.xml" value="0.17743055555555556" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/currecncy_rec_bg.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/custom_btn_shape.xml" value="0.1256578947368421" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/custom_btn_shape_active.xml" value="0.1256578947368421" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/custom_keyboard_shape.xml" value="0.1680921052631579" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/design_shape.xml" value="0.23657407407407408" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/dialog_shape.xml" value="0.17743055555555556" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/down.xml" value="0.23657407407407408" />
@@ -25,6 +28,7 @@
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_mright.xml" value="0.17560137457044672" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_no_data_rafiki.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_pencil.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_plusicon.xml" value="0.1680921052631579" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_rent.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_right.xml" value="0.23657407407407408" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_rupee.xml" value="0.17560137457044672" />
@@ -34,10 +38,15 @@
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_undraw_insert_block.xml" value="0.17560137457044672" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_undraw_no_data.xml" value="0.17560137457044672" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_wbank.xml" value="0.17560137457044672" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_wflag.xml" value="0.1680921052631579" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/ic_wpayrent.xml" value="0.1680921052631579" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/keyboard_layout_bg.xml" value="0.17560137457044672" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/keyboard_shape.xml" value="0.17743055555555556" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/layer.xml" value="0.17560137457044672" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/login_mobile_number_bg.xml" value="0.17743055555555556" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/menu_ic.xml" value="0.17560137457044672" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/notification_shape.xml" value="0.17743055555555556" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/radius_background.xml" value="0.17743055555555556" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/slash_layer.xml" value="0.17560137457044672" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/drawable/unlock.xml" value="0.17743055555555556" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout-v26/activity_home.xml" value="0.25" />
@@ -47,9 +56,11 @@
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_checkout.xml" value="0.176" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_home.xml" value="0.176" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_pay_rent.xml" value="0.15789473684210525" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/activity_send_otp.xml" value="0.176" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/add_card_shape.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/custom_keyboard.xml" value="0.152" />
+        <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/custombtn.xml" value="0.15789473684210525" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/dialog.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/key_preview.xml" value="0.25" />
         <entry key="..\:/Users/meena/AndroidStudioProjects/crepaid/app/src/main/res/layout/my_oard.xml" value="0.25" />

@@ -5,7 +5,7 @@ public class userDatabaseModel {
 
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NOTE = "mobile";
-    public static final String AUTHKEY = "authKey";
+    public static final String AUTHKEY = "token";
 
     private int id = 1;
     private String mobile;

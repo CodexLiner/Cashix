@@ -35,7 +35,7 @@ public class TransactionAdapters extends RecyclerView.Adapter<TransactionAdapter
            }else if (modelArrayList.get(position).getStatus().equals("failed")){
                holder.imageView.setImageResource(R.drawable.ic_mcross);
            }else {
-               holder.imageView.setImageResource(R.drawable.pending);
+               holder.imageView.setImageResource(R.drawable.ic_mcross);
            }
            holder.amount.setText("₹"+modelArrayList.get(position).getAmount());
            holder.Tdate.setText(modelArrayList.get(position).get__v());

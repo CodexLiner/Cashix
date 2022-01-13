@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string name="app_name">coinwix</string>
     <string name="loginskip">Skip Login</string>
     <string name="send_otp_button_text">SEND OTP</string>
@@ -11,7 +11,7 @@
     <string name="account_succesfully_created">Account Created Successfully</string>
     <string name="kyc_response">Later</string>
     <string name="kyc_response_complete_kyc">Complete Kyc</string>
-    <string name="complete_yout_kyc_to_start_investing_quickly">Complete Your Kyc In Few Minuts </string>
+    <string android:name="complete_yout_kyc_to_start_investing_quickly">Complete Your Kyc In Few Minuts </string>
     <string name="top_currencies">Top Currencies</string>
     <string name="see_all">SEE ALL</string>
     <string name="recent_views">Recent Views</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CrePaid</string>
+    <string name="app_name">CREPAID</string>
     <string name="loginskip">Skip Login</string>
     <string name="send_otp_button_text">SEND OTP</string>
     <string name="login_mobile_hint">Enter Mobile Number</string>

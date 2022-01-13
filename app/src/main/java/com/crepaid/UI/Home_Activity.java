@@ -26,11 +26,15 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Home_Activity extends AppCompatActivity {
@@ -39,7 +43,7 @@ public class Home_Activity extends AppCompatActivity {
     private Bundle bundle ;
     RecyclerView TransactionRecycler;
     TransactionAdapters transactionAdapters;
-    TransactionModel model;
+    userDatabaseModel model;
     RecyclerView.LayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +52,14 @@ public class Home_Activity extends AppCompatActivity {
         popUpMenu = findViewById(R.id.popUpMenu);
         bundle = getIntent().getExtras();
         LinearLayout BankTransfer = findViewById(R.id.BankTransfer);
+        LinearLayout payRent = findViewById(R.id.payRent);
         recyclerImage = findViewById(R.id.recyclerImage);
         TransactionRecycler = findViewById(R.id.TransactionRecycler);
         userDatabaseHelper db = new userDatabaseHelper(this);
-        userDatabaseModel userDatabaseModel = db.getNote(1);
-        Log.d(TAG, "onCreate: "+userDatabaseModel.toString());
+        model = db.getNote(1);
 
 //        adding Recycler
-        layoutManager = new LinearLayoutManager(this){
+        layoutManager = new LinearLayoutManager(this , LinearLayout.VERTICAL , true){
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -63,7 +67,7 @@ public class Home_Activity extends AppCompatActivity {
         };
         TransactionRecycler.setLayoutManager(layoutManager);
         ArrayList<TransactionModel> list = getTransactions();
-
+        recyclerImage.setVisibility(View.VISIBLE);
         BankTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +76,12 @@ public class Home_Activity extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(0 ,0);
             }
+        });
+        payRent.setOnClickListener((View v) ->{
+            Intent intent = new Intent(getApplicationContext() , com.crepaid.UI.payRent.class);
+//                intent.putExtras(bundle);
+            startActivity(intent);
+            overridePendingTransition(0 ,0);
         });
         popUpMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,9 +97,19 @@ public class Home_Activity extends AppCompatActivity {
 
 
     private ArrayList<TransactionModel> getTransactions()  {
+        String token = "";
+        if (model!= null && model.getAuth().length()>1){
+            token = model.getAuth();
+          Log.d("TAG", "getTransactions: "+token);
+        }
         boolean bool = true;
         ArrayList<TransactionModel> list = new ArrayList<>();
-        Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments/"+"req.body.authkey11").get().build();
+        Map<String , String> map = new HashMap<>();
+        map.put("mobiles" , "mymobile");
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(map);
+        final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+        Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments/list").addHeader("authorization" , "Bearer "+token).get().build();
         new OkHttpClient().newCall(request).enqueue(new Callback() {
 
             @Override
@@ -114,14 +134,9 @@ public class Home_Activity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (list !=null){
-                                        recyclerImage.setVisibility(View.GONE);
-                                        transactionAdapters = new TransactionAdapters(list , "key");
-                                        TransactionRecycler.setAdapter(transactionAdapters);
-                                    }else {
-                                        recyclerImage.setVisibility(View.VISIBLE);
-
-                                    }
+                                    recyclerImage.setVisibility(View.GONE);
+                                    transactionAdapters = new TransactionAdapters(list , model.getAuthkey());
+                                    TransactionRecycler.setAdapter(transactionAdapters);
 
                                 }
                             });
@@ -141,5 +156,17 @@ public class Home_Activity extends AppCompatActivity {
         });
         Log.d(TAG, "onCreates: "+list.size());
         return list;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getTransactions();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getTransactions();
     }
 }
