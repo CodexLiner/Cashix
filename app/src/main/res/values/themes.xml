@@ -14,7 +14,7 @@
 <!--        <item name="android:navigationBarColor">#00F4F7FF</item>-->
         <item name="android:statusBarColor" tools:targetApi="l">@color/limeWhite</item>
         <!-- Customize your theme here. -->
-<!--        <item name="android:windowBackground">@drawable/layer</item>-->
+
     </style>
     <style name="StripeToolBarStyle.noColor" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/limeWhite</item>
@@ -26,6 +26,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/limeWhite</item>
     </style>
     <style name="myStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/limeWhite</item>
+        <item name="android:windowBackground">@drawable/layer</item>
         <item name="colorPrimary">@color/red</item>
         <item name="colorPrimaryVariant">@color/teal_200</item>
         <item name="colorOnPrimary">#AEEA00</item>

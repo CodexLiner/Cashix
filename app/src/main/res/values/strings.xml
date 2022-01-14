@@ -34,4 +34,17 @@
     <string name="paymentComplete">To complete the payment\nplease click on the procced button</string>
     <string name="read_more">READ MORE</string>
     <string name="last_four_transaction">LAST FOUR TRANSACTION</string>
+    <string name="oops_no_internet">Oops No Internet</string>
+    <string name="make_sure_wifi_and_cellular_data_is_turned_on_and_try_again">Make sure wifi and cellular data is turned\n On and try again</string>
+    <string name="help_support"><![CDATA[Help & Support]]></string>
+    <string name="add_bank_account_for_recieving_payouts">Add Bank Account For Receiving Payouts</string>
+    <string name="your_all_transaction_history">Your All Transaction History</string>
+    <string name="add_or_manage_biller_s_for_rents">Add Or Manage Biller For Rent</string>
+    <string name="ask_something_we_will_help_you">Ask Something We Will Help You</string>
+    <string name="terms_and_condition_that_make_us_diffrent">Terms and Conditions That Make Us Diffrent</string>
+    <string name="know_your_all_data_is_safe">Know How Your All Data Is Safe</string>
+    <string name="tell_us_what_you_think">Tell Us What You Think</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="complete_your_profile_for_instant_settlements">Complete Your Profile For Instant Settlement</string>
+    <string name="terms_amp_condition"><![CDATA[Terms & Condition]]></string>
 </resources>

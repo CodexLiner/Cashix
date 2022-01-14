@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/profilr"
-        android:title="profilr" />
-    <item android:id="@+id/profile"
-        android:title="profilr" />
+    <item android:id="@+id/home"
+        android:icon="@drawable/ic_home_selector"
+        android:title="Home" />
+    <item android:id="@+id/more"
+        android:icon="@drawable/ic_setting_selector"
+        android:title="More" />
 </menu>
