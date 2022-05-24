@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CREPAID</string>
+    <string name="app_name">cashix</string>
     <string name="loginskip">Skip Login</string>
     <string name="send_otp_button_text">SEND OTP</string>
     <string name="login_mobile_hint">Enter Mobile Number</string>
@@ -47,4 +47,9 @@
     <string name="your_profile">Your Profile</string>
     <string name="complete_your_profile_for_instant_settlements">Complete Your Profile For Instant Settlement</string>
     <string name="terms_amp_condition"><![CDATA[Terms & Condition]]></string>
+    <string name="title_activity_setting_pp">settingPP</string>
+    <string name="bank_verification_success">Bank Verification Success</string>
+    <string name="congrats_your_account_is_verified_succesfully_and_all_future_payout_will_be_credited_to_your_bank_account">Congrats! Your Account is Verified Successfully and All Future Payout Will be Credited to your bank account</string>
+    <string name="pendinfg_bank">Pending! Your Bank Account is not Verified yet. we will inform you once get verified</string>
+    <string name="enter_amount">Enter Amount</string>
 </resources>

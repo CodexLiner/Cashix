@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:overScrollMode="never"
+    android:background="@color/limeWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.bankTransfer">
+    <LinearLayout
+        android:layout_gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/headingLayout"-->
+<!--            android:background="@drawable/home_activity_shape_all"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <LinearLayout-->
+<!--                android:gravity="start"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="0dp"-->
+<!--                    android:drawablePadding="0dp"-->
+<!--                    android:fontFamily="@font/poppins"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="Bank Transfer"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:drawableTint="@color/black" />-->
+<!--            </LinearLayout>-->
+
+<!--        </RelativeLayout>-->
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/headingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/backButton"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="BACK"
+                android:drawablePadding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center|start"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginStart="0dp"
+                app:drawableLeftCompat="@drawable/ic_op_left"
+                app:drawableTint="@color/black" />
+        </LinearLayout>
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AMOUNT TO TRANSFER"
+            android:layout_gravity="start"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paying To Account"
+            android:textColor="@color/black"
+            android:layout_gravity="start"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"/>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:elevation="1dp"
+            android:background="@drawable/home_activity_shape_all"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/transaction"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/headingLayout"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/hdfc" />
+                <LinearLayout
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center|start"
+                    android:layout_weight="2"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/demoUserName" />
+                    <TextView
+                        android:textSize="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/demoAc"
+                        android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:padding="5dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:elevation="1dp"
+            android:background="@drawable/home_activity_shape_all"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/addAccount"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/headingLayout"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_plusicon" />
+                <LinearLayout
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center|start"
+                    android:layout_weight="2"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_gravity="start|center"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ADD NEW ACCOUNT" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="vertical">
+            <EditText
+                android:cursorVisible="false"
+                android:maxLength="6"
+                android:hint="@string/enter_amount"
+                android:theme="@style/myStyle"
+                android:background="@drawable/keyboard_layout_bg"
+                android:id="@+id/ammoutText"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="25sp"/>
+            <com.cashix.keyboard.custom_keyboard
+                android:background="@drawable/keyboard_layout_bg"
+                android:orientation="vertical"
+                android:id="@+id/customKeyboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/swipePayButton"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:text="MAKE PAYMENT"
+                android:background="@drawable/button_main_yellow">
+
+                <!--                <TextView-->
+                <!--                    android:layout_margin="5dp"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:letterSpacing="0.05"-->
+                <!--                    android:fontFamily="@font/poppins"-->
+                <!--                    android:textSize="15sp"-->
+                <!--                    android:text="Make Payment"-->
+                <!--                    android:textStyle="bold"/>-->
+
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

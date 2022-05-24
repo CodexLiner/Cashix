@@ -25,14 +25,14 @@
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="GO BACK"
-                android:drawablePadding="0dp"
+                android:text="BACK"
+                android:drawablePadding="5dp"
                 android:layout_gravity="center"
                 android:gravity="center|start"
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:layout_marginStart="0dp"
-                app:drawableLeftCompat="@drawable/ic_baseline_chevron_left_24"
+                app:drawableLeftCompat="@drawable/ic_op_left"
                 app:drawableTint="@color/black" />
         </LinearLayout>
         <ImageView

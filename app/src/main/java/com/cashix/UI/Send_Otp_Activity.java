@@ -127,7 +127,7 @@ public class Send_Otp_Activity extends AppCompatActivity {
         Gson gson = new Gson();
         String jsonString = gson.toJson(map);
             final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"crepaid_login/validator").addHeader("authorization" , "Bearer "+token).post(requestBody).build();
+            Request request = new Request.Builder().url(STATIC.baseBackend +"crepaid_login/validator").addHeader("authorization" , "Bearer "+token).post(requestBody).build();
     new OkHttpClient()
         .newCall(request)
         .enqueue(

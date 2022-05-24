@@ -20,9 +20,10 @@ public class STATIC {
     public static final String TransactionID = "transactionId";
     public static final String TransactionType = "type";
     public static final String TransactionStatus = "status";
+    public static final String DESC = "desc";
 
     public static final String STRIPEKEY = "";
-    public static final String baseUrlbackend= "http://192.168.0.108:3000/";
+    public static final String baseBackend = "http://192.168.29.144:5000/";
     public static final String baseUrlstripe= "";
     public static final String mediaType = "application/json; charset=utf-8";
     public static String TextLocalKey = "NDU3YTczMzk0YjU4NzczMTM5MzI0NTY4Nzc0YzYzNzA=";

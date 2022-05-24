@@ -31,7 +31,7 @@ public class noticeAdapter extends RecyclerView.Adapter<noticeAdapter.Holder> {
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         if (mlist!=null){
 //            noticeModel model = new noticeModel(mlist.get(position).getUrl());
-            Glide.with(holder.itemView.getContext()).load("mlist.get(position).getUrl()").into(holder.image);
+            Glide.with(holder.itemView.getContext()).load(mlist.get(position).getUrl()).into(holder.image);
         }
     }
 

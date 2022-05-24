@@ -2,6 +2,7 @@ package com.cashix.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,8 +13,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import com.cashix.R;
+import com.cashix.UIFragments.LoginFragment;
 import com.cashix.constants.Async_task_otp_send;
 import com.cashix.constants.STATIC;
 import com.cashix.database.userDatabaseHelper;
@@ -39,8 +42,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "";
-    private EditText mobileText;
-    private Button send_button;
+    private FrameLayout MainFrame;
+    FragmentTransaction fragmentTransaction;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor ;
     @Override
@@ -51,7 +54,25 @@ public class MainActivity extends AppCompatActivity {
         checkConnection();
         setTheme(R.style.Theme_Crepaid);
         setContentView(R.layout.activity_main);
-        mobileText = findViewById(R.id.mobileText);
+        MainFrame = findViewById(R.id.MainFrame);
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
+                .add(R.id.MainFrame, LoginFragment.class, null)
+                .commit();
+
+
+
+
+
+
+
+
+
+
+
+
+/*        mobileText = findViewById(R.id.mobileText);
         send_button = findViewById(R.id.send_otp_button);
         send_button.setEnabled(false);
         sharedPreferences = getSharedPreferences("Crepaid" ,MODE_PRIVATE);
@@ -66,10 +87,7 @@ public class MainActivity extends AppCompatActivity {
 //        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         mobileText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length()==10){
@@ -78,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                     send_button.setEnabled(false);
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -95,65 +112,64 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);
 //                overridePendingTransition(0,0);
             }
-        });
+        });*/
     }
 
-    private void sendOtpViaServer(String trim) {
-        send_button.setEnabled(false);
-        Map<String , String> map = new HashMap<>();
-        map.put("mobile" , trim);
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(map);
-        final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-        Request request = new Request.Builder().url(STATIC.baseUrlbackend +"crepaid_login/verify").post(requestBody).build();
-        new OkHttpClient().newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        STATIC.makeToast(getApplicationContext() , "Failed To Send OTP");
-                        send_button.setEnabled(true);
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                try {
-                    JSONObject jsonObject;
-                    jsonObject = new JSONObject(response.body().string());
-                    if (!jsonObject.optString("lastToken").equals(" ") || !jsonObject.optString("lastToken").isEmpty()){
-                        Bundle bundle = new Bundle();
-                        bundle.putString("token" , jsonObject.optString("lastToken") );
-                        Log.d("TAG", "onResponse: "+ jsonObject.optString("lastToken"));
-                        bundle.putString("mobile" , trim);
-                        Intent intent = new Intent(getApplicationContext() , Send_Otp_Activity.class);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                        overridePendingTransition(0,0);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-    }
-
-    private int GenrateOtp(String mobile) {
-        Random random = new Random();
-        int low = 111111;
-        int high = 999999;
-        int otpIs = (int) ((Math.random()*900000)+100000);
-        sendToUser(mobile ,otpIs);
-        return otpIs;
-    }
-    private void sendToUser(String mobile, int otp) {
-        Async_task_otp_send send = new Async_task_otp_send(mobile , otp);
-        send.execute();
-//        APIs.sendOtp(mobile,otp);
-    }
+//    private void sendOtpViaServer(String trim) {
+//        send_button.setEnabled(false);
+//        Map<String , String> map = new HashMap<>();
+//        map.put("mobile" , trim);
+//        Gson gson = new Gson();
+//        String jsonString = gson.toJson(map);
+//        final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+//        Request request = new Request.Builder().url(STATIC.baseBackend +"crepaid_login/verify").post(requestBody).build();
+//        new OkHttpClient().newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        STATIC.makeToast(getApplicationContext() , "Failed To Send OTP"+e.getLocalizedMessage());
+//                        send_button.setEnabled(true);
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                try {
+//                    JSONObject jsonObject;
+//                    jsonObject = new JSONObject(response.body().string());
+//                    if (!jsonObject.optString("lastToken").equals(" ") || !jsonObject.optString("lastToken").isEmpty()){
+//                        Bundle bundle = new Bundle();
+//                        bundle.putString("token" , jsonObject.optString("lastToken") );
+//                        Log.d("TAG", "onResponse: "+ jsonObject.optString("lastToken"));
+//                        bundle.putString("mobile" , trim);
+//                        Intent intent = new Intent(getApplicationContext() , Send_Otp_Activity.class);
+//                        intent.putExtras(bundle);
+//                        startActivity(intent);
+//                        overridePendingTransition(0,0);
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });
+//    }
+//    private int GenrateOtp(String mobile) {
+//        Random random = new Random();
+//        int low = 111111;
+//        int high = 999999;
+//        int otpIs = (int) ((Math.random()*900000)+100000);
+//        sendToUser(mobile ,otpIs);
+//        return otpIs;
+//    }
+//    private void sendToUser(String mobile, int otp) {
+//        Async_task_otp_send send = new Async_task_otp_send(mobile , otp);
+//        send.execute();
+////        APIs.sendOtp(mobile,otp);
+//    }
     private void checkConnection() {
         connection conn = new connection();
         conn.onReceive(getApplicationContext() , null);

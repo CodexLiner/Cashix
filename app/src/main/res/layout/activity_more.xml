@@ -400,7 +400,7 @@
                     android:padding="13dp"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/rzp_logo"/>
+                    android:src="@drawable/ic_op_logo"/>
                 <LinearLayout
                     android:gravity="center"
                     android:layout_gravity="center"

@@ -51,7 +51,7 @@ public class userDatabaseHelper extends SQLiteOpenHelper {
 
       try{
           Cursor cursor = db.query(userDatabaseModel.TABLE_NAME,
-                  new String[]{userDatabaseModel.COLUMN_ID, userDatabaseModel.COLUMN_NOTE, userDatabaseModel.AUTHKEY},
+                  new String[]{userDatabaseModel.COLUMN_ID, userDatabaseModel.COLUMN_NOTE,userDatabaseModel.DATE , userDatabaseModel.EMAIL, userDatabaseModel.AUTHKEY},
                   userDatabaseModel.COLUMN_ID + "=?",
                   new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -62,6 +62,8 @@ public class userDatabaseHelper extends SQLiteOpenHelper {
           userDatabaseModel note = new userDatabaseModel(
                   cursor.getInt(cursor.getColumnIndex(userDatabaseModel.COLUMN_ID)),
                   cursor.getString(cursor.getColumnIndex(userDatabaseModel.COLUMN_NOTE)),
+                  cursor.getString(cursor.getColumnIndex(userDatabaseModel.EMAIL)),
+                  cursor.getString(cursor.getColumnIndex(userDatabaseModel.DATE)),
                   cursor.getString(cursor.getColumnIndex(userDatabaseModel.AUTHKEY)));
 
           // close the db connection

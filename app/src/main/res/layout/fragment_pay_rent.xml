@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/limeWhite"
+    android:overScrollMode="never"
+    android:scrollIndicators="none"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.payRent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/headingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/backButton"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="BACK"
+                android:drawablePadding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center|start"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginStart="0dp"
+                app:drawableLeftCompat="@drawable/ic_op_left"
+                app:drawableTint="@color/black" />
+        </LinearLayout>
+        <ImageView
+            android:layout_gravity="center"
+            android:padding="30dp"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="220dp"
+            android:src="@drawable/ic_wpayrent"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Pay Your Rent With Credit Card"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+                <EditText
+
+                    android:id="@+id/holderAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center|start"
+                    android:hint="Rent Amount"
+                    android:inputType="numberSigned"
+                    android:maxLength="6"
+                    android:padding="10dp"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/holderName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center|start"
+                    android:hint="Account Holder"
+                    android:inputType="textPersonName"
+                    android:maxLength="10"
+                    android:padding="10dp"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/holderIFSC"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center|start"
+                    android:hint="Bank IFSC"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="10"
+                    android:padding="10dp"
+                    android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/holderAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center|start"
+                    android:hint="Account Number"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:padding="10dp"
+                    android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/holderReason"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center|start"
+                    android:hint="Description Optional"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:padding="10dp"
+                    android:textSize="15sp" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <CheckBox
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="20dp"
+                        android:checked="true"
+                        android:clickable="false"
+                        android:gravity="left|center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="@string/accept_privacy_policy"
+                        android:textColor="#000000" />
+
+
+                </LinearLayout>
+<!--                <include-->
+<!--                    android:id="@+id/customButton"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    layout="@layout/custombtn"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_width="match_parent"/>-->
+
+                <Button
+                    android:visibility="visible"
+                    android:id="@+id/addAccountButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/button_shape_primary"
+                    android:text="Pay Now" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

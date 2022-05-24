@@ -36,6 +36,9 @@ public class customButton {
             progressBar.setVisibility(View.INVISIBLE);
         }
     }
+    public boolean isEnable(){
+        return isEnabled;
+    }
     public void activeButton(String string){
         relativeLayout.setBackgroundResource(R.drawable.custom_btn_shape_active);
         progressBar.setVisibility(View.VISIBLE);

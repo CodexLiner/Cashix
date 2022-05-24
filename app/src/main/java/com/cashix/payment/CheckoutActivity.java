@@ -116,7 +116,7 @@ public class CheckoutActivity extends AppCompatActivity {
         final RequestBody requestBody = RequestBody.create(jsonString, MediaType.get(STATIC.mediaType));
 
         Request request = new Request.Builder()
-                .url(STATIC.baseUrlbackend + "create-payment-intent")
+                .url(STATIC.baseBackend + "create-payment-intent")
                 .post(requestBody)
                 .build();
 
@@ -193,6 +193,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private void addTransactioForTransferBank(String uuiDs) {
         try{
             Map<String , String> map = new HashMap<>();
+            map.put(STATIC.DESC , "DESC");
             map.put("transactionAmount" , String.valueOf(bundle.getInt("amount")));
             map.put("transactionDesc" , bundle.getString("uDecription"));
             map.put("transactionDate" , bundle.getString(""));
@@ -203,7 +204,7 @@ public class CheckoutActivity extends AppCompatActivity {
             Gson gson = new Gson();
             String jsonString = gson.toJson(map);
             final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+            Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
             new OkHttpClient().newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -230,7 +231,7 @@ public class CheckoutActivity extends AppCompatActivity {
             String jsonString = gson.toJson(map);
 
             final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+            Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
       new OkHttpClient()
           .newCall(request)
           .enqueue(

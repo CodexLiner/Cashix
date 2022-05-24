@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "119673590499",
+    "project_id": "cashix-28ae3",
+    "storage_bucket": "cashix-28ae3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119673590499:android:7fe8e4452ab85efb496bd6",
+        "android_client_info": {
+          "package_name": "com.cashix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119673590499-460ua4e194a371chn9q0gt674l4ti6pq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjWTAieWnkFB-e6bnD8TJk6HiKVg6imkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119673590499-460ua4e194a371chn9q0gt674l4ti6pq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

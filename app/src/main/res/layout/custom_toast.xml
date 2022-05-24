@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:elevation="10dp"
+    android:background="@drawable/toast_shape"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        app:cardBackgroundColor="@android:color/transparent"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/toastMsg"
+            android:textColor="@color/white"
+            android:drawablePadding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Automatic call will starts in 10 seconds"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            app:drawableStartCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+            app:drawableTint="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>
