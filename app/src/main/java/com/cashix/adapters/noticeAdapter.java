@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cashix.R;
+import com.cashix.adapters.models.noticeModel;
 
 import java.util.List;
 

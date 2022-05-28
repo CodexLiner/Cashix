@@ -56,7 +56,7 @@
                     android:layout_marginBottom="10dp"
                     android:theme="@style/myStyle"
                     android:background="@null"
-                    android:id="@+id/ammoutText"
+                    android:id="@+id/amountText"
                     android:textColor="#3E44C5"
                     android:fontFamily="@font/poppins_medium"
                     android:layout_width="match_parent"

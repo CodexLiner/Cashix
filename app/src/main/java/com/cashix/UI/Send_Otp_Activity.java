@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.chaos.view.PinView;
 import com.cashix.R;
 import com.cashix.constants.STATIC;
-import com.cashix.database.userDatabaseHelper;
+import com.cashix.database.user.userDatabaseHelper;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;

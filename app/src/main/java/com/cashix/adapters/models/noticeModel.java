@@ -1,4 +1,4 @@
-package com.cashix.adapters;
+package com.cashix.adapters.models;
 
 public class noticeModel {
     String url;

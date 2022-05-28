@@ -65,4 +65,7 @@ public class common {
     public static void back(FragmentActivity fragmentActivity) {
         fragmentActivity.onBackPressed();
     }
+    public static void load(){
+
+    }
 }

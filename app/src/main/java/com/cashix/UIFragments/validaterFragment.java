@@ -1,20 +1,39 @@
 package com.cashix.UIFragments;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.cashix.R;
-import com.cashix.UI.Home_Activity;
+import com.cashix.UI.HomeActivity;
+import com.cashix.constants.STATIC;
+import com.cashix.database.user.UserInfo;
 import com.cashix.databinding.FragmentValidaterBinding;
+import com.cashix.network.AsyncResponse;
+import com.cashix.network.BackendCall;
+import com.cashix.utils.change;
+import com.cashix.utils.changeHelper;
+import com.cashix.utils.common;
 
-public class validaterFragment extends Fragment {
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+public class validaterFragment extends Fragment implements AsyncResponse {
     private FragmentValidaterBinding binding;
+    private BackendCall backendCall;
+    private String token;
+    private String mobile;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -22,9 +41,11 @@ public class validaterFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public validaterFragment() {
-        // Required empty public constructor
+    public validaterFragment(String token , String mobile) {
+        this.token = token;
+        this.mobile = mobile;
     }
+    public validaterFragment(){}
 
     public static validaterFragment newInstance(String param1, String param2) {
         validaterFragment fragment = new validaterFragment();
@@ -49,8 +70,32 @@ public class validaterFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentValidaterBinding.inflate(inflater);
         binding.submitOtpButton.setOnClickListener((View v)->{
-            startActivity(new Intent(requireContext() , Home_Activity.class));
+         if (common.isEmpty(binding.firstPinView)){
+             validateOtp(token , Objects.requireNonNull(binding.firstPinView.getText()).toString());
+
+         }
         });
         return binding.getRoot();
+    }
+
+    private void validateOtp(String token, String otp) {
+        Map<String , String> map= new HashMap<>();
+        map.put("code" , otp);
+        map.put("mobile" , mobile);
+        backendCall = new BackendCall(STATIC.VERIFYOTP, map, token , requireActivity());
+        backendCall.asyncResponse = this;
+        backendCall.execute();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void Result(JSONObject jsonObject) {
+        if (jsonObject!=null){
+            try {
+                Log.d("TAG", "doInBackground d: "+jsonObject.getString("token"));
+                new UserInfo(requireContext()).getDB().insertNote("9399846909" , jsonObject.getString("token") , 1);
+                startActivity(new Intent(requireContext() , HomeActivity.class));
+            }catch (Exception ignored){}
+        }
     }
 }

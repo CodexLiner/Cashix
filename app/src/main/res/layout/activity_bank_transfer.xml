@@ -59,7 +59,7 @@
             android:layout_marginBottom="12dp"
             android:theme="@style/myStyle"
             android:background="@drawable/home_activity_shape_all"
-            android:id="@+id/ammoutText"
+            android:id="@+id/amountText"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:layout_width="match_parent"

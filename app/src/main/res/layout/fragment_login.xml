@@ -127,7 +127,8 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/basic_shape"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_shape_primary"
                     android:text="@string/send_otp_button_text" />
             </LinearLayout>
         </RelativeLayout>

@@ -161,7 +161,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:textColor="#8D8D8E"
                 android:fontFamily="@font/poppins"
                 android:textStyle="bold"

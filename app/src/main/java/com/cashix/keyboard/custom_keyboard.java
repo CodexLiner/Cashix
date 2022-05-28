@@ -60,7 +60,7 @@ public class custom_keyboard extends LinearLayout implements View.OnClickListene
         btn_9= (Button) findViewById(R.id.btn_9);
         btn_9.setOnClickListener(this);
         btn_dot = (Button) findViewById(R.id.btn_dot);
-        btn_dot.setOnClickListener(this);
+        // btn_dot.setOnClickListener(this);
         btn_del = (Button) findViewById(R.id.btn_del);
         btn_del.setOnClickListener(this);
 

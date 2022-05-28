@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.cashix.R;
-import com.cashix.constants.STATIC;
-import com.cashix.database.userDatabaseHelper;
-import com.cashix.database.userDatabaseModel;
+import com.cashix.database.user.userDatabaseHelper;
+import com.cashix.database.user.userDatabaseModel;
 import com.cashix.databinding.ActivityUserProfileBinding;
 
 public class UserProfile extends AppCompatActivity {

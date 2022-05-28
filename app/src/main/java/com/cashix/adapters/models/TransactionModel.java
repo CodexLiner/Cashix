@@ -1,4 +1,4 @@
-package com.cashix.adapters;
+package com.cashix.adapters.models;
 
 public class TransactionModel {
     String _id , transactionId , status , amount , type , authkey , __v;

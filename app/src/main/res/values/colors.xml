@@ -16,4 +16,5 @@
     <color name="home_shape_color">#F6F8FD</color>
     <color name="custom_keyboard_col">#8D8D8E</color>
     <color name="active_green">#08a982</color>
+    <color name="splash_color">#4153B6</color>
 </resources>

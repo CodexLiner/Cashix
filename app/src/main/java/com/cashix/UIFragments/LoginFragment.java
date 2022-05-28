@@ -4,15 +4,32 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.cashix.R;
+import com.cashix.UI.MainActivity;
+import com.cashix.constants.STATIC;
 import com.cashix.databinding.FragmentLoginBinding;
+import com.cashix.network.AsyncResponse;
+import com.cashix.network.BackendCall;
+import com.cashix.utils.change;
+import com.cashix.utils.changeHelper;
+import com.cashix.utils.common;
 
-public class LoginFragment extends Fragment {
-    private static FragmentLoginBinding binding;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+public class LoginFragment extends Fragment implements AsyncResponse {
+    private BackendCall backendCall;
+    private FragmentLoginBinding binding;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -44,19 +61,42 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater);
+
+
+
+
+
+
+
+
+
         binding.sendOtpButton.setOnClickListener((View v)->{
-            requireActivity()
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .addToBackStack("Login")
-                    .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
-                    .setReorderingAllowed(true)
-                    .add(R.id.MainFrame, validaterFragment.class, null)
-                    .commit();
+            if (common.isEmpty(binding.mobileText)){
+                nextStep();
+            }
         });
-
-
-
         return binding.getRoot();
+    }
+
+    private void nextStep() {
+        Map<String , String> map = new HashMap<>();
+        map.put("mobile" , binding.mobileText.getText().toString().trim());
+        backendCall = new BackendCall(STATIC.LOGIN , map , "" , requireActivity());
+        backendCall.asyncResponse = this;
+        backendCall.execute();
+    }
+
+    @Override
+    public void Result(JSONObject jsonObject){
+        if (jsonObject!=null){
+            Toast.makeText(requireContext(), "Otp Sent Successfully", Toast.LENGTH_SHORT).show();
+            try {
+                if (jsonObject.getString("lastToken")!=null){
+                    new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame))
+                            .goWithParams(new validaterFragment(jsonObject.getString("lastToken") ,
+                                    binding.mobileText.getText().toString()));
+                }
+            }catch (Exception ignored){}
+        }
     }
 }

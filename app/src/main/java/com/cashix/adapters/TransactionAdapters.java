@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cashix.R;
+import com.cashix.adapters.models.TransactionModel;
 
 import java.util.ArrayList;
 

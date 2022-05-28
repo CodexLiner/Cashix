@@ -21,13 +21,13 @@ import android.widget.Toast;
 
 import com.cashix.R;
 import com.cashix.adapters.TransactionAdapters;
-import com.cashix.adapters.TransactionModel;
+import com.cashix.adapters.models.TransactionModel;
 import com.cashix.adapters.noticeAdapter;
-import com.cashix.adapters.noticeModel;
+import com.cashix.adapters.models.noticeModel;
 import com.cashix.constants.STATIC;
 import com.cashix.database.BankDataHelper;
-import com.cashix.database.userDatabaseHelper;
-import com.cashix.database.userDatabaseModel;
+import com.cashix.database.user.userDatabaseHelper;
+import com.cashix.database.user.userDatabaseModel;
 import com.cashix.receivers.connection;
 import com.google.gson.Gson;
 

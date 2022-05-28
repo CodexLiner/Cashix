@@ -13,36 +13,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <RelativeLayout
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:id="@+id/headingLayout"
-            android:background="@drawable/home_activity_shape_all"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:gravity="start"
-                android:layout_alignParentTop="true"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:drawablePadding="0dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:text="Payment Confirmation"
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    app:drawableTint="@color/black" />
-            </LinearLayout>
-
-        </RelativeLayout>
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/backButton"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="BACK"
+                android:drawablePadding="5dp"
+                android:layout_gravity="center"
+                android:gravity="center|start"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginStart="0dp"
+                app:drawableLeftCompat="@drawable/ic_op_left"
+                app:drawableTint="@color/black" />
+        </LinearLayout>
         <LinearLayout
             android:gravity="center"
             android:layout_gravity="center"
@@ -251,7 +244,9 @@
 
         </LinearLayout>
         <Button
-            android:background="@drawable/button_main_yellow"
+            android:background="@drawable/button_shape_primary"
+            android:textColor="@color/white"
+            android:layout_margin="5dp"
             android:visibility="visible"
             android:id="@+id/pay_button"
             android:text="Pay now"

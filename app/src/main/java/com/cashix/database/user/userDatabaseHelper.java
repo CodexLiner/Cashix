@@ -1,4 +1,4 @@
-package com.cashix.database;
+package com.cashix.database.user;
 
 import android.content.ContentValues;
 import android.content.Context;

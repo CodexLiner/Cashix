@@ -1,4 +1,4 @@
-package com.cashix.database;
+package com.cashix.database.user;
 
 public class userDatabaseModel {
     public static final String TABLE_NAME = "CREPAID_USERS";

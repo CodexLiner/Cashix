@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.cashix.R;
 import com.cashix.constants.STATIC;
-import com.cashix.database.userDatabaseHelper;
+import com.cashix.database.user.userDatabaseHelper;
 import com.google.gson.Gson;
 
 import java.io.IOException;

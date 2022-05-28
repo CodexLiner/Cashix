@@ -2,9 +2,11 @@ package com.cashix.UIFragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -13,12 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import android.widget.Toast;
+import android.view.inputmethod.InputMethodManager;
 
 import com.cashix.R;
 import com.cashix.constants.STATIC;
 import com.cashix.databinding.FragmentBankTransferBinding;
-import com.cashix.keyboard.custom_keyboard;
 import com.cashix.utils.change;
 import com.cashix.utils.changeHelper;
 import com.cashix.utils.common;
@@ -58,14 +59,14 @@ public class BankTransfer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentBankTransferBinding.inflate(inflater);
-        InputConnection ic = binding.ammoutText.onCreateInputConnection(new EditorInfo());
-        binding.customKeyboard.setInputConnection(ic);
-        binding.swipePayButton.setEnabled(false);
-        binding.ammoutText.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        binding.ammoutText.setTextIsSelectable(false);
-        binding.ammoutText.setShowSoftInputOnFocus(false);
+//        Custom Keyboard Prepare
+        KeyBoardPrepare();
+
         binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
-        binding.ammoutText.addTextChangedListener(new TextWatcher() {
+
+        binding.amountText.setHint(Html.fromHtml("<b color=" +"black"+">₹<b> 0"));
+
+        binding.amountText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
@@ -75,17 +76,25 @@ public class BankTransfer extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-        binding.swipePayButton.setOnClickListener(v -> {
-            startPayment();
-        });
+        binding.swipePayButton.setOnClickListener(v -> { startPayment();});
+        binding.EditAccount.setOnClickListener(v->{});
         return binding.getRoot();
+    }
+
+    private void KeyBoardPrepare() {
+        InputConnection ic = binding.amountText.onCreateInputConnection(new EditorInfo());
+        binding.customKeyboard.setInputConnection(ic);
+        binding.swipePayButton.setEnabled(false);
+        binding.amountText.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        binding.amountText.setTextIsSelectable(false);
+        binding.amountText.setShowSoftInputOnFocus(false);
     }
 
     private void startPayment() {
         Bundle bundle = new Bundle();
-        String amount = binding.ammoutText.getText().toString().toString();
+        String amount = binding.amountText.getText().toString().toString();
         if (TextUtils.isEmpty(amount) || Integer.parseInt(amount) < 1 ){
-            binding.ammoutText.requestFocus();
+            binding.amountText.requestFocus();
             return;
         }
         int bundleAmount = Integer.parseInt(amount);

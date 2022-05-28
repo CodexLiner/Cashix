@@ -7,6 +7,9 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 
 public class STATIC {
+//    API END POINTS
+    public static final String LOGIN = "crepaid_login/verify";
+    public static final String VERIFYOTP = "crepaid_login/validator";
     // user info
     public static final String AuthKey = "authkey";
     public static final String UserName = "UserName";
@@ -33,7 +36,7 @@ public class STATIC {
     }
     public static void makeSnack(Context context, ViewGroup viewGroup , String msg){
         Snackbar.make(context ,viewGroup, msg,  Snackbar.LENGTH_LONG).show();
-
     }
+
 
 }

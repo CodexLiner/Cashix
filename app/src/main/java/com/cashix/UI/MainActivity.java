@@ -4,23 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.cashix.R;
 import com.cashix.UIFragments.LoginFragment;
 import com.cashix.constants.Async_task_otp_send;
 import com.cashix.constants.STATIC;
-import com.cashix.database.userDatabaseHelper;
-import com.cashix.database.userDatabaseModel;
 import com.cashix.receivers.connection;
 import com.google.gson.Gson;
 
@@ -115,61 +107,55 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
-//    private void sendOtpViaServer(String trim) {
-//        send_button.setEnabled(false);
-//        Map<String , String> map = new HashMap<>();
-//        map.put("mobile" , trim);
-//        Gson gson = new Gson();
-//        String jsonString = gson.toJson(map);
-//        final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-//        Request request = new Request.Builder().url(STATIC.baseBackend +"crepaid_login/verify").post(requestBody).build();
-//        new OkHttpClient().newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        STATIC.makeToast(getApplicationContext() , "Failed To Send OTP"+e.getLocalizedMessage());
-//                        send_button.setEnabled(true);
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-//                try {
-//                    JSONObject jsonObject;
-//                    jsonObject = new JSONObject(response.body().string());
-//                    if (!jsonObject.optString("lastToken").equals(" ") || !jsonObject.optString("lastToken").isEmpty()){
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("token" , jsonObject.optString("lastToken") );
-//                        Log.d("TAG", "onResponse: "+ jsonObject.optString("lastToken"));
-//                        bundle.putString("mobile" , trim);
-//                        Intent intent = new Intent(getApplicationContext() , Send_Otp_Activity.class);
-//                        intent.putExtras(bundle);
-//                        startActivity(intent);
-//                        overridePendingTransition(0,0);
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        });
-//    }
-//    private int GenrateOtp(String mobile) {
-//        Random random = new Random();
-//        int low = 111111;
-//        int high = 999999;
-//        int otpIs = (int) ((Math.random()*900000)+100000);
-//        sendToUser(mobile ,otpIs);
-//        return otpIs;
-//    }
-//    private void sendToUser(String mobile, int otp) {
-//        Async_task_otp_send send = new Async_task_otp_send(mobile , otp);
-//        send.execute();
-////        APIs.sendOtp(mobile,otp);
-//    }
+    public void sendOtpViaServer(String trim) {
+        Map<String , String> map = new HashMap<>();
+        map.put("mobile" , trim);
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(map);
+        final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+        Request request = new Request.Builder().url(STATIC.baseBackend +"crepaid_login/verify").post(requestBody).build();
+        new OkHttpClient().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        STATIC.makeToast(getApplicationContext() , "Failed To Send OTP"+e.getLocalizedMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                try {
+                    JSONObject jsonObject;
+                    jsonObject = new JSONObject(response.body().string());
+                    if (!jsonObject.optString("lastToken").equals(" ") || !jsonObject.optString("lastToken").isEmpty()){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("token" , jsonObject.optString("lastToken") );
+                        Log.d("TAG", "onResponse: "+ jsonObject.optString("lastToken"));
+                        bundle.putString("mobile" , trim);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+    private int GenrateOtp(String mobile) {
+        Random random = new Random();
+        int low = 111111;
+        int high = 999999;
+        int otpIs = (int) ((Math.random()*900000)+100000);
+        sendToUser(mobile ,otpIs);
+        return otpIs;
+    }
+    private void sendToUser(String mobile, int otp) {
+        Async_task_otp_send send = new Async_task_otp_send(mobile , otp);
+        send.execute();
+//        APIs.sendOtp(mobile,otp);
+    }
     private void checkConnection() {
         connection conn = new connection();
         conn.onReceive(getApplicationContext() , null);

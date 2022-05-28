@@ -76,49 +76,48 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="₹ 0.0"
+                    android:text="₹ 45000"
                     android:textColor="@color/black"
                     android:textSize="25sp" />
 
             </LinearLayout>
 
         </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="IMPORTANT NOTICE"
-            android:layout_gravity="start"
-            android:textStyle="normal"
-            android:layout_marginStart="15dp" />
+
         <RelativeLayout
             android:id="@+id/adui"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/portofolioUI"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/notification_shape"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/home_activity_shape_all"
             android:elevation="0.5dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/recycler_top"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
             <androidx.recyclerview.widget.RecyclerView
-                android:overScrollMode="never"
                 android:id="@+id/NoticeRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="95dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:overScrollMode="never"
                 android:scaleType="centerCrop"
                 android:src="@drawable/download1"
                 tools:listitem="@layout/notice_itemlist" />
 
         </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CHOOSE ACTION"
-            android:layout_gravity="start"
-            android:textStyle="normal"
-            android:layout_marginStart="15dp" />
         <RelativeLayout
             android:id="@+id/optinLayout"
             android:layout_marginStart="10dp"
@@ -130,6 +129,13 @@
             android:background="@drawable/home_activity_shape_all">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/services"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
                 android:visibility="gone"
                 android:id="@+id/newTransaction"
                 android:layout_width="match_parent"
@@ -140,17 +146,17 @@
                 android:textSize="15sp" />
 
             <LinearLayout
+                android:id="@+id/same"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/newTransaction"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="0dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:id="@+id/BankTransfer"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
@@ -158,6 +164,7 @@
                     android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:background="@drawable/radius_background"
+                    android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -176,6 +183,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="3dp"
                     android:layout_weight="1"
+                    android:foreground="?attr/selectableItemBackground"
                     android:background="@drawable/radius_background"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -194,6 +202,7 @@
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:layout_margin="3dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_weight="1"
                     android:background="@drawable/radius_background"
                     android:gravity="center"
@@ -208,11 +217,99 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_weight="1"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/ic_lpg" />
+                </LinearLayout>
+            </LinearLayout>
+            // same above
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/same"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radius_background"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/ic_amazon" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_weight="1"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/ic_recharge" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/ic_electricity" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/moreButton"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:layout_margin="3dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_weight="1"
                     android:background="@drawable/radius_background"
                     android:gravity="center"
@@ -226,15 +323,8 @@
                         android:src="@drawable/ic_wmore" />
                 </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/last_four_transaction"
-            android:layout_gravity="start"
-            android:textStyle="normal"
-            android:layout_marginStart="15dp" />
+        </RelativeLayout>
         <RelativeLayout
             android:layout_marginEnd="11dp"
             android:layout_marginBottom="10dp"
@@ -244,12 +334,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/last_transactions"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/TransactionRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="5dp"
-                android:overScrollMode="ifContentScrolls"
+                android:overScrollMode="never"
                 tools:itemCount="4"
                 tools:listitem="@layout/t_list" />
 

@@ -14,8 +14,14 @@
         android:theme="@style/Theme.Crepaid"
         android:usesCleartextTraffic="true">
         <activity
+            android:theme="@style/Theme.Crepaid.Splash"
+            android:name=".UI.Splash"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".UI.HomeActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -94,7 +100,7 @@
         <!-- /> -->
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_live_ILgsfZCZoFIKMb" />
+            android:value="rzp_live_xSvinNsyqi4FYa" />
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />

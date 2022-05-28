@@ -30,7 +30,7 @@ public class bankTransfer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_transfer);
         bundle = new Bundle();
-        ammoutText = (EditText) findViewById(R.id.ammoutText);
+        ammoutText = (EditText) findViewById(R.id.amountText);
         swipePayButton = findViewById(R.id.swipePayButton);
         swipePayButton.setEnabled(false);
         ammoutText.setRawInputType(InputType.TYPE_CLASS_TEXT);

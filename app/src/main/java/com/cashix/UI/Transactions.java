@@ -11,10 +11,10 @@ import android.view.View;
 
 import com.cashix.R;
 import com.cashix.adapters.TransactionAdapters;
-import com.cashix.adapters.TransactionModel;
+import com.cashix.adapters.models.TransactionModel;
 import com.cashix.constants.STATIC;
-import com.cashix.database.userDatabaseHelper;
-import com.cashix.database.userDatabaseModel;
+import com.cashix.database.user.userDatabaseHelper;
+import com.cashix.database.user.userDatabaseModel;
 import com.cashix.databinding.ActivityTransactionsBinding;
 import com.google.gson.Gson;
 

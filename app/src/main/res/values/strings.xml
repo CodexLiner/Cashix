@@ -51,5 +51,13 @@
     <string name="bank_verification_success">Bank Verification Success</string>
     <string name="congrats_your_account_is_verified_succesfully_and_all_future_payout_will_be_credited_to_your_bank_account">Congrats! Your Account is Verified Successfully and All Future Payout Will be Credited to your bank account</string>
     <string name="pendinfg_bank">Pending! Your Bank Account is not Verified yet. we will inform you once get verified</string>
-    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_amount">₹0</string>
+    <string name="services">Cashix Services</string>
+    <string name="recycler_top">Cashix Updates</string>
+    <string name="last_transactions">Last Transactions</string>
+    <string name="paying_to_account">Paying To Account</string>
+    <string name="bank_heading">Credit Card To Bank</string>
+    <string name="alert">Alert!</string>
+    <string name="hello_world_how_are_you_today">hello world how are you today?</string>
+    <string name="okay">okay</string>
 </resources>

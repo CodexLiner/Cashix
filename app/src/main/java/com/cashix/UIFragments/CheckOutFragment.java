@@ -16,9 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cashix.constants.STATIC;
-import com.cashix.database.userDatabaseHelper;
-import com.cashix.database.userDatabaseModel;
+import com.cashix.database.user.userDatabaseHelper;
+import com.cashix.database.user.userDatabaseModel;
 import com.cashix.databinding.FragmentCheckOutBinding;
+import com.cashix.utils.Binder.dialog;
+import com.cashix.utils.bar;
+import com.cashix.utils.common;
 import com.google.gson.Gson;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
@@ -43,7 +46,9 @@ import okhttp3.ResponseBody;
 
 public class CheckOutFragment extends Fragment {
     private static final String TAG = "TAG";
+    private com.cashix.utils.bar bar;
     private Bundle bundle;
+    private dialog dialog;
     private FragmentCheckOutBinding binding;
     private String paymentIntentClientSecret;
 
@@ -93,9 +98,10 @@ public class CheckOutFragment extends Fragment {
         binding = FragmentCheckOutBinding.inflate(inflater);
         db = new userDatabaseHelper(requireContext());
         model = db.getNote(1);
-
+        binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
         payAmountView = binding.payAmount;
         payButton = binding.payButton;
+        payButton.setEnabled(false);
         payAmount = bundle.getInt(STATIC.Amount);
         UUIDs = UUID.randomUUID().toString();
         CreditAmount = binding.creditAmount;
@@ -103,46 +109,33 @@ public class CheckOutFragment extends Fragment {
         PaymentConfiguration.init(
                 requireContext(),
                 "pk_live_51JxaLNSBlkdvTJctb6Ke8yLG2u38p7Uy8kdhc9zk9ZukfWevAKXTSTdjhWOeelZTmj9L9d5cV1FeN3G8bIUQGPOo00Z7TSfXVz");
-        updatePaymentinfo(payAmount);
+        updatePayments(payAmount);
         fetchPaymentIntent();
         binding.payButton.setOnClickListener((View button)->{
             onPayClicked();
         });
         return binding.getRoot();
     }
-    private void updatePaymentinfo(int payAmount) {
+    private void updatePayments(int payAmount) {
         requireActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 binding.payAmount.setText(String.valueOf(payAmount));
                 CreditableMoney =  5 * (payAmount / (double) 100);
-                Log.d(TAG, "runUi: "+CreditableMoney);
                 CreditAmount.setText(String.valueOf(payAmount - CreditableMoney));
             }
         });
 
     }
-
-    private void onPayClicked(View view) {
-        onPayClicked();
-    }
-
-    private void showAlert(String title, @Nullable String message) {
-        requireActivity().runOnUiThread(() -> {
-            AlertDialog dialog = new AlertDialog.Builder(requireContext())
-                    .setTitle(title)
-                    .setMessage(message)
-                    .setPositiveButton("Ok", null)
-                    .create();
-            dialog.show();
-        });
-    }
-
     private void showToast(String message) {
         requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show());
     }
 
     private void fetchPaymentIntent() {
+        dialog = new dialog(requireContext());
+        bar = new bar(requireContext());
+        bar.setCancelable(false);
+        bar.show();
         final String shoppingCartContent = "{\"items\": [ {\"id\":\"500000\"}]}";
         Map<String , String> map = new HashMap<>();
         map.put(STATIC.TransactionID , UUIDs);
@@ -159,21 +152,24 @@ public class CheckOutFragment extends Fragment {
         new OkHttpClient().newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                showAlert("Failed to load data", "Error: " + e.toString());
-            }
+                bar.hide();
+                requireActivity().runOnUiThread(()->{
+                    dialog.setMessage("Failed to load data Check Your Internet");
+                    dialog.show();});
+                }
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response
             ) throws IOException {
                 if (!response.isSuccessful()) {
-                    showAlert("Failed to load page", "Error: " + response.toString()
-                    );
+                    requireActivity().runOnUiThread(()->{
+                        dialog.setMessage("Failed to load page Error: " + response.toString());
+                    });
                 } else {
                     final JSONObject responseJson = parseResponse(response.body());
                     paymentIntentClientSecret = responseJson.optString("clientSecret");
                     requireActivity().runOnUiThread(() -> binding.payButton.setEnabled(true));
-//                    alertDialog.dismiss();
-//                    onPayClicked();
+                    bar.hide();
                 }
             }
         });
@@ -197,7 +193,7 @@ public class CheckOutFragment extends Fragment {
                 null, null,
                 null,
                 new PaymentSheet.BillingDetails(address, "null", "Gopal Meena", "+919399846909"),
-                false);
+                true);
 
         // Present Payment Sheet
         paymentSheet.presentWithPaymentIntent(paymentIntentClientSecret, configuration);
@@ -214,14 +210,12 @@ public class CheckOutFragment extends Fragment {
             Log.d(TAG, "onPaymentSheetResult: " + paymentSheetResult.toString());
         } else if (paymentSheetResult instanceof PaymentSheetResult.Canceled) {
             addTransactionsDb("canceled" , UUIDs);
-//            Log.i(TAG, "Payment canceled!");
-//            finish();
-//            overridePendingTransition(0,0);
         } else if (paymentSheetResult instanceof PaymentSheetResult.Failed) {
-
-            //   addTransactionstoDb("failed" , UUIDs);
             Throwable error = ((PaymentSheetResult.Failed) paymentSheetResult).getError();
-            showAlert("Payment failed", error.getLocalizedMessage());
+            requireActivity().runOnUiThread(()->{
+                dialog.setMessage("Payment failed "+error.getLocalizedMessage());
+                dialog.show();
+            });
         }
     }
 
