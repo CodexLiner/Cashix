@@ -4,14 +4,12 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.cashix.R;
-import com.cashix.UI.MainActivity;
 import com.cashix.constants.STATIC;
 import com.cashix.databinding.FragmentLoginBinding;
 import com.cashix.network.AsyncResponse;
@@ -20,12 +18,10 @@ import com.cashix.utils.change;
 import com.cashix.utils.changeHelper;
 import com.cashix.utils.common;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class LoginFragment extends Fragment implements AsyncResponse {
     private BackendCall backendCall;
@@ -61,15 +57,6 @@ public class LoginFragment extends Fragment implements AsyncResponse {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater);
-
-
-
-
-
-
-
-
-
         binding.sendOtpButton.setOnClickListener((View v)->{
             if (common.isEmpty(binding.mobileText)){
                 nextStep();
@@ -93,7 +80,7 @@ public class LoginFragment extends Fragment implements AsyncResponse {
             try {
                 if (jsonObject.getString("lastToken")!=null){
                     new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame))
-                            .goWithParams(new validaterFragment(jsonObject.getString("lastToken") ,
+                            .goWithParams(new ValidaterFragment(jsonObject.getString("lastToken") ,
                                     binding.mobileText.getText().toString()));
                 }
             }catch (Exception ignored){}

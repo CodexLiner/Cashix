@@ -25,19 +25,16 @@ import com.cashix.utils.common;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
-    private static FragmentHomeBinding binding;
+    private FragmentHomeBinding binding;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    RecyclerView.LayoutManager  noticLayoutManager;
     noticeAdapter noticeAdapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+    public HomeFragment() {}
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
@@ -62,44 +59,29 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
       binding = FragmentHomeBinding.inflate(inflater);
       binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
-        change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame));
+      change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame));
 
-      binding.BankTransfer.setOnClickListener(v ->{
-          change.go(BankTransfer.class);
-      });
-      binding.payRent.setOnClickListener(v ->{
-          change.go(PayRent.class);
-      });
-      binding.walletButton.setOnClickListener(v ->{
-          change.go(WalletTransfer.class);
-      });
-      binding.moreButton.setOnClickListener(v ->{
-          change.go(MoreButton.class);
-      });
+      binding.BankTransfer.setOnClickListener(v -> change.go(BankTransfer.class));
+      binding.payRent.setOnClickListener(v -> change.go(PayRent.class));
+      binding.walletButton.setOnClickListener(v -> change.go(WalletTransfer.class));
+      binding.moreButton.setOnClickListener(v -> change.go(MoreButton.class));
 //      rec test
         ArrayList<noticeModel> Notlist = new ArrayList<>();
-        Notlist.add(
-                new noticeModel(
-                        "https://rexsilentium.com/wp-content/uploads/2019/07/cropped-New-1600x500-website-banner-3.png"));
-        Notlist.add(
-                new noticeModel(
-                        "https://indiahikes.com/wp-content/uploads/2016/05/Hampta-Pass-Banner-1600-x-500.jpg"));
-        Notlist.add(
-                new noticeModel(
-                        "https://images.unsplash.com/photo-1506782081254-09bcfd996fd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=500&q=60.jpg"));
+        Notlist.add(new noticeModel("https://img.indiefolio.com/fit-in/1100x0/filters:format(webp):fill(transparent)/project/body/316b2bde72bfcb43d7bdfd709b5ac4b4.jpg"));
+        Notlist.add(new noticeModel("https://rexsilentium.com/wp-content/uploads/2019/07/cropped-New-1600x500-website-banner-3.png"));
+        Notlist.add(new noticeModel("https://www.kpis.in/assets/img/costom-web-banner-img.png"));
+        Notlist.add(new noticeModel("https://static.vecteezy.com/ti/vetor-gratis/p1/344730-web-design-e-banner-de-desenvolvimento-computador-com-ferramentas-e-site-de-construtor-ilustracaoial-plana-vetor.jpg"));
         noticeAdapter = new noticeAdapter(Notlist);
         new BindViews(requireContext()).setHorizontalRecycler(binding.NoticeRecycler , noticeAdapter);
 
-        ArrayList<TransactionModel> tList = new ArrayList<TransactionModel>();
+        ArrayList<TransactionModel> tList = new ArrayList<>();
         tList.add(new TransactionModel("id" , "ad" , "success" , "500", "Bank Transfer" , "dd" , "dd"));
         tList.add(new TransactionModel("id" , "ad" , "success" , "100", "Wallet Transfer" , "dd" , "dd"));
         tList.add(new TransactionModel("id" , "ad" , "success" , "1582", "Credit Card" , "dd" , "dd"));
         tList.add(new TransactionModel("id" , "ad" , "success" , "69845", "Rent Pay" , "dd" , "dd"));
         TransactionAdapters transactionAdapters = new TransactionAdapters(tList , "");
         new BindViews(requireContext()).setVerticalRecycler(binding.TransactionRecycler , transactionAdapters);
-        binding.reaMore.setOnClickListener(v -> {
-            common.Open(requireContext() , "");
-        });
+        binding.reaMore.setOnClickListener(v -> common.Open(requireContext() , ""));
         return binding.getRoot();
     }
 }

@@ -224,7 +224,7 @@ public class CheckOutFragment extends Fragment {
             Map<String , String> map = new HashMap<>();
             map.put(STATIC.DESC , "DESC");
             map.put("transactionAmount" , String.valueOf(bundle.getInt("amount")));
-            map.put("transactionDesc" , bundle.getString("uDecription"));
+            map.put("transactionDesc" , bundle.getString("uDescription"));
             map.put("transactionDate" , bundle.getString(""));
             map.put("transactionAC", bundle.getString("uAccount"));
             map.put("transactionIfsc", bundle.getString("uIfsc"));
@@ -234,17 +234,7 @@ public class CheckOutFragment extends Fragment {
             String jsonString = gson.toJson(map);
             final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
             Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
-            new OkHttpClient().newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull IOException e) {
-
-                }
-
-                @Override
-                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
-                }
-            });
+            new OkHttpClient().newCall(request).execute();
         }catch (Exception ignored){}
     }
 
@@ -261,20 +251,7 @@ public class CheckOutFragment extends Fragment {
 
             final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
             Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
-            new OkHttpClient()
-                    .newCall(request)
-                    .enqueue(
-                            new Callback() {
-                                @Override
-                                public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                                    Log.d(TAG, "onResponse: payment failed for some reason");
-                                }
-
-                                @Override
-                                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                                    Log.d(TAG, "onResponse: payment successfull");
-                                }
-                            });
+            new OkHttpClient().newCall(request).execute();
         }catch (Exception ignored){ }
     }
 }

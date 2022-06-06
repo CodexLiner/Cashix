@@ -58,12 +58,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:text="Pay Your Rent With Credit Card"
+                    android:text="@string/pay_your_rent_with_credit_card"
                     android:textColor="@color/black"
                     android:textSize="17sp"
                     android:textStyle="bold" />
                 <EditText
-
                     android:id="@+id/holderAmount"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

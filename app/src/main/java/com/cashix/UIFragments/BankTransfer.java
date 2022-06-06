@@ -70,9 +70,7 @@ public class BankTransfer extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                common.editTextLength(s , binding.swipePayButton);
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { common.editTextLength(s , binding.swipePayButton);}
             @Override
             public void afterTextChanged(Editable s) {}
         });
@@ -80,7 +78,6 @@ public class BankTransfer extends Fragment {
         binding.EditAccount.setOnClickListener(v->{});
         return binding.getRoot();
     }
-
     private void KeyBoardPrepare() {
         InputConnection ic = binding.amountText.onCreateInputConnection(new EditorInfo());
         binding.customKeyboard.setInputConnection(ic);
@@ -89,7 +86,6 @@ public class BankTransfer extends Fragment {
         binding.amountText.setTextIsSelectable(false);
         binding.amountText.setShowSoftInputOnFocus(false);
     }
-
     private void startPayment() {
         Bundle bundle = new Bundle();
         String amount = binding.amountText.getText().toString().toString();

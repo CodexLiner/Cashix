@@ -27,9 +27,7 @@ public class PayRent extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PayRent() {
-        // Required empty public constructor
-    }
+    public PayRent() {}
 
     public static PayRent newInstance(String param1, String param2) {
         PayRent fragment = new PayRent();
@@ -54,14 +52,13 @@ public class PayRent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentPayRentBinding.inflate(inflater);
-        binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
+        binding.backButton.setOnClickListener(v -> common.back(requireActivity()));
         binding.addAccountButton.setOnClickListener((View)->{
             if ((common.isEmpty(binding.holderAmount) &&
                  common.isEmpty(binding.holderName)) &&
                  common.isEmpty(binding.holderIFSC) &&
-                 common.isEmpty(binding.holderAccount))
-            {
-                startPayment();
+                 common.isEmpty(binding.holderAccount)){
+                 startPayment();
             }
         });
         return binding.getRoot();
@@ -72,7 +69,7 @@ public class PayRent extends Fragment {
         bundle.putString("uName" , binding.holderName.getText().toString().trim());
         bundle.putString("uIfsc" ,  binding.holderIFSC.getText().toString().trim());
         bundle.putString("uAccount" , binding.holderAccount.getText().toString().trim());
-        bundle.putString("uDecription" ,  binding.holderReason.getText().toString().trim());
+        bundle.putString("uDescription" ,  binding.holderReason.getText().toString().trim());
         bundle.putBoolean("rentType" , true);
         bundle.putInt("amount" , Integer.parseInt( binding.holderAmount.getText().toString().trim()));
         new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame)).goWithParams(new CheckOutFragment(bundle));

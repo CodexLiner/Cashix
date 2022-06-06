@@ -12,15 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cashix.R;
 import com.cashix.UI.HomeActivity;
 import com.cashix.constants.STATIC;
 import com.cashix.database.user.UserInfo;
 import com.cashix.databinding.FragmentValidaterBinding;
 import com.cashix.network.AsyncResponse;
 import com.cashix.network.BackendCall;
-import com.cashix.utils.change;
-import com.cashix.utils.changeHelper;
 import com.cashix.utils.common;
 
 import org.json.JSONObject;
@@ -29,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class validaterFragment extends Fragment implements AsyncResponse {
+public class ValidaterFragment extends Fragment implements AsyncResponse {
     private FragmentValidaterBinding binding;
     private BackendCall backendCall;
     private String token;
@@ -41,14 +38,14 @@ public class validaterFragment extends Fragment implements AsyncResponse {
     private String mParam1;
     private String mParam2;
 
-    public validaterFragment(String token , String mobile) {
+    public ValidaterFragment(String token , String mobile) {
         this.token = token;
         this.mobile = mobile;
     }
-    public validaterFragment(){}
+    public ValidaterFragment(){}
 
-    public static validaterFragment newInstance(String param1, String param2) {
-        validaterFragment fragment = new validaterFragment();
+    public static ValidaterFragment newInstance(String param1, String param2) {
+        ValidaterFragment fragment = new ValidaterFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

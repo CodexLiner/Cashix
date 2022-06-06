@@ -13,6 +13,6 @@
         android:id="@+id/noticeAdd"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:background="@drawable/loading_banner"/>
+        android:background="@drawable/banner"/>
 
 </androidx.cardview.widget.CardView>
