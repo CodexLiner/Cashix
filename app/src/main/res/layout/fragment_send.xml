@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/ScrollOtp"
-    android:overScrollMode="never"
-    android:scrollbars="none"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/limeWhite"
-    tools:context=".UI.VerifyOTPActivity">
+    tools:context=".kotlin.UI.SignUi.SendOTP.SendFragment">
+
     <RelativeLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
@@ -21,18 +16,17 @@
             android:layout_alignParentTop="true">
             <!--    heading edit here -->
             <LinearLayout
-                android:gravity="end"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/ForceExit"
+                    android:visibility="invisible"
                     android:textAllCaps="true"
                     android:textStyle="bold"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/force_exit"
+                    android:text="@string/loginskip"
                     android:textColor="#000000"
-                    android:layout_gravity="end"
+                    android:layout_gravity="right"
                     android:gravity="right"
                     android:padding="20dp"/>
             </LinearLayout>
@@ -50,12 +44,12 @@
                 android:gravity="center">
                 <ImageView
                     android:padding="30dp"
-                    android:layout_margin="30dp"
+                    android:layout_margin="20dp"
                     android:layout_weight="1"
                     android:layout_width="300dp"
                     android:layout_height="300dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_two_factor_authentication_rafiki2" />
+                    android:src="@drawable/m_insert" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -75,90 +69,69 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:text="@string/a_single_step_to_go"
+                    android:text="@string/let_s_begin_enter_your_number"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
-                <com.chaos.view.PinView
-                    android:layout_marginBottom="0dp"
-                    android:id="@+id/firstPinView"
-                    style="@style/PinWidget.PinView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:cursorVisible="true"
-                    android:hint="0000"
-                    android:inputType="number"
-                    android:itemBackground="@drawable/login_mobile_number_bg"
-                    android:padding="8dp"
-                    android:textColor="#000000"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:cursorColor="@color/black"
-                    app:cursorWidth="2dp"
-                    app:hideLineWhenFilled="true"
-                    app:itemCount="4"
-                    app:itemHeight="60dp"
-                    app:itemRadius="5dp"
-                    app:itemSpacing="11dp"
-                    app:itemWidth="75dp"
-                    app:lineColor="@color/greyish"
-                    app:lineWidth="12dp"
-                    app:viewType="none" />
+                <EditText
+                    android:text="9399846909"
+                    android:drawableStart="@drawable/ic_wflag"
+                    android:drawablePadding="10dp"
+                    android:id="@+id/mobileText"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/radius_background"
+                    android:gravity="center|start"
+                    android:hint="@string/login_mobile_hint"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:padding="10dp"
+                    android:textSize="17sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <CheckBox
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="20dp"
+                        android:checked="true"
+                        android:clickable="false"
+                        android:gravity="left|center" />
 
                     <TextView
-                        android:id="@+id/resendOtp"
                         android:layout_width="0dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="-2dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="5dp"
                         android:layout_weight="1"
-                        android:tooltipText="RESEND OTP IN #) SEC"
-                        android:gravity="center|start"
-                        android:textColor="#000000"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
-
-                    <TextView
-                        android:id="@+id/resendOtpButton"
-                        android:layout_width="0dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_weight="1"
-                        android:gravity="center|start"
-                        android:text="RESEND OTP"
-                        android:textColor="#0124EC"
-                        android:textStyle="normal"
-                        android:visibility="gone" />
+                        android:gravity="center|left"
+                        android:text="@string/accept_privacy_policy"
+                        android:textColor="#000000" />
 
 
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/submit_otp_button"
+                    android:id="@+id/send_otp_button"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/basic_shape"
-                    android:gravity="center"
-                    android:text="@string/continue_here" />
+                    android:text="@string/send_otp_button_text" />
 
             </LinearLayout>
         </RelativeLayout>
 
     </RelativeLayout>
 
-
-</ScrollView>
+</FrameLayout>

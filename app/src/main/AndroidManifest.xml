@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".kotlin.UI.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,52 +15,59 @@
         android:theme="@style/Theme.Crepaid"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".playPackage.pplayMain"
-            android:exported="true">
+            android:name=".kotlin.UI.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".kotlin.UI.SignInActivity"
+            android:exported="true" />
+        <activity
+            android:name=".kotlin.UI.Splash"
+            android:exported="true" />
+        <activity
+            android:name=".playPackage.pplayMain"
+            android:exported="true" />
+        <activity
             android:name=".UI.MoreActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".UI.pay_wallet"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".UI.no_internet"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".UI.payRent"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".payment.CheckoutActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".payment.cardActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".UI.bankTransfer"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".UI.Home_Activity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".UI.add_bank_details"
-            android:exported="false" />
+            android:exported="true" />
         <activity
-            android:name=".UI.Send_Otp_Activity"
-            android:exported="false"
+            android:name=".UI.VerifyOTPActivity"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".UI.MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/myStyle"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize">
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

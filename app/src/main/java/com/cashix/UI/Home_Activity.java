@@ -2,7 +2,6 @@ package com.cashix.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -79,7 +78,7 @@ public class Home_Activity extends AppCompatActivity {
         Notlist.add(new noticeModel("https://www.mitla.org.mt/wp-content/uploads/2018/04/0000-0000-MITLA-GDPR-Conference-WP-Banner-1600-x-500.jpg"));
         noticeAdapter = new noticeAdapter(Notlist);
         NoticeRecycler.setAdapter(noticeAdapter);
-        layoutManager = new LinearLayoutManager(this , LinearLayout.VERTICAL , true){
+        layoutManager = new LinearLayoutManager(this , RecyclerView.VERTICAL , true){
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -136,11 +135,11 @@ public class Home_Activity extends AppCompatActivity {
 
     private void readMore() {
 
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        builder.setShowTitle(true);
-        builder.setUrlBarHidingEnabled(true);
-        CustomTabsIntent intent = builder.build();
-        intent.launchUrl(this, Uri.parse("https://coinswitch.co/kuber-terms"));
+//        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+//        builder.setShowTitle(true);
+//        builder.setUrlBarHidingEnabled(true);
+//        CustomTabsIntent intent = builder.build();
+//        intent.launchUrl(this, Uri.parse("https://coinswitch.co/kuber-terms"));
     }
 
     private void checkConnection() {

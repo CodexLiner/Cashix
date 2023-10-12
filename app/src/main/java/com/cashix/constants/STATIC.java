@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class STATIC {
     // user info
+    public static final String SHARED_ = "Crepaid";
     public static final String AuthKey = "authkey";
     public static final String UserName = "UserName";
     public static final String UserNumber = "UserNumber";
@@ -22,17 +23,15 @@ public class STATIC {
     public static final String TransactionStatus = "status";
 
     public static final String STRIPEKEY = "";
-    public static final String baseUrlbackend= "http://192.168.0.108:3000/";
+    public static final String baseUrlbackend= "https://yash.meenagopal24.live";
     public static final String baseUrlstripe= "";
     public static final String mediaType = "application/json; charset=utf-8";
-    public static String TextLocalKey = "NDU3YTczMzk0YjU4NzczMTM5MzI0NTY4Nzc0YzYzNzA=";
-    public static String sendTotpMessage = " is your CrePaid verification code. please DO NOT SHARE this with anyone - Thank You CrePaid";
+
     public static void makeToast(Context context , String msg){
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
     public static void makeSnack(Context context, ViewGroup viewGroup , String msg){
         Snackbar.make(context ,viewGroup, msg,  Snackbar.LENGTH_LONG).show();
-
     }
 
 }
