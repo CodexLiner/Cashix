@@ -71,6 +71,7 @@ class VerifyFragment : Fragment() {
     private fun next() {
         viewModel.sendVerifyOTPResponse.observe(viewLifecycleOwner) {
             if (it.status == "success") {
+                Toast.makeText(requireContext(), "login success", Toast.LENGTH_SHORT).show()
                 viewModel.setUser(it.mobile, it.token)
             }
         }

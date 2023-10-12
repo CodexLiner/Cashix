@@ -96,6 +96,6 @@ public class BankTransfer extends Fragment {
         int bundleAmount = Integer.parseInt(amount);
         bundle.putInt(STATIC.Amount , bundleAmount);
         bundle.putString(STATIC.TransactionType , "bank transfer");
-        new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame)).goWithParams(new CheckOutFragment(bundle));
+        new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.mainLayout)).goWithParams(new CheckOutFragment(bundle));
     }
 }

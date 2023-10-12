@@ -21,7 +21,7 @@
 
         </activity>
         <activity
-            android:name=".UI.HomeActivity"
+            android:name=".kotlin.UI.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,50 +29,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".kotlin.UI.MainActivity"
-            android:exported="true" />
-        <activity
             android:name=".UI.Transactions"
             android:exported="false" />
 
         <activity
             android:name=".UI.BankDetails"
             android:exported="false" />
-        <activity
-            android:name=".UI.UserProfile"
-            android:exported="true" />
-        <activity
-            android:name=".playPackage.playpmnt"
-            android:exported="false" />
-        <activity
-            android:name=".playPackage.playprofile"
-            android:exported="false" />
-        <activity
-            android:name=".playPackage.playSignUp"
-            android:exported="false" />
-        <activity
-            android:name=".playPackage.loginPlay"
-            android:exported="true" />
-        <activity
-            android:name=".playPackage.settingPP"
-            android:exported="false" />
+
         <activity
             android:name=".kotlin.UI.SignInActivity"
             android:exported="true" />
-        <activity
-            android:name=".playPackage.pplayMain"
-            android:exported="true" />
-        <activity
-            android:name=".UI.MoreActivity"
-            android:exported="true" />
-        <activity
-            android:name=".UI.pay_wallet"
-            android:exported="true" />
+
         <activity
             android:name=".UI.no_internet"
-            android:exported="true" />
-        <activity
-            android:name=".UI.payRent"
             android:exported="true" />
         <activity
             android:name=".payment.CheckoutActivity"
@@ -81,23 +50,8 @@
             android:name=".payment.cardActivity"
             android:exported="true" />
         <activity
-            android:name=".UI.bankTransfer"
-            android:exported="true" />
-        <activity
-            android:name=".UI.Home_Activity"
-            android:exported="true" />
-        <activity
             android:name=".UI.add_bank_details"
             android:exported="true" />
-        <activity
-            android:name=".UI.VerifyOTPActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".UI.MainActivity"
-            android:exported="true"
-            android:theme="@style/myStyle"
-            android:windowSoftInputMode="adjustResize" />
 
         <meta-data
             android:name="preloaded_fonts"

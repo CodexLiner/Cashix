@@ -63,7 +63,7 @@ public class MoreButton extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        binding = FragmentMoreButtonBinding.inflate(inflater);
-        change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame));
+        change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.mainLayout));
        binding.userDetails.setOnClickListener((v -> {
            change.go(UserProfile.class);
        }));

@@ -67,7 +67,7 @@ public class userDatabaseHelper extends SQLiteOpenHelper {
           // close the db connection
           cursor.close();
           return note;
-      }catch (Exception e){
+      }catch (Exception ignored){
 
       }
 

@@ -79,8 +79,8 @@ public class add_bank_details extends AppCompatActivity {
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerWithMobileOnly(bundle.getString("token") , bundle.getString("mobile"));
-                Intent intent = new Intent(getApplicationContext() , Home_Activity.class);
+//                registerWithMobileOnly(bundle.getString("token") , bundle.getString("mobile"));
+//                Intent intent = new Intent(getApplicationContext() , Home_Activity.class);
 //                intent.putExtras(bundle);
 //                startActivity(intent);
 //                overridePendingTransition(0,0);
@@ -119,9 +119,9 @@ public class add_bank_details extends AppCompatActivity {
                   userDatabaseHelper db = new userDatabaseHelper(getApplicationContext());
                   long res = db.setUser(bundle.getString("mobile"), token, 1);
                   if (res > -1) {
-                    startActivity(new Intent(getApplicationContext(), Home_Activity.class));
-                    overridePendingTransition(0, 0);
-                    finishAffinity();
+//                    startActivity(new Intent(getApplicationContext(), Home_Activity.class));
+//                    overridePendingTransition(0, 0);
+//                    finishAffinity();
                   }
                 } else {
                   Log.d("TAG", "registerWithMobileOnly: else ");
@@ -158,11 +158,11 @@ public class add_bank_details extends AppCompatActivity {
                 }
             });
             Toast.makeText(add_bank_details.this, "Details Saved Successfully", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(add_bank_details.this, Home_Activity.class);
-            if (bundle!=null){
-                intent.putExtras(bundle);
-            }
-            startActivity(intent);
+//            Intent intent = new Intent(add_bank_details.this, Home_Activity.class);
+//            if (bundle!=null){
+//                intent.putExtras(bundle);
+//            }
+//            startActivity(intent);
             overridePendingTransition(0,0);
         }catch (Exception e){
             Log.d("TAG", "postbankDetails: "+e.toString());

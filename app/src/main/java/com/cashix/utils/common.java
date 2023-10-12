@@ -17,7 +17,6 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.FragmentActivity;
 
 import com.cashix.R;
-import com.cashix.UI.MoreActivity;
 
 public class common {
    private static final String required = "required";

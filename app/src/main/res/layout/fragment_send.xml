@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
-    tools:context=".kotlin.UI.SignUi.SendOTP.SendFragment">
-
+    android:background="@color/limeWhite"
+    tools:context=".UI.MainActivity">
     <RelativeLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
@@ -75,14 +79,13 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:text="9399846909"
-                    android:drawableStart="@drawable/ic_wflag"
-                    android:drawablePadding="10dp"
                     android:id="@+id/mobileText"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_margin="20dp"
                     android:background="@drawable/radius_background"
+                    android:drawableStart="@drawable/ic_wflag"
+                    android:drawablePadding="10dp"
                     android:gravity="center|start"
                     android:hint="@string/login_mobile_hint"
                     android:inputType="numberDecimal"
@@ -116,9 +119,7 @@
                         android:text="@string/accept_privacy_policy"
                         android:textColor="#000000" />
 
-
                 </LinearLayout>
-
                 <Button
                     android:id="@+id/send_otp_button"
                     android:layout_width="match_parent"
@@ -126,12 +127,10 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/basic_shape"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_shape_primary"
                     android:text="@string/send_otp_button_text" />
-
             </LinearLayout>
         </RelativeLayout>
-
     </RelativeLayout>
-
-</FrameLayout>
+</ScrollView>

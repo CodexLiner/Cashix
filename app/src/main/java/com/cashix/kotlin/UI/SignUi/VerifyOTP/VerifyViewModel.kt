@@ -29,7 +29,7 @@ class VerifyViewModel @Inject constructor(
         }
     }
     fun setUser(mobile: String, token: String) {
-        databaseProvider.getUser().setUser(mobile, token, 1)
+        Log.d("TAG", "DaggerTest setUser: ${ databaseProvider.getUser().setUser(mobile, token, 1)}")
     }
 
 }

@@ -29,18 +29,18 @@ public class Splash extends AppCompatActivity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (isHome){
-                            startActivity(new Intent(getApplicationContext() , HomeActivity.class));
-                        }else {
-                            startActivity(new Intent(getApplicationContext() , MainActivity.class));
-                        }
-                       overridePendingTransition(0,0);
-                       finishAffinity();
-                    }
-                });
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if (isHome){
+//                            startActivity(new Intent(getApplicationContext() , HomeActivity.class));
+//                        }else {
+//                            startActivity(new Intent(getApplicationContext() , MainActivity.class));
+//                        }
+//                       overridePendingTransition(0,0);
+//                       finishAffinity();
+//                    }
+//                });
             }
         },2000);
         setContentView(binding.getRoot());

@@ -72,6 +72,6 @@ public class PayRent extends Fragment {
         bundle.putString("uDescription" ,  binding.holderReason.getText().toString().trim());
         bundle.putBoolean("rentType" , true);
         bundle.putInt("amount" , Integer.parseInt( binding.holderAmount.getText().toString().trim()));
-        new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame)).goWithParams(new CheckOutFragment(bundle));
+        new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.mainLayout)).goWithParams(new CheckOutFragment(bundle));
     }
 }

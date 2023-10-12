@@ -1,9 +1,11 @@
 package com.cashix.UIFragments;
 
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,7 @@ import com.cashix.adapters.models.TransactionModel;
 import com.cashix.adapters.noticeAdapter;
 import com.cashix.adapters.models.noticeModel;
 import com.cashix.databinding.FragmentHomeBinding;
+import com.cashix.receivers.connection;
 import com.cashix.utils.Binder.BindViews;
 import com.cashix.utils.change;
 import com.cashix.utils.changeHelper;
@@ -59,8 +62,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
       binding = FragmentHomeBinding.inflate(inflater);
       binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
-      change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.MainFrame));
-
+      change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.mainLayout));
+      checkConnection();
       binding.BankTransfer.setOnClickListener(v -> change.go(BankTransfer.class));
       binding.payRent.setOnClickListener(v -> change.go(PayRent.class));
       binding.walletButton.setOnClickListener(v -> change.go(WalletTransfer.class));
@@ -84,4 +87,19 @@ public class HomeFragment extends Fragment {
         binding.reaMore.setOnClickListener(v -> common.Open(requireContext() , ""));
         return binding.getRoot();
     }
+
+    private void readMore() {
+
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        builder.setShowTitle(true);
+        builder.setUrlBarHidingEnabled(true);
+        CustomTabsIntent intent = builder.build();
+        intent.launchUrl(requireContext(), Uri.parse("https://coinswitch.co/kuber-terms"));
+    }
+
+    private void checkConnection() {
+        connection conn = new connection();
+        conn.onReceive(requireContext(), null);
+    }
+
 }
