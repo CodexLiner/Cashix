@@ -95,7 +95,7 @@ public class add_bank_details extends AppCompatActivity {
         Gson gson = new Gson();
         String jsonString = gson.toJson(map);
         final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-        Request request = new Request.Builder().url(STATIC.baseBackend +"crepaid_login/add_bank").addHeader("authorization" , "Bearer "+token).post(requestBody).build();
+        Request request = new Request.Builder().url(STATIC.baseUrlbackend +"crepaid_login/add_bank").addHeader("authorization" , "Bearer "+token).post(requestBody).build();
     new OkHttpClient()
         .newCall(request)
         .enqueue(
@@ -117,7 +117,7 @@ public class add_bank_details extends AppCompatActivity {
                   throws IOException {
                   if (response.code() == 200) {
                   userDatabaseHelper db = new userDatabaseHelper(getApplicationContext());
-                  long res = db.insertNote(bundle.getString("mobile"), token, 1);
+                  long res = db.setUser(bundle.getString("mobile"), token, 1);
                   if (res > -1) {
                     startActivity(new Intent(getApplicationContext(), Home_Activity.class));
                     overridePendingTransition(0, 0);
@@ -144,7 +144,7 @@ public class add_bank_details extends AppCompatActivity {
         Log.d("TAG", "postbankDetails: "+postString);
         try {
             final RequestBody requestBody = RequestBody.create(postString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseBackend +"crepaid_bank_details").post(requestBody).build();
+            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"crepaid_bank_details").post(requestBody).build();
             new OkHttpClient().newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {

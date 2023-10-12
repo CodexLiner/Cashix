@@ -90,7 +90,7 @@ public class ValidaterFragment extends Fragment implements AsyncResponse {
         if (jsonObject!=null){
             try {
                 Log.d("TAG", "doInBackground d: "+jsonObject.getString("token"));
-                new UserInfo(requireContext()).getDB().insertNote("9399846909" , jsonObject.getString("token") , 1);
+                new UserInfo(requireContext()).getDB().setUser("9399846909" , jsonObject.getString("token") , 1);
                 startActivity(new Intent(requireContext() , HomeActivity.class));
             }catch (Exception ignored){}
         }

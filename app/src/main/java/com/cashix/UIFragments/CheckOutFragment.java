@@ -97,7 +97,7 @@ public class CheckOutFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentCheckOutBinding.inflate(inflater);
         db = new userDatabaseHelper(requireContext());
-        model = db.getNote(1);
+        model = db.getUser(1);
         binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
         payAmountView = binding.payAmount;
         payButton = binding.payButton;

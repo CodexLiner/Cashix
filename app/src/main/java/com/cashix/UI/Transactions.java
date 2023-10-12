@@ -49,7 +49,7 @@ public class Transactions extends AppCompatActivity {
         transactionAllRecy.setLayoutManager(layoutManager);
         findTransactions();
         userDatabaseHelper db = new userDatabaseHelper(this);
-        model = db.getNote(1);
+        model = db.getUser(1);
         getTransactions();
     }
 
@@ -69,7 +69,7 @@ public class Transactions extends AppCompatActivity {
         Gson gson = new Gson();
         String jsonString = gson.toJson(map);
         final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-        Request request = new Request.Builder().url(STATIC.baseBackend +"payments/list").addHeader("authorization" , "Bearer "+token).get().build();
+        Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments/list").addHeader("authorization" , "Bearer "+token).get().build();
         new OkHttpClient().newCall(request).enqueue(new Callback() {
 
             @Override

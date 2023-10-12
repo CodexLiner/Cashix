@@ -50,7 +50,7 @@ public class pay_wallet extends AppCompatActivity implements PaymentResultListen
         button = new customButton(getApplicationContext() , view);
         button.setText("PAY NOW");
         db = new userDatabaseHelper(getApplicationContext());
-        model = db.getNote(1);
+        model = db.getUser(1);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,7 +168,7 @@ public class pay_wallet extends AppCompatActivity implements PaymentResultListen
             String jsonString = gson.toJson(map);
 
             final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
             new OkHttpClient()
                     .newCall(request)
                     .enqueue(

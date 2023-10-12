@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class userDatabaseHelper extends SQLiteOpenHelper {
     public userDatabaseHelper(Context context) {
@@ -21,12 +20,11 @@ public class userDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + userDatabaseModel.TABLE_NAME);
     }
-    public long insertNote(String mobile , String token , int ids) {
+    public long setUser(String mobile , String token , int ids) {
         // get writable database as we want to write data
-        userDatabaseModel c = getNote(ids);
+        userDatabaseModel c = getUser(ids);
         if (c!= null && c.getId()==ids){
             delete(ids);
-           Log.d("TAG", "insertNote:fg");
         }
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -45,7 +43,7 @@ public class userDatabaseHelper extends SQLiteOpenHelper {
         String[] args={String.valueOf(id)};
         int x  =getWritableDatabase().delete(userDatabaseModel.TABLE_NAME, "id=?", args);
     }
-    public userDatabaseModel getNote(long id) {
+    public userDatabaseModel getUser(long id) {
         // get readable database as we are not inserting anything
         SQLiteDatabase db = this.getReadableDatabase();
 

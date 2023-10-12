@@ -65,7 +65,7 @@ public class UserProfile extends AppCompatActivity {
 
     private void setDataIfAvailable() {
         userDatabaseHelper dbs = new userDatabaseHelper(this);
-        userDatabaseModel model = dbs.getNote(1);
+        userDatabaseModel model = dbs.getUser(1);
         binding.userDOBEdit.setText(model.getDate());
         binding.userEmailEdit.setText(model.getEmail());
         binding.userMobileEdit.setText(model.getMobile());

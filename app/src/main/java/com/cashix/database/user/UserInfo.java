@@ -7,7 +7,7 @@ public class UserInfo {
     private static userDatabaseModel model;
     public UserInfo(Context context){
         db = new userDatabaseHelper(context);
-        model = db.getNote(1);
+        model = db.getUser(1);
     }
     public userDatabaseModel getModel() {
         return model;

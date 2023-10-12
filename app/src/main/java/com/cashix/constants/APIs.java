@@ -16,7 +16,6 @@ public class APIs {
             String authorization = "key";
             String variables_values = "otp";
             String route="otp";
-            String apiKey = "apikey=" + STATIC.TextLocalKey;
             String message = "&message=" + "hello msg ";
             String sender = "&sender=" + "TXTLCL";
             String numbers = "&numbers=" + mNumber;
