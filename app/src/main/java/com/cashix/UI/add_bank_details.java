@@ -117,7 +117,7 @@ public class add_bank_details extends AppCompatActivity {
                   throws IOException {
                   if (response.code() == 200) {
                   userDatabaseHelper db = new userDatabaseHelper(getApplicationContext());
-                  long res = db.insertNote(bundle.getString("mobile"), token, 1);
+                  long res = db.setUser(bundle.getString("mobile"), token, 1);
                   if (res > -1) {
                     startActivity(new Intent(getApplicationContext(), Home_Activity.class));
                     overridePendingTransition(0, 0);

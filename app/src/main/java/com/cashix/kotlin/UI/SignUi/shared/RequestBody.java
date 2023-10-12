@@ -1,4 +1,4 @@
-package com.cashix.kotlin.UI.SignUi.VerifyOTP;
+package com.cashix.kotlin.UI.SignUi.shared;
 
 import com.google.gson.annotations.SerializedName;
 

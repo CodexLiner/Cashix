@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -67,7 +66,7 @@ public class Home_Activity extends AppCompatActivity {
         TransactionRecycler = findViewById(R.id.TransactionRecycler);
         NoticeRecycler = findViewById(R.id.NoticeRecycler);
         userDatabaseHelper db = new userDatabaseHelper(this);
-        model = db.getNote(1);
+        model = db.getUser(1);
         checkConnection();
 //        adding Recycler
         noticLayoutManager = new LinearLayoutManager(this ,RecyclerView.HORIZONTAL , false);

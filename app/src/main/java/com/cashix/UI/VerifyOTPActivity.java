@@ -79,7 +79,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                         bundle.putString("mobile", mobile);
 
                         userDatabaseHelper db = new userDatabaseHelper(getApplicationContext());
-                        db.insertNote(mobile, response.body().getToken(), 1);
+                        db.setUser(mobile, response.body().getToken(), 1);
                         Intent intent = new Intent(getApplicationContext(), Home_Activity.class);
                         intent.putExtras(bundle);
                         startActivity(intent);

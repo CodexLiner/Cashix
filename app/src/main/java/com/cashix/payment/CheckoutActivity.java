@@ -60,7 +60,7 @@ public class CheckoutActivity extends AppCompatActivity {
         UUIDs = UUID.randomUUID().toString();
         //local dp
         db = new userDatabaseHelper(getApplicationContext());
-        model = db.getNote(1);
+        model = db.getUser(1);
         paymentSheet = new PaymentSheet(this, this::onPaymentSheetResult);
         PaymentConfiguration.init(
                 this,

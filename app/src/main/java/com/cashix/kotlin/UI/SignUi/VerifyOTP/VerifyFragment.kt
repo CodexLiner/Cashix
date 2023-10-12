@@ -30,6 +30,7 @@ class VerifyFragment : Fragment() {
             }
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,6 +38,7 @@ class VerifyFragment : Fragment() {
             mobile = it.getString(MOBILE, "")
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -44,6 +46,7 @@ class VerifyFragment : Fragment() {
         binding = FragmentVerifyBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.firstPinView.setOnClickListener {
@@ -64,10 +67,11 @@ class VerifyFragment : Fragment() {
             next()
         }
     }
+
     private fun next() {
         viewModel.sendVerifyOTPResponse.observe(viewLifecycleOwner) {
             if (it.status == "success") {
-                Toast.makeText(requireContext(), "success login", Toast.LENGTH_SHORT).show()
+                viewModel.setUser(it.mobile, it.token)
             }
         }
     }

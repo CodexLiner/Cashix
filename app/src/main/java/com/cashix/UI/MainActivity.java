@@ -10,7 +10,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(SHARED_, MODE_PRIVATE);
         userDatabaseHelper db = new userDatabaseHelper(getApplicationContext());
 
-        userDatabaseModel model = db.getNote(1);
+        userDatabaseModel model = db.getUser(1);
         if (model != null && model.getAuth().length() > 1) {
             Intent intent = new Intent(getApplicationContext(), Home_Activity.class);
             startActivity(intent);

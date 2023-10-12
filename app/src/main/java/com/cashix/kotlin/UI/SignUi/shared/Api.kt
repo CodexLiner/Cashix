@@ -1,8 +1,6 @@
 package com.cashix.kotlin.UI.SignUi.shared
 
-import com.cashix.kotlin.UI.SignUi.VerifyOTP.RequestBody
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface Api {
