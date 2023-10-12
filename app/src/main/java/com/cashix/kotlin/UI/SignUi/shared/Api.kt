@@ -1,14 +1,14 @@
 package com.cashix.kotlin.UI.SignUi.shared
 
-import com.cashix.kotlin.UI.SignUi.network.LoginVerifyRequestBody
+import com.cashix.kotlin.UI.SignUi.VerifyOTP.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface Api {
     @POST("/loginSendOtp")
-    suspend fun sendOTP(@Body body : LoginVerifyRequestBody): SendOTPResponse
+    suspend fun sendOTP(@Body body: RequestBody): SendOTPResponse
 
-    @GET("/category")
-    suspend fun ValidateOTP(): ValidateOTPResponse
+    @POST("/loginVerify")
+    suspend fun validateOTP(@Body body: RequestBody): ValidateOTPResponse
 }

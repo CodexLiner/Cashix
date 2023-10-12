@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.cashix.R
 import com.cashix.databinding.FragmentSendBinding
+import com.cashix.kotlin.UI.SignUi.VerifyOTP.VerifyFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,9 +49,11 @@ class SendFragment : Fragment() {
 
     private fun next() {
         viewModel.otpResponseMutableLiveData.observe(viewLifecycleOwner) {
-            Log.d("TAG", "DaggerTest in fagment: ${it.status}")
-            if (it != null) {
-                Toast.makeText(requireContext(), it.token, Toast.LENGTH_SHORT).show()
+            if (it.status == "success") {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .addToBackStack("sendOTP")
+                    .replace(R.id.mainLayout, VerifyFragment.newInstance(it.mobile, it.token))
+                    .commit()
             }
         }
     }
