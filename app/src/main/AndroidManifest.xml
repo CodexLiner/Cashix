@@ -26,9 +26,6 @@
             android:name=".kotlin.UI.SignInActivity"
             android:exported="true" />
         <activity
-            android:name=".kotlin.UI.Splash"
-            android:exported="true" />
-        <activity
             android:name=".playPackage.pplayMain"
             android:exported="true" />
         <activity
