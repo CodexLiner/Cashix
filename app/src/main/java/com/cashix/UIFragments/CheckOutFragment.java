@@ -3,8 +3,6 @@ package com.cashix.UIFragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -19,8 +17,8 @@ import com.cashix.constants.STATIC;
 import com.cashix.database.user.userDatabaseHelper;
 import com.cashix.database.user.userDatabaseModel;
 import com.cashix.databinding.FragmentCheckOutBinding;
+import com.cashix.utils.Bar;
 import com.cashix.utils.Binder.dialog;
-import com.cashix.utils.bar;
 import com.cashix.utils.common;
 import com.google.gson.Gson;
 import com.stripe.android.PaymentConfiguration;
@@ -46,7 +44,7 @@ import okhttp3.ResponseBody;
 
 public class CheckOutFragment extends Fragment {
     private static final String TAG = "TAG";
-    private com.cashix.utils.bar bar;
+    private Bar bar;
     private Bundle bundle;
     private dialog dialog;
     private FragmentCheckOutBinding binding;
@@ -133,7 +131,7 @@ public class CheckOutFragment extends Fragment {
 
     private void fetchPaymentIntent() {
         dialog = new dialog(requireContext());
-        bar = new bar(requireContext());
+        bar = new Bar(requireContext());
         bar.setCancelable(false);
         bar.show();
         final String shoppingCartContent = "{\"items\": [ {\"id\":\"500000\"}]}";

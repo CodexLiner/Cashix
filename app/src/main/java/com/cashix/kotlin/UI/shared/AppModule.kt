@@ -2,6 +2,7 @@ package com.cashix.kotlin.UI.shared
 
 import android.content.Context
 import com.cashix.database.DatabaseProvider
+import com.cashix.utils.Bar
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,6 +17,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
+    @Singleton
+    @Provides
+    fun provideBar(@ApplicationContext context: Context?): Bar {
+        return Bar(context)
+    }
     @Provides
     @Singleton
     fun provideDatabaseGetter(@ApplicationContext context: Context): DatabaseProvider {

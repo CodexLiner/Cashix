@@ -21,6 +21,7 @@
 
         </activity>
         <activity
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:name=".kotlin.UI.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -7,9 +7,16 @@ import android.view.WindowManager;
 
 import com.cashix.R;
 
-public class bar {
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import dagger.hilt.android.qualifiers.ApplicationContext;
+
+@Singleton
+public class Bar {
     private final Dialog dialog;
-    public bar(Context context) {
+    @Inject
+    public Bar(@ApplicationContext Context context) {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.progress_bar);
         WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();

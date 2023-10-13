@@ -1,19 +1,15 @@
 package com.cashix.network;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.cashix.constants.STATIC;
-import com.cashix.utils.bar;
+import com.cashix.utils.Bar;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -24,7 +20,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class BackendCall extends AsyncTask<String , String , String> {
-    private bar bar;
+    private Bar bar;
     private final Activity activity;
     private Response response;
     OkHttpClient client;
@@ -67,7 +63,7 @@ public class BackendCall extends AsyncTask<String , String , String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        bar = new bar(activity.getApplicationContext());
+        bar = new Bar(activity.getApplicationContext());
         bar.setCancelable(false);
         bar.show();
     }

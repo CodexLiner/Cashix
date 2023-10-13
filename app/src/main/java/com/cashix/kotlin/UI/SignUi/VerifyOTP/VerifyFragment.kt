@@ -8,8 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.cashix.R
+import com.cashix.UIFragments.HomeFragment
 import com.cashix.databinding.FragmentVerifyBinding
+import com.cashix.utils.Bar
+import com.cashix.utils.SnakeBar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val TOKEN = "token"
 private const val MOBILE = "mobile"
@@ -20,7 +25,8 @@ class VerifyFragment : Fragment() {
     lateinit var binding: FragmentVerifyBinding
     lateinit var token: String
     lateinit var mobile: String
-
+    @Inject
+    lateinit var loading: Bar
     companion object {
         @JvmStatic
         fun newInstance(mobile: String, token: String) = VerifyFragment().apply {
@@ -30,7 +36,6 @@ class VerifyFragment : Fragment() {
             }
         }
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,7 +43,6 @@ class VerifyFragment : Fragment() {
             mobile = it.getString(MOBILE, "")
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -46,9 +50,9 @@ class VerifyFragment : Fragment() {
         binding = FragmentVerifyBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loading = Bar(requireContext())
         binding.firstPinView.setOnClickListener {
             binding.ScrollOtp.postDelayed({
                 val lastChild: View =
@@ -61,18 +65,24 @@ class VerifyFragment : Fragment() {
                 binding.ScrollOtp.smoothScrollBy(0, delta)
             }, 200)
         }
+        binding.sentMobile.text = mobile
         binding.submitOtpButton.setOnClickListener {
+            loading.show()
             viewModel.updateToken(token)
             viewModel.validateOTP(binding.firstPinView.text.toString(), mobile)
             next()
         }
     }
-
     private fun next() {
         viewModel.sendVerifyOTPResponse.observe(viewLifecycleOwner) {
             if (it.status == "success") {
-                Toast.makeText(requireContext(), "login success", Toast.LENGTH_SHORT).show()
+                SnakeBar(requireActivity()).showSnackbar("login success")
                 viewModel.setUser(it.mobile, it.token)
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainLayout, HomeFragment()).commit()
+            } else {
+                loading.hide();
+                SnakeBar(requireActivity()).showSnackbar(it.status)
             }
         }
     }

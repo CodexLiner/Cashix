@@ -2,10 +2,10 @@
     <string name="app_name">Cashix</string>
     <string name="loginskip">Skip Login</string>
     <string name="send_otp_button_text">SEND OTP</string>
-    <string name="login_mobile_hint">Enter Mobile Number</string>
+    <string name="login_mobile_hint">00000 00000</string>
     <string name="accept_privacy_policy">accept privacy policy</string>
-    <string name="let_s_begin_enter_your_number">Let\'s Begin - Enter Your Number</string>
-    <string name="a_single_step_to_go">ENTER OTP HERE</string>
+    <string name="let_s_begin_enter_your_number">Get Started with \nCashix</string>
+    <string name="a_single_step_to_go">Enter the OTP we\'ve sent to</string>
     <string name="force_exit">Force Exit</string>
     <string name="continue_here">CONTINUE</string>
     <string name="account_succesfully_created">Account Created Successfully</string>
@@ -61,4 +61,5 @@
     <string name="hello_world_how_are_you_today">hello world how are you today?</string>
     <string name="okay">okay</string>
     <string name="pay_your_rent_with_credit_card">Pay Your Rent With Credit Card</string>
+    <string name="enter_your_mobile_number_to_login_or_signup">Enter your mobile number to login or signup</string>
 </resources>
