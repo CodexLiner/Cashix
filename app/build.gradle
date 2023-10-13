@@ -38,7 +38,7 @@ android {
 dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
-//    implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
+    // implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
     // Declare the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth'
