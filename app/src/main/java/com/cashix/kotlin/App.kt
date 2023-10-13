@@ -1,4 +1,4 @@
-package com.cashix.kotlin.UI
+package com.cashix.kotlin
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate

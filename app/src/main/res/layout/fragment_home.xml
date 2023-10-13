@@ -106,14 +106,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/NoticeRecycler"
                 android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:overScrollMode="never"
                 android:scaleType="centerCrop"
                 android:src="@drawable/download1"
+                tools:itemCount="1"
                 tools:listitem="@layout/notice_itemlist" />
 
         </RelativeLayout>
@@ -234,7 +233,7 @@
                         android:src="@drawable/ic_lpg" />
                 </LinearLayout>
             </LinearLayout>
-            // same above
+<!--            // same above-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -106,7 +106,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/NoticeRecycler"
                 android:layout_width="match_parent"
-                android:layout_height="95dp"
+                android:layout_height="130dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="10dp"

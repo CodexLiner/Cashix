@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_v2)
         databaseProvider = DatabaseProvider(this)
         if (databaseProvider.getUser().getUser(1) != null) {
-            supportFragmentManager.beginTransaction().replace(R.id.mainLayout, HomeFragment())
+            supportFragmentManager.beginTransaction().replace(R.id.mainLayout,  HomeFragment())
                 .commit()
         } else {
             supportFragmentManager.beginTransaction().replace(R.id.mainLayout, SendFragment())

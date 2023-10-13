@@ -55,6 +55,7 @@ class SendFragment : Fragment() {
                     .addToBackStack("sendOTP")
                     .replace(R.id.mainLayout, VerifyFragment.newInstance(it.mobile, it.token))
                     .commit()
+                loading.hide()
             } else {
                 loading.hide();
                 SnakeBar(requireActivity()).showSnackbar(it.status)

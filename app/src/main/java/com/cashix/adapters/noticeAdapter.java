@@ -30,10 +30,10 @@ public class noticeAdapter extends RecyclerView.Adapter<noticeAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        if (mlist!=null){
-//            noticeModel model = new noticeModel(mlist.get(position).getUrl());
-            Glide.with(holder.itemView.getContext()).load(mlist.get(position).getUrl()).into(holder.image);
-        }
+//        if (mlist!=null){
+////            noticeModel model = new noticeModel(mlist.get(position).getUrl());
+//            Glide.with(holder.itemView.getContext()).load(mlist.get(position).getUrl()).into(holder.image);
+//        }
     }
 
     @Override
@@ -45,7 +45,7 @@ public class noticeAdapter extends RecyclerView.Adapter<noticeAdapter.Holder> {
         ImageView image;
         public Holder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.noticeAdd);
+//            image = itemView.findViewById(R.id.noticeAdd);
         }
     }
 }
