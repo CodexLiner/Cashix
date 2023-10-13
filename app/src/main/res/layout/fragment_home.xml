@@ -104,6 +104,7 @@
                 android:elevation="0.5dp">
 
                 <TextView
+                    android:id="@+id/credit_heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -111,23 +112,102 @@
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/NoticeRecycler"
+                <LinearLayout
+                    android:id="@+id/new_card_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="10dp"
-                    android:overScrollMode="never"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/download1"
-                    tools:itemCount="1"
-                    tools:listitem="@layout/notice_itemlist" />
+                    android:layout_below="@id/credit_heading"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/radius_background_card"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:text="WELCOME"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="bottom"
+                                    android:drawablePadding="5dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:gravity="start|bottom"
+                                    android:text="Let\'s Start with quickly adding your \nCredit Card"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:layout_weight="0.5"
+                                android:gravity="end">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="10dp"
+                                    android:src="@drawable/add_card_banner" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/NoticeRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/download1"
+                        android:visibility="gone"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/notice_itemlist" />
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/NoticeRecycler"
+                    android:layout_below="@id/new_card_container"
                     android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:paddingStart="10dp"
@@ -412,7 +492,7 @@
                 android:layout_height="160dp"
                 android:layout_below="@+id/recentVisited"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/home_activity_shape_all"
@@ -462,7 +542,6 @@
                             android:background="@drawable/radius_background"
                             android:gravity="center"
                             android:text="@string/read_more"
-                            android:textColor="@color/purple_700"
                             android:textSize="11sp" />
                     </LinearLayout>
                 </LinearLayout>

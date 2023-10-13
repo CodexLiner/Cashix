@@ -1,0 +1,43 @@
+package com.cashix.kotlin.UI.onBoarding.data
+
+import com.cashix.kotlin.UI.onBoarding.netwrok.Api
+import com.cashix.kotlin.UI.onBoarding.netwrok.DataSource
+import com.cashix.kotlin.UI.onBoarding.shared.*
+import retrofit2.Retrofit
+import javax.inject.Inject
+
+class BoardRepository @Inject constructor(retrofit: Retrofit) : DataSource {
+    private val service = retrofit.create(Api::class.java)
+    override suspend fun getCardDetails(): CardDetailsResponse {
+        return try {
+            service.getCard()
+        } catch (_: Exception) {
+            CardDetailsResponse("", "", "", "");
+        }
+    }
+
+    override suspend fun getTransaction(): TransactionResponse {
+        return try {
+            service.getTransaction()
+        } catch (_: Exception) {
+            TransactionResponse()
+        }
+    }
+
+    override suspend fun addBankAccount(body: AddBankRequest): AddBankResponse {
+        return try {
+            service.addBankAccount(body)
+        } catch (_: Exception) {
+            AddBankResponse()
+        }
+    }
+
+    override suspend fun addNewCard(body: AddNewCardRequest): AddCardResponse {
+        return try {
+            service.addNewCard(body)
+        } catch (_: java.lang.Exception) {
+            AddCardResponse()
+        }
+    }
+
+}
