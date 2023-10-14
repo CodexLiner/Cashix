@@ -62,4 +62,5 @@
     <string name="okay">okay</string>
     <string name="pay_your_rent_with_credit_card">Pay Your Rent With Credit Card</string>
     <string name="enter_your_mobile_number_to_login_or_signup">Enter your mobile number to login or signup</string>
+    <string name="hi_there">Hi there,</string>
 </resources>

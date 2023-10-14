@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:overScrollMode="never"
-    android:scrollbars="none"
     android:layout_height="match_parent"
-    android:background="@color/limeWhite">
+    android:background="@color/limeWhite"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
     <RelativeLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:id="@+id/headingLayout"
             android:layout_width="match_parent"
@@ -18,26 +18,27 @@
             android:layout_alignParentTop="true">
             <!--    heading edit here -->
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/vectorImage"
-            android:layout_below="@id/headingLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headingLayout">
             <!--    vector image edit here-->
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="start|center">
+                android:gravity="start|center"
+                android:orientation="vertical">
 
                 <TextView
-                    android:fontFamily="@font/poppins"
                     android:id="@+id/header_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins"
                     android:text="Add Bank Details"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -51,11 +52,12 @@
                     android:src="@drawable/ic_forms_pana" />
             </LinearLayout>
         </RelativeLayout>
+
         <RelativeLayout
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/vectorImage">
+            android:layout_below="@id/vectorImage"
+            android:padding="10dp">
 
             <LinearLayout
 
@@ -65,7 +67,6 @@
 
 
                 <EditText
-                    android:textSize="15sp"
                     android:id="@+id/ifscCode"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -77,10 +78,10 @@
                     android:hint="Bank IFSC Code"
                     android:inputType="textCapCharacters"
                     android:maxLength="11"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:textSize="15sp" />
 
                 <EditText
-                    android:textSize="15sp"
                     android:id="@+id/accountNumber"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -92,10 +93,10 @@
                     android:hint="Bank Account Number"
                     android:inputType="numberDecimal"
                     android:maxLength="18"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:textSize="15sp" />
 
                 <androidx.appcompat.widget.AppCompatSpinner
-                    android:textSize="15sp"
                     android:id="@+id/spinnerView"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -104,10 +105,10 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/radius_background"
                     android:paddingEnd="10dp"
+                    android:textSize="15sp"
                     android:visibility="visible" />
 
                 <EditText
-                    android:textSize="15sp"
                     android:id="@+id/idNumber"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -120,7 +121,8 @@
                     android:inputType="textCapCharacters"
                     android:maxLength="10"
                     android:padding="10dp"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textSize="15sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -151,34 +153,35 @@
 
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <Button
-                        android:padding="10dp"
-                        android:layout_weight="1"
                         android:id="@+id/otp_continue_button"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
-                        android:background="@drawable/basic_shape"
-                        android:text="Continue"
-                        android:textColor="@color/black" />
-                    <Button
-                        android:padding="10dp"
                         android:layout_weight="1"
+                        android:background="@drawable/basic_shape"
+                        android:padding="10dp"
+                        android:text="Continue" />
+
+                    <Button
                         android:id="@+id/otp_skip_button"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
+                        android:layout_weight="1"
                         android:background="@drawable/basic_shape2"
-                        android:text="Do it Later"
-                        android:textColor="@color/black" />
+                        android:padding="10dp"
+                        android:text="Do it Later" />
 
 
                 </LinearLayout>

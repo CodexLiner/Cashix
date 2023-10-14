@@ -17,4 +17,7 @@ interface Api {
 
     @POST("/")
     suspend fun addNewCard(@Body body: AddNewCardRequest): AddCardResponse
+
+    @POST("/")
+    suspend fun addNewUser(@Body body: AddUserRequest): AddUserResponse
 }

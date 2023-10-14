@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/limeWhite"
+    android:fitsSystemWindows="true"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/headingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+            <!--    heading edit here -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/ForceExit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Profile"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_op_left" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vectorImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headingLayout">
+            <!--    vector image edit here-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:padding="30dp"
+                    android:src="@drawable/m_insert" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vectorImage"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/hi_there"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="we\'re excited to have you onboard! just help use with some details"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/nameProfile"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="start"
+                        android:hint="Full Name"
+                        android:padding="0dp"
+                        app:boxStrokeColor="@color/black"
+                        app:boxStrokeWidth="0.5dp"
+                        app:boxStrokeWidthFocused="0.5dp"
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/ic_op_name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/UsersName"
+                            android:inputType="textPersonName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:drawablePadding="0dp"
+                            android:gravity="center|start" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="start"
+                        android:hint="Email Address"
+                        android:padding="0dp"
+                        app:boxStrokeColor="@color/black"
+                        app:boxStrokeWidth="0.5dp"
+                        app:boxStrokeWidthFocused="0.5dp"
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/ic_op_email">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/UsersEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="textEmailAddress"
+                            android:layout_gravity="center"
+                            android:drawablePadding="0dp"
+                            android:gravity="center|start" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="start"
+                        android:hint="Pincode"
+                        android:padding="0dp"
+                        app:boxStrokeColor="@color/black"
+                        app:boxStrokeWidth="0.5dp"
+                        app:boxStrokeWidthFocused="0.5dp"
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/ic_op_zip">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/UsersAreaPinCode"
+                            android:layout_width="match_parent"
+                            android:inputType="number"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:drawablePadding="0dp"
+                            android:gravity="center|start" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <CheckBox
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="20dp"
+                        android:checked="true"
+                        android:clickable="false"
+                        android:gravity="left|center" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center|left"
+                        android:text="@string/accept_privacy_policy"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/nextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/button_shape_primary"
+                    android:text="Next"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

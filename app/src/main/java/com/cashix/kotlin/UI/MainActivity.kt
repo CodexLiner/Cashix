@@ -12,6 +12,7 @@ import com.cashix.R
 import com.cashix.UIFragments.HomeFragment
 import com.cashix.database.DatabaseProvider
 import com.cashix.kotlin.UI.SignUi.SendOTP.SendFragment
+import com.cashix.kotlin.UI.onBoarding.AddUser.CreateUserFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.SnackbarLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_v2)
         databaseProvider = DatabaseProvider(this)
         if (databaseProvider.getUser().getUser(1) != null) {
-            supportFragmentManager.beginTransaction().replace(R.id.mainLayout,  HomeFragment())
+            supportFragmentManager.beginTransaction().replace(R.id.mainLayout,  CreateUserFragment())
                 .commit()
         } else {
             supportFragmentManager.beginTransaction().replace(R.id.mainLayout, SendFragment())
