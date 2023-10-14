@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cashix.R;
 import com.cashix.constants.STATIC;
 import com.cashix.database.user.userDatabaseHelper;
-import com.cashix.database.user.userDatabaseModel;
+import com.cashix.database.user.UserDBModel;
 import com.google.gson.Gson;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
@@ -42,7 +42,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private Bundle bundle;
     TextView payAmountView , CreditAmount;
     private  String UUIDs;
-    userDatabaseModel model;
+    UserDBModel model;
     userDatabaseHelper db ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -191,61 +191,61 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
     private void addTransactioForTransferBank(String uuiDs) {
-        try{
-            Map<String , String> map = new HashMap<>();
-            map.put(STATIC.DESC , "DESC");
-            map.put("transactionAmount" , String.valueOf(bundle.getInt("amount")));
-            map.put("transactionDesc" , bundle.getString("uDecription"));
-            map.put("transactionDate" , bundle.getString(""));
-            map.put("transactionAC", bundle.getString("uAccount"));
-            map.put("transactionIfsc", bundle.getString("uIfsc"));
-            map.put("transactionName", bundle.getString("uName"));
-//        TODO: to implement this function
-            Gson gson = new Gson();
-            String jsonString = gson.toJson(map);
-            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
-            new OkHttpClient().newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull IOException e) {
-
-                }
-
-                @Override
-                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
-                }
-            });
-        }catch (Exception ignored){}
+//        try{
+//            Map<String , String> map = new HashMap<>();
+//            map.put(STATIC.DESC , "DESC");
+//            map.put("transactionAmount" , String.valueOf(bundle.getInt("amount")));
+//            map.put("transactionDesc" , bundle.getString("uDecription"));
+//            map.put("transactionDate" , bundle.getString(""));
+//            map.put("transactionAC", bundle.getString("uAccount"));
+//            map.put("transactionIfsc", bundle.getString("uIfsc"));
+//            map.put("transactionName", bundle.getString("uName"));
+////        TODO: to implement this function
+//            Gson gson = new Gson();
+//            String jsonString = gson.toJson(map);
+//            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+//            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+//            new OkHttpClient().newCall(request).enqueue(new Callback() {
+//                @Override
+//                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//
+//                }
+//
+//                @Override
+//                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//
+//                }
+//            });
+//        }catch (Exception ignored){}
     }
 
     private void addTransactionstoDb(String tStatus, String Tid) {
-        try{
-            Map<String , String> map = new HashMap<>();
-            map.put(STATIC.TransactionID , Tid);
-            map.put(STATIC.Amount , String.valueOf(payAmount));
-            map.put(STATIC.TransactionType , bundle.getString(STATIC.TransactionType , "Transfer"));
-            map.put(STATIC.TransactionStatus , tStatus);
-            map.put(STATIC.AuthKey , model.getMobile());
-            Gson gson = new Gson();
-            String jsonString = gson.toJson(map);
-
-            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
-      new OkHttpClient()
-          .newCall(request)
-          .enqueue(
-              new Callback() {
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                    Log.d(TAG, "onResponse: payment failed for some reason");
-                }
-
-                @Override
-                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                 Log.d(TAG, "onResponse: payment successfull");
-                }
-              });
-        }catch (Exception ignored){ }
+//        try{
+//            Map<String , String> map = new HashMap<>();
+//            map.put(STATIC.TransactionID , Tid);
+//            map.put(STATIC.Amount , String.valueOf(payAmount));
+//            map.put(STATIC.TransactionType , bundle.getString(STATIC.TransactionType , "Transfer"));
+//            map.put(STATIC.TransactionStatus , tStatus);
+//            map.put(STATIC.AuthKey , model.getMobile());
+//            Gson gson = new Gson();
+//            String jsonString = gson.toJson(map);
+//
+//            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+//            Request request = new Request.Builder().url(STATIC.baseUrlbackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+//      new OkHttpClient()
+//          .newCall(request)
+//          .enqueue(
+//              new Callback() {
+//                @Override
+//                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//                    Log.d(TAG, "onResponse: payment failed for some reason");
+//                }
+//
+//                @Override
+//                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                 Log.d(TAG, "onResponse: payment successfull");
+//                }
+//              });
+//        }catch (Exception ignored){ }
     }
 }

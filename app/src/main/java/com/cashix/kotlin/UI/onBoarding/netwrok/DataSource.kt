@@ -7,5 +7,7 @@ interface DataSource {
     suspend fun getTransaction(): TransactionResponse
     suspend fun addBankAccount(body: AddBankRequest): AddBankResponse
     suspend fun addNewCard(body: AddNewCardRequest): AddCardResponse
-    suspend fun addNewUser(body: AddUserRequest): AddUserResponse
+    suspend fun addNewUser(body: AddUserRequest): UserResponse
+    suspend fun getUser(): UserResponse
+
 }

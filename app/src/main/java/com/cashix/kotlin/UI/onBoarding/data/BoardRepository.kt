@@ -40,11 +40,19 @@ class BoardRepository @Inject constructor(retrofit: Retrofit) : DataSource {
         }
     }
 
-    override suspend fun addNewUser(body: AddUserRequest): AddUserResponse {
+    override suspend fun addNewUser(body: AddUserRequest): UserResponse {
         return try {
             service.addNewUser(body)
         } catch (_: java.lang.Exception) {
-            AddUserResponse()
+            UserResponse()
+        }
+    }
+
+    override suspend fun getUser(): UserResponse {
+        return try {
+            service.getUser();
+        } catch (_: Exception) {
+            UserResponse()
         }
     }
 }

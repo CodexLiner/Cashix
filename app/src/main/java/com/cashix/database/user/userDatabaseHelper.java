@@ -1,76 +1,81 @@
 package com.cashix.database.user;
 
+import static com.cashix.database.user.UserDBModel.AUTHKEY;
+import static com.cashix.database.user.UserDBModel.COLUMN_ID;
+import static com.cashix.database.user.UserDBModel.EMAIL;
+import static com.cashix.database.user.UserDBModel.MOBILE;
+import static com.cashix.database.user.UserDBModel.NAME;
+import static com.cashix.database.user.UserDBModel.ZIP;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class userDatabaseHelper extends SQLiteOpenHelper {
     public userDatabaseHelper(Context context) {
-        super(context, userDatabaseModel.DbName , null, 1);
+        super(context, UserDBModel.DbName, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(userDatabaseModel.CREATE_TABLE);
+        db.execSQL(UserDBModel.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + userDatabaseModel.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + UserDBModel.TABLE_NAME);
     }
-    public long setUser(String mobile , String token , int ids) {
-        // get writable database as we want to write data
-        userDatabaseModel c = getUser(ids);
-        if (c!= null && c.getId()==ids){
-            delete(ids);
+
+    public long setUser(UserDBModel user) {
+
+        UserDBModel c = getUser(user.getId());
+        if (c != null && c.getId() == user.getId()) {
+            delete(user.getId());
         }
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(userDatabaseModel.COLUMN_NOTE, mobile);
-        values.put(userDatabaseModel.AUTHKEY, token);
-        values.put(userDatabaseModel.COLUMN_ID, ids);
-        // insert row
-        long id = db.insert(userDatabaseModel.TABLE_NAME, null, values);
-        // close db connection
+        values.put(EMAIL, user.getEmail());
+        values.put(NAME, user.getName());
+        values.put(ZIP, user.getPincode());
+        values.put(MOBILE, user.getMobile());
+        values.put(COLUMN_ID, user.getId());
+        values.put(AUTHKEY, user.getAuthKey());
+
+        long id = db.insert(UserDBModel.TABLE_NAME, null, values);
         db.close();
-        // return newly inserted row id
         return id;
     }
-    public void delete(int id)
-    {
-        String[] args={String.valueOf(id)};
-        int x  =getWritableDatabase().delete(userDatabaseModel.TABLE_NAME, "id=?", args);
+
+    public void delete(int id) {
+        String[] args = {String.valueOf(id)};
+        int x = getWritableDatabase().delete(UserDBModel.TABLE_NAME, "id=?", args);
     }
-    public userDatabaseModel getUser(long id) {
-        // get readable database as we are not inserting anything
+
+    public UserDBModel getUser(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            Cursor cursor = db.query(UserDBModel.TABLE_NAME,
+                    new String[]{COLUMN_ID, EMAIL, MOBILE, NAME, ZIP , AUTHKEY},
+                    UserDBModel.COLUMN_ID + "=?",
+                    new String[]{String.valueOf(id)}, null, null, null, null);
 
-      try{
-          Cursor cursor = db.query(userDatabaseModel.TABLE_NAME,
-                  new String[]{userDatabaseModel.COLUMN_ID, userDatabaseModel.COLUMN_NOTE,userDatabaseModel.DATE , userDatabaseModel.EMAIL, userDatabaseModel.AUTHKEY},
-                  userDatabaseModel.COLUMN_ID + "=?",
-                  new String[]{String.valueOf(id)}, null, null, null, null);
+            if (cursor != null)
+                cursor.moveToFirst();
 
-          if (cursor != null)
-              cursor.moveToFirst();
+            UserDBModel user = new UserDBModel(
+                    cursor.getString(cursor.getColumnIndex(NAME)),
+                    cursor.getString(cursor.getColumnIndex(EMAIL)),
+                    cursor.getString(cursor.getColumnIndex(MOBILE)),
+                    cursor.getString(cursor.getColumnIndex(ZIP)),
+                    cursor.getString(cursor.getColumnIndex(AUTHKEY)));
 
-          // prepare note object
-          userDatabaseModel note = new userDatabaseModel(
-                  cursor.getInt(cursor.getColumnIndex(userDatabaseModel.COLUMN_ID)),
-                  cursor.getString(cursor.getColumnIndex(userDatabaseModel.COLUMN_NOTE)),
-                  cursor.getString(cursor.getColumnIndex(userDatabaseModel.EMAIL)),
-                  cursor.getString(cursor.getColumnIndex(userDatabaseModel.DATE)),
-                  cursor.getString(cursor.getColumnIndex(userDatabaseModel.AUTHKEY)));
-
-          // close the db connection
-          cursor.close();
-          return note;
-      }catch (Exception ignored){
-
-      }
-
+            cursor.close();
+            Log.d("TAG", "DaggerTest getUser: "+user.toString());
+            return user;
+        } catch (Exception ignored) {}
         return null;
     }
 }

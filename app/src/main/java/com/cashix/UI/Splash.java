@@ -20,12 +20,12 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
-        checkConnection();
-        if ( new UserInfo(getApplicationContext()).getModel()!=null){
-            if (new UserInfo(getApplicationContext()).getModel().getAuth()!=null){
-                isHome = true;
-            }
-        }
+//        checkConnection();
+//        if ( new UserInfo(getApplicationContext()).getModel()!=null){
+//            if (new UserInfo(getApplicationContext()).getModel().getAuth()!=null){
+//                isHome = true;
+//            }
+//        }
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

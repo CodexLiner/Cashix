@@ -1,5 +1,6 @@
 package com.cashix.kotlin.UI.SignUi.data
 
+import android.util.Log
 import com.cashix.kotlin.UI.SignUi.network.DataSource
 import com.cashix.kotlin.UI.SignUi.shared.RequestBody
 import com.cashix.kotlin.UI.SignUi.shared.Api
@@ -19,7 +20,7 @@ class AuthRepository @Inject constructor(retrofit: Retrofit) : DataSource {
                     mobile
                 )
             )
-        } catch (e: HttpException) {
+        } catch (e: Exception) {
             SendOTPResponse("failed", "", mobile)
         }
     }

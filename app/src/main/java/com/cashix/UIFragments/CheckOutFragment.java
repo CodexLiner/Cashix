@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.cashix.constants.STATIC;
 import com.cashix.database.user.userDatabaseHelper;
-import com.cashix.database.user.userDatabaseModel;
+import com.cashix.database.user.UserDBModel;
 import com.cashix.databinding.FragmentCheckOutBinding;
 import com.cashix.utils.Bar;
 import com.cashix.utils.Binder.dialog;
@@ -56,7 +56,7 @@ public class CheckOutFragment extends Fragment {
     private int payAmount ;
     private double CreditableMoney;
     private Button payButton;
-    userDatabaseModel model;
+    UserDBModel model;
     userDatabaseHelper db ;
     public CheckOutFragment(Bundle bundle) {
         this.bundle = bundle;
@@ -218,38 +218,38 @@ public class CheckOutFragment extends Fragment {
     }
 
     private void addTransactionForTransferBank(String uuiDs) {
-        try{
-            Map<String , String> map = new HashMap<>();
-            map.put(STATIC.DESC , "DESC");
-            map.put("transactionAmount" , String.valueOf(bundle.getInt("amount")));
-            map.put("transactionDesc" , bundle.getString("uDescription"));
-            map.put("transactionDate" , bundle.getString(""));
-            map.put("transactionAC", bundle.getString("uAccount"));
-            map.put("transactionIfsc", bundle.getString("uIfsc"));
-            map.put("transactionName", bundle.getString("uName"));
-//        TODO: to implement this function
-            Gson gson = new Gson();
-            String jsonString = gson.toJson(map);
-            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
-            new OkHttpClient().newCall(request).execute();
-        }catch (Exception ignored){}
+//        try{
+//            Map<String , String> map = new HashMap<>();
+//            map.put(STATIC.DESC , "DESC");
+//            map.put("transactionAmount" , String.valueOf(bundle.getInt("amount")));
+//            map.put("transactionDesc" , bundle.getString("uDescription"));
+//            map.put("transactionDate" , bundle.getString(""));
+//            map.put("transactionAC", bundle.getString("uAccount"));
+//            map.put("transactionIfsc", bundle.getString("uIfsc"));
+//            map.put("transactionName", bundle.getString("uName"));
+////        TODO: to implement this function
+//            Gson gson = new Gson();
+//            String jsonString = gson.toJson(map);
+//            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+//            Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+//            new OkHttpClient().newCall(request).execute();
+//        }catch (Exception ignored){}
     }
 
     private void addTransactionsDb(String tStatus, String Tid) {
-        try{
-            Map<String , String> map = new HashMap<>();
-            map.put(STATIC.TransactionID , Tid);
-            map.put(STATIC.Amount , String.valueOf(payAmount));
-            map.put(STATIC.TransactionType , bundle.getString(STATIC.TransactionType , "Transfer"));
-            map.put(STATIC.TransactionStatus , tStatus);
-            map.put(STATIC.AuthKey , model.getMobile());
-            Gson gson = new Gson();
-            String jsonString = gson.toJson(map);
-
-            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
-            Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
-            new OkHttpClient().newCall(request).execute();
-        }catch (Exception ignored){ }
+//        try{
+//            Map<String , String> map = new HashMap<>();
+//            map.put(STATIC.TransactionID , Tid);
+//            map.put(STATIC.Amount , String.valueOf(payAmount));
+//            map.put(STATIC.TransactionType , bundle.getString(STATIC.TransactionType , "Transfer"));
+//            map.put(STATIC.TransactionStatus , tStatus);
+//            map.put(STATIC.AuthKey , model.getMobile());
+//            Gson gson = new Gson();
+//            String jsonString = gson.toJson(map);
+//
+//            final RequestBody requestBody = RequestBody.create(jsonString , MediaType.get(STATIC.mediaType));
+//            Request request = new Request.Builder().url(STATIC.baseBackend +"payments").addHeader("authorization" , "Bearer "+model.getAuth()).post(requestBody).build();
+//            new OkHttpClient().newCall(request).execute();
+//        }catch (Exception ignored){ }
     }
 }

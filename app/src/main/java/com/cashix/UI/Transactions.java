@@ -14,7 +14,7 @@ import com.cashix.adapters.TransactionAdapters;
 import com.cashix.adapters.models.TransactionModel;
 import com.cashix.constants.STATIC;
 import com.cashix.database.user.userDatabaseHelper;
-import com.cashix.database.user.userDatabaseModel;
+import com.cashix.database.user.UserDBModel;
 import com.cashix.databinding.ActivityTransactionsBinding;
 import com.google.gson.Gson;
 
@@ -37,7 +37,7 @@ import okhttp3.Response;
 public class Transactions extends AppCompatActivity {
     RecyclerView transactionAllRecy;
     TransactionAdapters adapters;
-    userDatabaseModel model;
+    UserDBModel model;
     ActivityTransactionsBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +58,10 @@ public class Transactions extends AppCompatActivity {
     }
     private ArrayList<TransactionModel> getTransactions()  {
         String token = "";
-        if (model!= null && model.getAuth().length()>1){
-            token = model.getAuth();
-            Log.d("TAG", "getTransactions: "+token);
-        }
+//        if (model!= null && model.getAuth().length()>1){
+//            token = model.getAuth();
+//            Log.d("TAG", "getTransactions: "+token);
+//        }
         boolean bool = true;
         ArrayList<TransactionModel> list = new ArrayList<>();
         Map<String , String> map = new HashMap<>();

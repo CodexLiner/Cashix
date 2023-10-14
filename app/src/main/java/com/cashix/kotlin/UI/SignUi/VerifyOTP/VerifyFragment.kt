@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.cashix.R
 import com.cashix.UIFragments.HomeFragment
 import com.cashix.databinding.FragmentVerifyBinding
+import com.cashix.kotlin.UI.onBoarding.AddUser.CreateUserFragment
 import com.cashix.utils.Bar
 import com.cashix.utils.SnakeBar
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,8 +26,10 @@ class VerifyFragment : Fragment() {
     lateinit var binding: FragmentVerifyBinding
     lateinit var token: String
     lateinit var mobile: String
+
     @Inject
     lateinit var loading: Bar
+
     companion object {
         @JvmStatic
         fun newInstance(mobile: String, token: String) = VerifyFragment().apply {
@@ -36,6 +39,7 @@ class VerifyFragment : Fragment() {
             }
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -43,6 +47,7 @@ class VerifyFragment : Fragment() {
             mobile = it.getString(MOBILE, "")
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -50,6 +55,7 @@ class VerifyFragment : Fragment() {
         binding = FragmentVerifyBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loading = Bar(requireContext())
@@ -67,24 +73,38 @@ class VerifyFragment : Fragment() {
         }
         binding.sentMobile.text = mobile
         binding.submitOtpButton.setOnClickListener {
+            binding.submitOtpButton.isEnabled = false
             loading.show()
             viewModel.updateToken(token)
             viewModel.validateOTP(binding.firstPinView.text.toString(), mobile)
             next()
         }
     }
+
     private fun next() {
         viewModel.sendVerifyOTPResponse.observe(viewLifecycleOwner) {
             if (it.status == "success") {
                 SnakeBar(requireActivity()).showSnackbar("login success")
-                viewModel.setUser(it.mobile, it.token)
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainLayout, HomeFragment()).commit()
+                if (it.oldUser) {
+                    nextAdd(it.token)
+                } else requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainLayout, CreateUserFragment.newInstance(it.token)).commit()
             } else {
+                binding.submitOtpButton.isEnabled = true
                 loading.hide();
                 SnakeBar(requireActivity()).showSnackbar(it.status)
             }
         }
     }
 
+    private fun nextAdd(token: String) {
+        viewModel.updateToken(token)
+        viewModel.getUser(token)
+        viewModel.sendUserAddedResponse.observe(viewLifecycleOwner) {
+            if (it) {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainLayout, HomeFragment()).commit()
+            }
+        }
+    }
 }
