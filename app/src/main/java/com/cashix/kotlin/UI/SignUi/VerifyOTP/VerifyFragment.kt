@@ -84,16 +84,19 @@ class VerifyFragment : Fragment() {
     private fun next() {
         viewModel.sendVerifyOTPResponse.observe(viewLifecycleOwner) {
             if (it.status == "success") {
-                SnakeBar(requireActivity()).showSnackbar("login success")
                 if (it.oldUser) {
                     nextAdd(it.token)
-                } else requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainLayout, CreateUserFragment.newInstance(it.token)).commit()
+                } else {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.mainLayout, CreateUserFragment.newInstance(it.token)).commit()
+                    loading.show()
+                }
             } else {
                 binding.submitOtpButton.isEnabled = true
                 loading.hide();
                 SnakeBar(requireActivity()).showSnackbar(it.status)
             }
+            SnakeBar(requireActivity()).showSnackbar("login success")
         }
     }
 
@@ -104,6 +107,7 @@ class VerifyFragment : Fragment() {
             if (it) {
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.mainLayout, HomeFragment()).commit()
+                loading.hide()
             }
         }
     }
