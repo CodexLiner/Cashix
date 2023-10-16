@@ -25,7 +25,7 @@ class SendFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = FragmentSendBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -53,6 +53,7 @@ class SendFragment : Fragment() {
             if (it.status == "success") {
                 requireActivity().supportFragmentManager.beginTransaction()
                     .addToBackStack("sendOTP")
+                    .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                     .replace(R.id.mainLayout, VerifyFragment.newInstance(it.mobile, it.token))
                     .commit()
                 loading.hide()

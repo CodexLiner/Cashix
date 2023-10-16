@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.cashix.R
+import com.cashix.UIFragments.HomeFragment
 import com.cashix.databinding.FragmentCreateUserBinding
 import com.cashix.utils.SnakeBar
 import dagger.hilt.android.AndroidEntryPoint
@@ -73,6 +74,9 @@ class CreateUserFragment : Fragment() {
             if (it.status.equals("success")) {
                 viewModel.saveUserInLocalDatabase(it.user, token)
                 SnakeBar(requireActivity()).showSnackbar("Profile created successfully")
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                    .replace(R.id.mainLayout, HomeFragment()).commit()
             }
         }
     }

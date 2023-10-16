@@ -88,6 +88,7 @@ class VerifyFragment : Fragment() {
                     nextAdd(it.token)
                 } else {
                     requireActivity().supportFragmentManager.beginTransaction()
+                        .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                         .replace(R.id.mainLayout, CreateUserFragment.newInstance(it.token)).commit()
                     loading.show()
                 }
@@ -106,6 +107,7 @@ class VerifyFragment : Fragment() {
         viewModel.sendUserAddedResponse.observe(viewLifecycleOwner) {
             if (it) {
                 requireActivity().supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                     .replace(R.id.mainLayout, HomeFragment()).commit()
                 loading.hide()
             }

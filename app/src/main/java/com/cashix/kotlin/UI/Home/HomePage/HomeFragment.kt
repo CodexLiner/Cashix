@@ -13,7 +13,10 @@ import com.cashix.UIFragments.BankTransfer
 import com.cashix.UIFragments.MoreButton
 import com.cashix.UIFragments.PayRent
 import com.cashix.UIFragments.WalletTransfer
+import com.cashix.adapters.TransactionAdapters
+import com.cashix.adapters.models.TransactionModel
 import com.cashix.databinding.FragmentHome2Binding
+import com.cashix.utils.Binder.BindViews
 import com.cashix.utils.change
 import com.cashix.utils.changeHelper
 import com.cashix.utils.common
@@ -41,6 +44,19 @@ class HomeFragment : Fragment() {
         binding.payRent.setOnClickListener { change.go(PayRent::class.java) }
         binding.walletButton.setOnClickListener { change.go(WalletTransfer::class.java) }
         binding.moreButton.setOnClickListener { change.go(MoreButton::class.java) }
+        binding.reaMore.setOnClickListener { common.Open(requireContext(), "") }
+
+
+        val tList = ArrayList<TransactionModel>()
+        tList.add(TransactionModel("id", "ad", "success", "500", "Bank Transfer", "dd", "dd"))
+        tList.add(TransactionModel("id", "ad", "success", "100", "Wallet Transfer", "dd", "dd"))
+        tList.add(TransactionModel("id", "ad", "success", "1582", "Credit Card", "dd", "dd"))
+        tList.add(TransactionModel("id", "ad", "success", "69845", "Rent Pay", "dd", "dd"))
+        val transactionAdapters = TransactionAdapters(tList, "")
+        BindViews(requireContext()).setVerticalRecycler(
+            binding.TransactionRecycler,
+            transactionAdapters
+        )
         binding.reaMore.setOnClickListener { common.Open(requireContext(), "") }
     }
 

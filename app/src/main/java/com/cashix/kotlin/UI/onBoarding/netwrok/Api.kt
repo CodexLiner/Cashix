@@ -6,21 +6,17 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface Api {
-    @GET("/")
+    @GET("/getCards")
     suspend fun getCard(): CardDetailsResponse
-
     @GET("/")
     suspend fun getTransaction(): TransactionResponse
-
     @GET("/getUser")
     suspend fun getUser(): UserResponse
-
     @POST("/")
     suspend fun addBankAccount(@Body body: AddBankRequest): AddBankResponse
-
     @POST("/")
     suspend fun addNewCard(@Body body: AddNewCardRequest): AddCardResponse
-
     @POST("/addUser")
     suspend fun addNewUser(@Body body: AddUserRequest): UserResponse
+
 }

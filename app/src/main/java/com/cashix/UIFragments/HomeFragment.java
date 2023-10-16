@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
       change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.mainLayout));
       checkConnection();
       binding.BankTransfer.setOnClickListener(v -> change.go(BankTransfer.class));
-      binding.payRent.setOnClickListener(v -> change.go(PayRent.class));
+      binding.payRent.setOnClickListener(v -> change.go(PayRent.class) );
       binding.walletButton.setOnClickListener(v -> change.go(WalletTransfer.class));
       binding.moreButton.setOnClickListener(v -> change.go(MoreButton.class));
 //      rec test

@@ -84,6 +84,9 @@
     </RelativeLayout>
 
     <ScrollView
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:scrollIndicators="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -96,7 +99,6 @@
                 android:id="@+id/adui"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/portofolioUI"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
