@@ -22,7 +22,7 @@ public class change {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void go(@NonNull Class<? extends Fragment> fragment) {
         manager.beginTransaction()
-//                .addToBackStack(fragment.toString())
+                .addToBackStack(fragment.toString())
                 .setReorderingAllowed(true)
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 .add(id, fragment, null)

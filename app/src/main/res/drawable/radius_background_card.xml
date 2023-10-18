@@ -9,11 +9,9 @@
                 android:right="10dp"
                 android:top="10dp" />
             <gradient
-                android:type="radial"
-                android:angle="46"
-                android:centerColor="#6d5dab"
-                android:endColor="#6d5dab"
-                android:startColor="#3498db" />
+                android:endColor="#4568dc"
+                android:startColor="#4EAFCD"
+                android:type="sweep" />
         </shape>
     </item>
 </layer-list>

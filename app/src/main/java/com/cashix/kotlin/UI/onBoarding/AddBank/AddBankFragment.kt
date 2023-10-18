@@ -13,13 +13,18 @@ import com.cashix.databinding.FragmentAddBankBinding
 import com.cashix.kotlin.UI.Home.HomePage.HomeFragment
 import com.cashix.kotlin.UI.SignUi.VerifyOTP.VerifyFragment
 import com.cashix.kotlin.UI.onBoarding.shared.AddBankRequest
+import com.cashix.utils.Bar
 import com.cashix.utils.SnakeBar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddBankFragment : Fragment() {
     private val viewModel: AddBankViewModel by viewModels()
     lateinit var binding: FragmentAddBankBinding
+
+    @Inject
+    lateinit var loading: Bar
 
     companion object {
         fun newInstance() = AddBankFragment()
@@ -29,6 +34,7 @@ class AddBankFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        loading = Bar(requireContext());
         binding = FragmentAddBankBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -55,6 +61,7 @@ class AddBankFragment : Fragment() {
                 SnakeBar(requireActivity()).showSnackbar("Account number is Required")
                 return@setOnClickListener
             }
+            loading.show()
             viewModel.addBankAccount(
                 AddBankRequest(
                     binding.holderName.text.toString(),
@@ -80,6 +87,7 @@ class AddBankFragment : Fragment() {
                 SnakeBar(requireActivity()).showSnackbar("Bank Account Added")
                 home()
             } else SnakeBar(requireActivity()).showSnackbar("Something went wrong try later")
+            loading.hide()
         }
     }
 }

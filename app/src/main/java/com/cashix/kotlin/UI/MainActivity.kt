@@ -6,9 +6,13 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.cashix.R
+import com.cashix.UIFragments.HomeFragment
 import com.cashix.database.DatabaseProvider
 import com.cashix.kotlin.UI.SignUi.SendOTP.SendFragment
+import com.cashix.kotlin.UI.cardtoBank.CardToBankFragment
 import com.cashix.kotlin.UI.onBoarding.AddBank.AddBankFragment
+import com.cashix.kotlin.UI.onBoarding.AddCard.AddCardFragment
+import com.cashix.utils.SnakeBar
 import com.cashix.utils.change
 import com.cashix.utils.changeHelper
 import com.google.android.material.snackbar.Snackbar
@@ -24,7 +28,10 @@ class MainActivity : AppCompatActivity() {
         databaseProvider = DatabaseProvider(this)
         val change = change(changeHelper(supportFragmentManager, R.id.mainLayout))
         if (databaseProvider.getUser().getUser(1) != null) {
-            change.go(AddBankFragment::class.java);
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.mainLayout, CardToBankFragment())
+                .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                .commit()
         } else {
             change.go(SendFragment::class.java);
         }
@@ -39,13 +46,7 @@ class MainActivity : AppCompatActivity() {
                 super.onBackPressed()
                 return
             }
-            this.doubleBackToExitPressedOnce = true
-            val snackbar = Snackbar.make(findViewById(R.id.mainLayout), "0", Snackbar.LENGTH_SHORT)
-            val customSnackView = layoutInflater.inflate(R.layout.snackbar, null)
-            snackbar.view.setBackgroundColor(Color.TRANSPARENT)
-            val snackLayout = snackbar.view as SnackbarLayout
-            snackLayout.addView(customSnackView)
-            snackbar.show()
+            SnakeBar(this@MainActivity).showSnackbar("Press Back Again to Exit")
             Handler(Looper.getMainLooper()).postDelayed(
                 { doubleBackToExitPressedOnce = false },
                 2000

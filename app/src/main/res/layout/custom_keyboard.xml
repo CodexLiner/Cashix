@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
-        android:background="@color/white"
-        android:gravity="center"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:gravity="center"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:id="@+id/btn_1"
                 android:layout_width="@dimen/key_width"
                 android:layout_height="@dimen/key_height"
@@ -21,77 +23,87 @@
                 android:background="@drawable/keyboard_shape"
                 android:elevation="0dp"
                 android:fontFamily="@font/poppins"
-                android:textStyle="bold"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="1"
                 android:textColor="@color/key_color"
                 android:textSize="@dimen/key_size"
-                android:theme="@null" />
-            <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/key_color"
-                android:fontFamily="@font/poppins"
-                android:textStyle="bold"
-                android:text="2"
-                android:textSize="@dimen/key_size"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
-                android:layout_width="@dimen/key_width"
-                android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_2"/>
-            <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/key_color"
-                android:fontFamily="@font/poppins"
-                android:textStyle="bold"
-                android:text="3"
-                android:textSize="@dimen/key_size"
-                style="@null"
+
                 android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
+                app:backgroundTint="@color/button_custom_keyboard" />
+
+            <Button
+                android:id="@+id/btn_2"
                 android:layout_width="@dimen/key_width"
                 android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_3"/>
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
+                android:fontFamily="@font/poppins"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="2"
+                android:textColor="@color/key_color"
+                android:textSize="@dimen/key_size"
+
+                app:backgroundTint="@color/button_custom_keyboard" />
+
+            <Button
+                android:id="@+id/btn_3"
+                style="@null"
+                android:layout_width="@dimen/key_width"
+                android:layout_height="@dimen/key_height"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
+                android:fontFamily="@font/poppins"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="3"
+                android:textColor="@color/key_color"
+                android:textSize="@dimen/key_size"
+
+                android:theme="@null"
+                app:backgroundTint="@color/button_custom_keyboard" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/key_color"
-                android:fontFamily="@font/poppins"
-                android:textStyle="bold"
-                android:text="4"
-                android:textSize="@dimen/key_size"
-                style="@null"
-                android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
-                android:layout_width="@dimen/key_width"
-                android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_4"/>
-            <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/key_color"
-                android:fontFamily="@font/poppins"
-                android:textStyle="bold"
-                android:text="5"
-                android:textSize="@dimen/key_size"
-                style="@null"
-                android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
-                android:layout_width="@dimen/key_width"
-                android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_5"/>
 
             <Button
+                android:id="@+id/btn_4"
+                style="@null"
+                android:layout_width="@dimen/key_width"
+                android:layout_height="@dimen/key_height"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
+                android:fontFamily="@font/poppins"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="4"
+                android:textColor="@color/key_color"
+                android:textSize="@dimen/key_size"
+
+                android:theme="@null"
+                app:backgroundTint="@color/white" />
+
+            <Button
+                android:id="@+id/btn_5"
+                style="@null"
+                android:layout_width="@dimen/key_width"
+                android:layout_height="@dimen/key_height"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
+                android:fontFamily="@font/poppins"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="5"
+                android:textColor="@color/key_color"
+                android:textSize="@dimen/key_size"
+
+                android:theme="@null"
+                app:backgroundTint="@color/button_custom_keyboard" />
+
+            <Button
                 android:id="@+id/btn_6"
                 style="@null"
                 android:layout_width="@dimen/key_width"
@@ -100,110 +112,125 @@
                 android:background="@drawable/keyboard_shape"
                 android:elevation="0dp"
                 android:fontFamily="@font/poppins"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="6"
                 android:textColor="@color/key_color"
                 android:textSize="@dimen/key_size"
-                android:textStyle="bold"
-                android:theme="@null" />
+
+                android:theme="@null"
+                app:backgroundTint="@color/button_custom_keyboard" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/key_color"
+                android:id="@+id/btn_7"
+                style="@null"
+                android:layout_width="@dimen/key_width"
+                android:layout_height="@dimen/key_height"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
                 android:fontFamily="@font/poppins"
-                android:textStyle="bold"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="7"
+                android:textColor="@color/key_color"
                 android:textSize="@dimen/key_size"
-                style="@null"
+
                 android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
+                app:backgroundTint="@color/button_custom_keyboard" />
+
+            <Button
+                android:id="@+id/btn_8"
+                style="@null"
                 android:layout_width="@dimen/key_width"
                 android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_7"/>
-            <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/key_color"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
                 android:fontFamily="@font/poppins"
-                android:textStyle="bold"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="8"
-                android:textSize="@dimen/key_size"
-                style="@null"
-                android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
-                android:layout_width="@dimen/key_width"
-                android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_8"/>
-            <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:textColor="@color/key_color"
-                android:fontFamily="@font/poppins"
-                android:textStyle="bold"
-                android:text="9"
                 android:textSize="@dimen/key_size"
-                style="@null"
+
                 android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
+                app:backgroundTint="@color/button_custom_keyboard" />
+
+            <Button
+                android:id="@+id/btn_9"
+                style="@null"
                 android:layout_width="@dimen/key_width"
                 android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_9"/>
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
+                android:fontFamily="@font/poppins"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="9"
+                android:textColor="@color/key_color"
+                android:textSize="@dimen/key_size"
+
+                android:theme="@null"
+                app:backgroundTint="@color/button_custom_keyboard" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
-                android:textColor="#8D8D8E"
+                android:id="@+id/btn_dot"
+                android:layout_width="@dimen/key_width"
+                android:layout_height="@dimen/key_height"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
                 android:fontFamily="@font/poppins"
-                android:textStyle="bold"
                 android:text=""
-                android:textSize="@dimen/key_size"
-                style="@null"
-                android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
-                android:layout_width="@dimen/key_width"
-                android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_dot"/>
-            <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:textColor="@color/key_color"
-                android:fontFamily="@font/poppins"
-                android:textStyle="bold"
-                android:text="0"
-                android:textSize="@dimen/key_size"
-                style="@null"
-                android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
-                android:layout_width="@dimen/key_width"
-                android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_0"/>
-            <Button
-                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:textColor="#8D8D8E"
-                android:fontFamily="@font/poppins"
-                android:textStyle="bold"
-                android:text="@string/q"
                 android:textSize="@dimen/key_size"
-                style="@null"
+                android:textStyle="bold"
                 android:theme="@null"
-                android:elevation="0dp"
-                android:background="@drawable/keyboard_shape"
-                android:layout_weight="1"
+                app:backgroundTint="@color/button_custom_keyboard" />
+
+            <Button
+                android:id="@+id/btn_0"
+                style="@null"
                 android:layout_width="@dimen/key_width"
                 android:layout_height="@dimen/key_height"
-                android:id="@+id/btn_del"/>
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
+                android:fontFamily="@font/poppins"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="0"
+                android:textColor="@color/key_color"
+                android:textSize="@dimen/key_size"
+                android:textStyle="bold"
+                android:theme="@null"
+                app:backgroundTint="@color/button_custom_keyboard" />
+
+            <Button
+                android:id="@+id/btn_del"
+                style="@null"
+                android:layout_width="@dimen/key_width"
+                android:layout_height="@dimen/key_height"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_shape"
+                android:elevation="0dp"
+                android:fontFamily="@font/poppins"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="@string/q"
+                android:textColor="#8D8D8E"
+                android:textSize="@dimen/key_size"
+                android:textStyle="bold"
+                android:theme="@null"
+                app:backgroundTint="@color/button_custom_keyboard" />
         </LinearLayout>
     </LinearLayout>
 

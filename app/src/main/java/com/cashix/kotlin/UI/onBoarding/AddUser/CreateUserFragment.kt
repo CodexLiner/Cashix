@@ -13,9 +13,12 @@ import androidx.fragment.app.viewModels
 import com.cashix.R
 import com.cashix.UIFragments.HomeFragment
 import com.cashix.databinding.FragmentCreateUserBinding
+import com.cashix.kotlin.UI.onBoarding.AddBank.AddBankFragment
+import com.cashix.utils.Bar
 import com.cashix.utils.SnakeBar
 import dagger.hilt.android.AndroidEntryPoint
 import org.w3c.dom.Text
+import javax.inject.Inject
 
 private const val TOKEN = "token"
 
@@ -24,6 +27,9 @@ class CreateUserFragment : Fragment() {
     private val viewModel: CreateUserViewModel by viewModels()
     lateinit var binding: FragmentCreateUserBinding
     lateinit var token: String
+
+    @Inject
+    lateinit var loading: Bar
 
     companion object {
         fun newInstance(token: String) = CreateUserFragment().apply {
@@ -44,6 +50,7 @@ class CreateUserFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        loading = Bar(requireContext());
         binding = FragmentCreateUserBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -59,6 +66,7 @@ class CreateUserFragment : Fragment() {
                 SnakeBar(requireActivity()).showSnackbar("Email is Required")
                 return@setOnClickListener
             }
+            loading.show()
             viewModel.updateToken(token)
             viewModel.saveUserProfile(
                 binding.UsersName.text.toString(),
@@ -76,8 +84,9 @@ class CreateUserFragment : Fragment() {
                 SnakeBar(requireActivity()).showSnackbar("Profile created successfully")
                 requireActivity().supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                    .replace(R.id.mainLayout, HomeFragment()).commit()
-            }
+                    .replace(R.id.mainLayout, AddBankFragment()).commit()
+            } else SnakeBar(requireActivity()).showSnackbar(it.status)
+            loading.hide()
         }
     }
 

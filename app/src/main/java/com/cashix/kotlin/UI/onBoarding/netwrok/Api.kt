@@ -12,9 +12,9 @@ interface Api {
     suspend fun getTransaction(): TransactionResponse
     @GET("/getUser")
     suspend fun getUser(): UserResponse
-    @POST("/")
+    @POST("/addBank")
     suspend fun addBankAccount(@Body body: AddBankRequest): AddBankResponse
-    @POST("/")
+    @POST("/addCard")
     suspend fun addNewCard(@Body body: AddNewCardRequest): AddCardResponse
     @POST("/addUser")
     suspend fun addNewUser(@Body body: AddUserRequest): UserResponse

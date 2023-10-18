@@ -10,11 +10,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AddBankViewModel @Inject constructor(repo: BoardRepository) : ViewModel() {
+class AddBankViewModel @Inject constructor(val repo: BoardRepository) : ViewModel() {
     val addBankResponse: MutableLiveData<AddBankResponse> = MutableLiveData()
     fun addBankAccount(body: AddBankRequest) {
         SafeApiRequest.safe {
-
+            repo.addBankAccount(body).let {
+                addBankResponse.postValue(it)
+            }
         }
     }
 }

@@ -56,11 +56,10 @@ class SendFragment : Fragment() {
                     .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                     .replace(R.id.mainLayout, VerifyFragment.newInstance(it.mobile, it.token))
                     .commit()
-                loading.hide()
             } else {
-                loading.hide();
                 SnakeBar(requireActivity()).showSnackbar(it.status)
             }
+            loading.hide()
         }
     }
 }

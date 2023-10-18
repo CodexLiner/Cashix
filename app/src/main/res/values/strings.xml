@@ -51,11 +51,11 @@
     <string name="bank_verification_success">Bank Verification Success</string>
     <string name="congrats_your_account_is_verified_succesfully_and_all_future_payout_will_be_credited_to_your_bank_account">Congrats! Your Account is Verified Successfully and All Future Payout Will be Credited to your bank account</string>
     <string name="pendinfg_bank">Pending! Your Bank Account is not Verified yet. we will inform you once get verified</string>
-    <string name="enter_amount">₹0</string>
+    <string name="enter_amount">enter amount</string>
     <string name="services">Cashix Services</string>
     <string name="recycler_top">Credit Cards</string>
     <string name="last_transactions">Last Transactions</string>
-    <string name="paying_to_account">Paying To Account</string>
+    <string name="paying_to_account">Paying to Account</string>
     <string name="bank_heading">Credit Card To Bank</string>
     <string name="alert">Alert!</string>
     <string name="hello_world_how_are_you_today">hello world how are you today?</string>
@@ -63,4 +63,6 @@
     <string name="pay_your_rent_with_credit_card">Pay Your Rent With Credit Card</string>
     <string name="enter_your_mobile_number_to_login_or_signup">Enter your mobile number to login or signup</string>
     <string name="hi_there">Hi there,</string>
+    <string name="how_much_amount_do_you_want_to_transfer">how much amount do you want to transfer?</string>
+    <string name="pay_with_credit_card">pay with credit card</string>
 </resources>
