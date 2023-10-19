@@ -79,7 +79,7 @@
                             android:gravity="start|bottom"
                             android:text="@string/how_much_amount_do_you_want_to_transfer"
                             android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -102,6 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:orientation="vertical">
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/nameProfile"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -118,23 +119,32 @@
                         app:startIconDrawable="@drawable/ic_number">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/bankName"
+                            android:id="@+id/transferAmount"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:maxLength="9"
-                            android:inputType="number"
                             android:layout_marginTop="2dp"
                             android:drawablePadding="0dp"
-                            android:gravity="center|start" />
+                            android:text="100"
+                            android:gravity="center|start"
+                            android:inputType="number"
+                            android:maxLength="9" />
                     </com.google.android.material.textfield.TextInputLayout>
+                    <com.stripe.android.view.CardMultilineWidget
+                        android:id="@+id/cardInputWidget"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:shouldShowPostalCode="false" />
                     <Button
-                        android:layout_marginTop="10dp"
+                        android:id="@+id/pay_button"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
                         android:padding="10dp"
+                        android:text="@string/pay_with_credit_card"
                         android:textAllCaps="false"
-                        android:text="@string/pay_with_credit_card"/>
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
                 </LinearLayout>
             </LinearLayout>
 

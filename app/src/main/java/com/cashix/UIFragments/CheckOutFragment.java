@@ -125,8 +125,8 @@ public class CheckOutFragment extends Fragment {
         });
 
     }
-    private void showToast(String message) {
-        requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show());
+    private void showToast() {
+        requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), "Payment complete!", Toast.LENGTH_LONG).show());
     }
 
     private void fetchPaymentIntent() {
@@ -158,7 +158,7 @@ public class CheckOutFragment extends Fragment {
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response
-            ) throws IOException {
+            ) {
                 if (!response.isSuccessful()) {
                     requireActivity().runOnUiThread(()->{
                         dialog.setMessage("Failed to load page Error: " + response.toString());
@@ -200,7 +200,7 @@ public class CheckOutFragment extends Fragment {
 
     private void onPaymentSheetResult(final PaymentSheetResult paymentSheetResult) {
         if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
-            showToast("Payment complete!");
+            showToast();
             addTransactionsDb("success" , UUIDs);
             if (bundle!=null && bundle.getBoolean("renType", false)){
                 addTransactionForTransferBank(UUIDs);
