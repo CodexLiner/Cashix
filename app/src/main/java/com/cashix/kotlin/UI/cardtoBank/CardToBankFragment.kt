@@ -9,10 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.cashix.databinding.FragmentCardToBankBinding
+import com.cashix.kotlin.UI.cardtoBank.bottomsheet.ModalBottomSheet
 import com.cashix.utils.SnakeBar
 import com.stripe.android.PaymentConfiguration
-import com.stripe.android.Stripe
-import com.stripe.android.model.CardParams
 import com.stripe.android.model.ConfirmPaymentIntentParams
 import com.stripe.android.payments.paymentlauncher.PaymentLauncher
 import com.stripe.android.payments.paymentlauncher.PaymentResult
@@ -43,7 +42,6 @@ class CardToBankFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val paymentConfiguration = PaymentConfiguration.getInstance(requireContext())
         paymentLauncher = PaymentLauncher.Companion.create(
             this,
@@ -59,7 +57,10 @@ class CardToBankFragment : Fragment() {
             viewModel.getStripeIntent(
                 (binding.transferAmount.text.toString().toInt() * 100).toString(), "transaction"
             )
-            next()
+            val modalBottomSheet = ModalBottomSheet()
+            modalBottomSheet.isCancelable = false
+            modalBottomSheet.show(requireActivity().supportFragmentManager, ModalBottomSheet.TAG)
+//            next()
         }
         binding.cardInputWidget.setCardNumber("4341680200693892")
         binding.cardInputWidget.setExpiryDate(2, 2025)

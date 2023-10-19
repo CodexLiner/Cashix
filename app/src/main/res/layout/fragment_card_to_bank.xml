@@ -125,16 +125,19 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="2dp"
                             android:drawablePadding="0dp"
-                            android:text="100"
                             android:gravity="center|start"
                             android:inputType="number"
-                            android:maxLength="9" />
+                            android:maxLength="9"
+                            android:text="100" />
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <com.stripe.android.view.CardMultilineWidget
                         android:id="@+id/cardInputWidget"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:shouldShowPostalCode="false" />
+
                     <Button
                         android:id="@+id/pay_button"
                         android:layout_width="match_parent"
