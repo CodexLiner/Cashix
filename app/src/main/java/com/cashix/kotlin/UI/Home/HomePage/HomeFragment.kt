@@ -8,14 +8,17 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cashix.R
-import com.cashix.UIFragments.BankTransfer
 import com.cashix.UIFragments.MoreButton
 import com.cashix.UIFragments.PayRent
 import com.cashix.UIFragments.WalletTransfer
 import com.cashix.adapters.TransactionAdapters
 import com.cashix.adapters.models.TransactionModel
 import com.cashix.databinding.FragmentHome2Binding
+import com.cashix.kotlin.UI.Home.adapters.CardsAdapter
+import com.cashix.kotlin.UI.cardtoBank.CardToBankFragment
+import com.cashix.kotlin.UI.onBoarding.AddCard.AddCardFragment
 import com.cashix.utils.Binder.BindViews
 import com.cashix.utils.change
 import com.cashix.utils.changeHelper
@@ -38,13 +41,14 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        getCards()
         val change = change(changeHelper(requireActivity().supportFragmentManager, R.id.mainLayout))
-        binding.BankTransfer.setOnClickListener { change.go(BankTransfer::class.java) }
+        binding.BankTransfer.setOnClickListener { v -> change.go(CardToBankFragment::class.java) }
         binding.payRent.setOnClickListener { change.go(PayRent::class.java) }
         binding.walletButton.setOnClickListener { change.go(WalletTransfer::class.java) }
         binding.moreButton.setOnClickListener { change.go(MoreButton::class.java) }
         binding.reaMore.setOnClickListener { common.Open(requireContext(), "") }
+        binding.addNewCard.setOnClickListener { change.go(AddCardFragment::class.java) }
 
 
         val tList = ArrayList<TransactionModel>()
@@ -58,6 +62,25 @@ class HomeFragment : Fragment() {
             transactionAdapters
         )
         binding.reaMore.setOnClickListener { common.Open(requireContext(), "") }
+        binding.addNewCard.setOnClickListener {
+            addNewCard();
+        }
     }
 
+    private fun getCards() {
+        viewModel.getCreditCardData();
+        viewModel.creditCardData.observe(viewLifecycleOwner){
+            binding.CardsRecycler.apply {
+                layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+                adapter = CardsAdapter(it)
+            }
+        }
+    }
+
+    private fun addNewCard() {
+        requireActivity().supportFragmentManager.beginTransaction().setCustomAnimations(
+            R.anim.fade_in, R.anim.fade_out
+        ).addToBackStack(AddCardFragment.toString()).replace(R.id.mainLayout, AddCardFragment())
+            .commit()
+    }
 }

@@ -12,11 +12,14 @@ import javax.inject.Inject
 @HiltViewModel
 class CardToBankViewModel @Inject constructor(val repo: CardRepository) : ViewModel() {
     val stripeIntentResult: MutableLiveData<StripeIntent> = MutableLiveData()
+    val onSheetDismiss: MutableLiveData<String> = MutableLiveData()
+    var isNotLoading = false
 
     fun getStripeIntent(amount: String, transactionid: String) {
         SafeApiRequest.safe {
-            repo.getStripeIntentReady(amount , transactionid).let {
+            repo.getStripeIntentReady(amount, transactionid).let {
                 stripeIntentResult.postValue(it)
+                isNotLoading = !isNotLoading
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.cashix.UIFragments.more_button;
+package com.cashix.kotlin.UI.more_button;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cashix.R;
 import com.cashix.databinding.FragmentBankDetailsBinding;
 
 /**

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/limeWhite"
     android:orientation="vertical"
-    android:overScrollMode="never"
     android:scrollbars="none">
 
     <RelativeLayout
@@ -192,13 +191,13 @@
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/NoticeRecycler"
+                        android:id="@+id/CardsRecycler"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:overScrollMode="never"
                         android:scaleType="centerCrop"
                         android:src="@drawable/download1"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         tools:itemCount="1"
                         tools:listitem="@layout/notice_itemlist" />
                 </LinearLayout>
@@ -230,7 +229,7 @@
                         app:iconGravity="textStart" />
 
                     <Button
-                        android:id="@+id/apply_wallpaper"
+                        android:id="@+id/add_new_card"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_marginStart="10dp"

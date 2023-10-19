@@ -1,23 +1,18 @@
 package com.cashix.kotlin.UI.onBoarding.AddUser
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.cashix.R
-import com.cashix.UIFragments.HomeFragment
 import com.cashix.databinding.FragmentCreateUserBinding
 import com.cashix.kotlin.UI.onBoarding.AddBank.AddBankFragment
 import com.cashix.utils.Bar
 import com.cashix.utils.SnakeBar
 import dagger.hilt.android.AndroidEntryPoint
-import org.w3c.dom.Text
 import javax.inject.Inject
 
 private const val TOKEN = "token"

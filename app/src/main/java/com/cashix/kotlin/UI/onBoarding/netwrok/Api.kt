@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface Api {
     @GET("/getCards")
-    suspend fun getCard(): CardDetailsResponse
+    suspend fun getCard(): List<CardDetailsResponse>
     @GET("/")
     suspend fun getTransaction(): TransactionResponse
     @GET("/getUser")

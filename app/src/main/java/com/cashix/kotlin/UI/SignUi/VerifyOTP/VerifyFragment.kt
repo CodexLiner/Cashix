@@ -1,16 +1,14 @@
 package com.cashix.kotlin.UI.SignUi.VerifyOTP
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.cashix.R
-import com.cashix.UIFragments.HomeFragment
 import com.cashix.databinding.FragmentVerifyBinding
+import com.cashix.kotlin.UI.Home.HomePage.HomeFragment
 import com.cashix.kotlin.UI.onBoarding.AddUser.CreateUserFragment
 import com.cashix.utils.Bar
 import com.cashix.utils.SnakeBar

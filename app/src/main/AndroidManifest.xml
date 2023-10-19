@@ -21,9 +21,9 @@
 
         </activity>
         <activity
-            android:windowSoftInputMode="stateHidden|adjustResize"
             android:name=".kotlin.UI.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -66,6 +66,13 @@
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
+
     </application>
+    <queries>
+        <package android:name="net.one97.paytm" />
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
+    </queries>
 
 </manifest>

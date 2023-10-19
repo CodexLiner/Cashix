@@ -25,7 +25,7 @@ public class change {
                 .addToBackStack(fragment.toString())
                 .setReorderingAllowed(true)
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                .add(id, fragment, null)
+                .replace(id, fragment, null)
                 .commit();
     }
 

@@ -3,6 +3,9 @@ buildscript {
     repositories {
         google()
         maven { url 'https://jitpack.io' }
+        maven {
+            url "https://artifactory.paytm.in/libs-release-local"
+        }
         mavenCentral()
     }
 

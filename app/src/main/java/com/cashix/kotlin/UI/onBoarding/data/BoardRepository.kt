@@ -8,11 +8,11 @@ import javax.inject.Inject
 
 class BoardRepository @Inject constructor(retrofit: Retrofit) : DataSource {
     private val service = retrofit.create(Api::class.java)
-    override suspend fun getCardDetails(): CardDetailsResponse {
+    override suspend fun getCardDetails(): List<CardDetailsResponse> {
         return try {
             service.getCard()
         } catch (_: Exception) {
-            CardDetailsResponse("", "", "", "");
+            listOf()
         }
     }
 

@@ -7,6 +7,9 @@ dependencyResolutionManagement {
         maven {
             url "https://maven.juspay.in/jp-build-packages/hyper-sdk/"
         }
+        maven {
+            url "https://artifactory.paytm.in/libs-release-local"
+        }
     }
 }
 rootProject.name = "cashix"

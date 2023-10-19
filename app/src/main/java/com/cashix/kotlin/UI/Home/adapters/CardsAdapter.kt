@@ -1,4 +1,4 @@
-package com.cashix.kotlin.UI.cardtoBank.bottomsheet
+package com.cashix.kotlin.UI.Home.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,22 +8,20 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cashix.R
-import com.stripe.android.view.CardInputWidget
+import com.cashix.kotlin.UI.onBoarding.shared.CardDetailsResponse
 import com.stripe.android.view.CardMultilineWidget
-import org.w3c.dom.Text
 
-class cardsadapter : RecyclerView.Adapter<cardsadapter.ItemViewHolder>() {
+class CardsAdapter(cards: List<CardDetailsResponse>) : RecyclerView.Adapter<CardsAdapter.ItemViewHolder>() {
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val radioButton = itemView.findViewById<RadioButton>(R.id.radio_button)
-        val bankName = itemView.findViewById<TextView>(R.id.bankName)
-        val lastDigit = itemView.findViewById<TextView>(R.id.last_digit)
-        val bankLogo = itemView.findViewById<ImageView>(R.id.bank_logo)
-        val cardInputWidget = itemView.findViewById<CardMultilineWidget>(R.id.cardInputWidget)
+        val bankName: TextView = itemView.findViewById(R.id.bankName)
+        val lastDigit: TextView = itemView.findViewById(R.id.last_digit)
+        val bankLogo: ImageView = itemView.findViewById(R.id.bank_logo)
+        val cardInputWidget: CardMultilineWidget = itemView.findViewById(R.id.cardInputWidget)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_item_list_dialog_list_dialog_item, parent, false)
+            .inflate(R.layout.notice_itemlist, parent, false)
         return ItemViewHolder(view)
     }
 

@@ -8,16 +8,15 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.cashix.R;
-import com.cashix.UIFragments.more_button.BankDetails;
-import com.cashix.UIFragments.more_button.Transactions;
-import com.cashix.UIFragments.more_button.UserProfile;
+import com.cashix.kotlin.UI.more_button.BankDetails;
+import com.cashix.kotlin.UI.more_button.Transactions;
+import com.cashix.kotlin.UI.more_button.UserProfile;
 import com.cashix.databinding.FragmentMoreButtonBinding;
 import com.cashix.utils.change;
 import com.cashix.utils.changeHelper;

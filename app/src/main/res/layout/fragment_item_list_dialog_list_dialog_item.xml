@@ -12,6 +12,7 @@
     android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/bank_logo"
         android:layout_gravity="center"
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/bank_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -34,6 +36,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/last_digit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -43,14 +46,23 @@
             android:textSize="12sp"
             android:textColor="@color/black"
             app:drawableEndCompat="@drawable/visa_" />
+        <com.stripe.android.view.CardMultilineWidget
+            android:id="@+id/cardInputWidget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:shouldShowPostalCode="false" />
     </LinearLayout>
 
     <RadioButton
+        android:id="@+id/radio_button"
         android:layout_gravity="bottom"
         android:gravity="bottom"
         android:width="5dp"
         android:height="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+
 
 </RadioGroup>
