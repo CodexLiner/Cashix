@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="10dp"
+    android:maxWidth="10dp"
     android:background="?attr/selectableItemBackground"
-    android:paddingLeft="@dimen/list_item_spacing"
-    android:paddingTop="@dimen/list_item_spacing_half"
-    android:paddingRight="@dimen/list_item_spacing"
-    android:paddingBottom="@dimen/list_item_spacing_half"
-    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-    tools:text="Hello" />
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/hdfc_" />
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_gravity="bottom"
+            android:text="hdfc bank"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="XXXX 3893"
+            android:layout_marginEnd="20dp"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:drawableEndCompat="@drawable/visa_" />
+    </LinearLayout>
+
+    <RadioButton
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:width="5dp"
+        android:height="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RadioGroup>
