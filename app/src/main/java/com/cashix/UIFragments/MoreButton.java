@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 
 import com.cashix.R;
 import com.cashix.kotlin.UI.more_button.BankDetails;
+import com.cashix.kotlin.UI.more_button.ProfileFragment;
 import com.cashix.kotlin.UI.more_button.Transactions;
-import com.cashix.kotlin.UI.more_button.UserProfile;
 import com.cashix.databinding.FragmentMoreButtonBinding;
 import com.cashix.utils.change;
 import com.cashix.utils.changeHelper;
@@ -64,7 +64,7 @@ public class MoreButton extends Fragment {
        binding = FragmentMoreButtonBinding.inflate(inflater);
         change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.mainLayout));
        binding.userDetails.setOnClickListener((v -> {
-           change.go(UserProfile.class);
+           change.go(ProfileFragment.class);
        }));
        binding.bankAccount.setOnClickListener((v -> {
            change.go(BankDetails.class);

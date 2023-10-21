@@ -69,9 +69,13 @@ class HomeFragment : Fragment() {
 
     private fun getCards() {
         viewModel.getCreditCardData();
-        viewModel.creditCardData.observe(viewLifecycleOwner){
+        viewModel.creditCardData.observe(viewLifecycleOwner) {
+            if (it.isNotEmpty()) {
+                binding.messageAtHome.visibility = View.GONE
+            }
             binding.CardsRecycler.apply {
-                layoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 adapter = CardsAdapter(it)
             }
         }
@@ -80,7 +84,7 @@ class HomeFragment : Fragment() {
     private fun addNewCard() {
         requireActivity().supportFragmentManager.beginTransaction().setCustomAnimations(
             R.anim.fade_in, R.anim.fade_out
-        ).addToBackStack(AddCardFragment.toString()).replace(R.id.mainLayout, AddCardFragment())
+        ).addToBackStack(AddCardFragment.toString()).replace(R.id.mainLayout, AddCardFragment.newInstance(true))
             .commit()
     }
 }

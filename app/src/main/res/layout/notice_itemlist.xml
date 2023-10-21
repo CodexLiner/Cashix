@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/bankname"
+                    android:id="@+id/bankName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
@@ -42,7 +42,7 @@
                 <TextView
                     android:id="@+id/last_digit"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:drawablePadding="5dp"
                     android:fontFamily="@font/poppins_medium"

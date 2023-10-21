@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:overScrollMode="never"
     android:layout_width="match_parent"
-    android:background="@color/limeWhite"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-    tools:context=".UI.UserProfile">
+    android:background="@color/limeWhite"
+    android:overScrollMode="never"
+    android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_alignParentTop="true"
             android:id="@+id/headingLayout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -37,170 +37,202 @@
                 app:drawableLeftCompat="@drawable/ic_op_left"
                 app:drawableTint="@color/black" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/home_activity_shape_all"
-            android:layout_gravity="center"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/home_activity_shape_all"
+            android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_gravity="start"
-                android:layout_margin="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/avtar"/>
+                android:layout_gravity="start"
+                android:layout_margin="20dp"
+                android:src="@drawable/avtar" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/userDetails"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/home_activity_shape_all"
             android:layout_width="match_parent"
-            android:layout_height="75dp">
+            android:layout_height="75dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/home_activity_shape_all"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:orientation="horizontal">
+
             <com.google.android.material.textfield.TextInputLayout
-                android:padding="0dp"
+                android:id="@+id/nameProfile"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="start"
-                app:startIconDrawable="@drawable/ic_op_name"
+                android:hint="Name"
+                android:padding="0dp"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="0.5dp"
                 app:boxStrokeWidthFocused="0.5dp"
                 app:hintTextColor="@color/black"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/nameProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name">
+                app:startIconDrawable="@drawable/ic_op_name">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_marginTop="2dp"
-                    android:gravity="center|start"
-                    android:layout_gravity="center"
-                    android:drawablePadding="0dp"
                     android:id="@+id/profilName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:enabled="false"
+                    android:layout_marginTop="2dp"
+                    android:drawablePadding="0dp"
+                    android:gravity="center|start" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/userDOBLayout"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/home_activity_shape_all"
-            android:layout_width="match_parent"
-            android:layout_height="75dp">
-            <com.google.android.material.textfield.TextInputLayout
-                app:startIconDrawable="@drawable/ic_op_dob"
-                app:boxStrokeColor="@color/black"
-                app:boxStrokeWidth="0.5dp"
-                app:boxStrokeWidthFocused="0.5dp"
-                app:hintTextColor="@color/black"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/userDOBBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Birth Date">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:maxLength="10"
-                    android:inputType="date"
-                    android:id="@+id/userDOBEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-            </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
         <LinearLayout
             android:id="@+id/userMobileLayout"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/home_activity_shape_all"
             android:layout_width="match_parent"
-            android:layout_height="75dp">
+            android:layout_height="75dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/home_activity_shape_all"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:orientation="horizontal">
+
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userMobileBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:enabled="false"
+                android:hint="Mobile"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="0.5dp"
                 app:boxStrokeWidthFocused="0.5dp"
                 app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_op_phone"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/userMobileBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Mobile">
+                app:startIconDrawable="@drawable/ic_op_phone">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/userMobileEdit"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/userEmailLayout"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/home_activity_shape_all"
             android:layout_width="match_parent"
-            android:layout_height="75dp">
+            android:layout_height="75dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/home_activity_shape_all"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:orientation="horizontal">
+
             <com.google.android.material.textfield.TextInputLayout
-                app:startIconDrawable="@drawable/ic_op_email"
+                android:id="@+id/userEmailBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="0.5dp"
                 app:boxStrokeWidthFocused="0.5dp"
                 app:hintTextColor="@color/black"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/userEmailBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email">
+                app:startIconDrawable="@drawable/ic_op_email">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="textEmailAddress"
                     android:id="@+id/userEmailEdit"
+                    android:enabled="false"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/userDOBLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="75dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/home_activity_shape_all"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userDOBBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Zip"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="0.5dp"
+                app:boxStrokeWidthFocused="0.5dp"
+                app:hintTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_op_dob">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pinCode"
+                    android:enabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="date"
+                    android:maxLength="10" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <Button
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:id="@+id/editProfile"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:textColor="@color/white"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/button_shape_primary"
-                android:text="Edit Profile" />
-            <include
+                android:text="@string/update_profile"
+                android:textColor="@color/white" />
+
+            <Button
                 android:visibility="gone"
-                android:id="@+id/customBtn"
-                android:layout_margin="10dp"
+                android:id="@+id/saveProfile"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                layout="@layout/custombtn"/>
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_shape_primary"
+                android:text="@string/save_profile"
+                android:textColor="@color/white" />
+
+            <include
+                android:id="@+id/customBtn"
+                layout="@layout/custombtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:visibility="gone" />
         </LinearLayout>
 
     </LinearLayout>
