@@ -39,7 +39,19 @@
 
         <activity
             android:name=".kotlin.UI.SignInActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="yash.meenagopal24.live"
+                    android:pathPrefix="/src/html"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".UI.no_internet"

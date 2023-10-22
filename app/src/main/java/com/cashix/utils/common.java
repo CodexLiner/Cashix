@@ -56,7 +56,7 @@ public class common {
         builder.setShowTitle(true);
         builder.setUrlBarHidingEnabled(true);
         CustomTabsIntent intent = builder.build();
-        intent.launchUrl(context, Uri.parse("http://192.168.29.144:5000/"));
+        intent.launchUrl(context, Uri.parse("https://yash.meenagopal24.live/src/html/about.html"));
     }
     public static void inValidateSession(Context context){
 

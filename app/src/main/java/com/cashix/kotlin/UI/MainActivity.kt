@@ -45,35 +45,7 @@ class MainActivity : AppCompatActivity() {
 //        } catch (e: ActivityNotFoundException) {
 //            // Handle the case where the specified UPI app is not installed
 //        }
-
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == 100) {
-            when (resultCode) {
-                RESULT_OK -> {
-                    // Payment successful
-                    val transactionId = data?.getStringExtra("response")
-                    Log.d("TAG", "DaggerTest onActivityResult: $transactionId")
-                    // Process the transaction ID or perform any other necessary actions
-                }
-                RESULT_CANCELED -> {
-                    // Payment canceled by the user
-                    Log.d("TAG", "DaggerTest onActivityResult: user cancelled")
-                }
-                RESULT_FIRST_USER -> {
-                    // Payment failed
-                    val responseCode = data?.getStringExtra("responseCode")
-                    val responseMessage = data?.getStringExtra("responseMessage")
-                    // Handle the failure and display an error message
-                    Log.d("TAG", "DaggerTest onActivityResult: $responseMessage")
-                }
-            }
-        }
-    }
-
 
     var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {

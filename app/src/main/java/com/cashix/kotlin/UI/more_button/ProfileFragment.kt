@@ -9,11 +9,12 @@ import androidx.fragment.app.Fragment
 import com.cashix.R
 import com.cashix.database.DatabaseProvider
 import com.cashix.databinding.FragmentUserProfileBinding
+import com.cashix.utils.SnakeBar
 import com.cashix.utils.common
 import net.one97.paytm.nativesdk.common.model.RiskExtendedInfoHolder.convert
 
 class ProfileFragment : Fragment() {
-    private var EditProfileState: Boolean = false
+
     lateinit var databaseProvider: DatabaseProvider
     lateinit var binding: FragmentUserProfileBinding
     override fun onCreateView(
@@ -43,12 +44,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun editProfile() {
-        Log.d("TAG", "DaggerTest editProfile: ")
+
+        SnakeBar(requireActivity()).showSnackbar("Profile Updated Successfully")
     }
 
     private fun changeState() {
+        if (binding.profilName.isEnabled) {
+            binding.profilName.requestFocus()
+        }
         binding.profilName.isEnabled = !binding.profilName.isEnabled
-        binding.userMobileEdit.isEnabled = !binding.userMobileEdit.isEnabled
+//        binding.userMobileEdit.isEnabled = !binding.userMobileEdit.isEnabled
         binding.userEmailEdit.isEnabled = !binding.userEmailEdit.isEnabled
         binding.pinCode.isEnabled = !binding.pinCode.isEnabled
     }
