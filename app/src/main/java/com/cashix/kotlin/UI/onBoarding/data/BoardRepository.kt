@@ -55,4 +55,22 @@ class BoardRepository @Inject constructor(retrofit: Retrofit) : DataSource {
             UserResponse()
         }
     }
+
+    override suspend fun getBankDetails(): AddBankResponse {
+        return try {
+            service.getBank()
+        }catch (e : Exception){
+            AddBankResponse()
+        }
+    }
+
+    override suspend fun updateProfile(body: AddUserRequest): UserResponse {
+        return try {
+            service.updateProfile(body)
+        } catch (e: java.lang.Exception) {
+            UserResponse()
+        }
+    }
+
+
 }

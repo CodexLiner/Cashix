@@ -33,7 +33,7 @@ class CreateUserViewModel @Inject constructor(
     }
 
     fun saveUserInLocalDatabase(user: UserResponse.user, token: String) {
-        databaseProvider.getUser()
+        databaseProvider.getUserDB()
             .setUser(UserDBModel(user.name, user.email, user.mobile, user.pincode, token)).let {
                 responseDB.postValue(it)
             }

@@ -85,6 +85,12 @@ class AddBankFragment : Fragment() {
         viewModel.addBankResponse.observe(viewLifecycleOwner) {
             if (it.status.equals("success")) {
                 SnakeBar(requireActivity()).showSnackbar("Bank Account Added")
+                viewModel.addBankToLocalDatabase(
+                    it.accounts[0].holdername,
+                    it.accounts[0].bankname,
+                    it.accounts[0].accountnumber,
+                    it.accounts[0].bankifsc,
+                )
                 home()
             } else SnakeBar(requireActivity()).showSnackbar("Something went wrong try later")
             loading.hide()

@@ -1,12 +1,8 @@
 package com.cashix.kotlin.UI
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cashix.R
 import com.cashix.database.DatabaseProvider
@@ -15,8 +11,6 @@ import com.cashix.utils.SnakeBar
 import com.cashix.utils.change
 import com.cashix.utils.changeHelper
 import dagger.hilt.android.AndroidEntryPoint
-import net.one97.paytm.nativesdk.PaytmSDK
-import net.one97.paytm.nativesdk.dataSource.PaytmPaymentsUtilRepository
 
 
 @AndroidEntryPoint
@@ -27,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_v2)
         databaseProvider = DatabaseProvider(this)
         val change = change(changeHelper(supportFragmentManager, R.id.mainLayout))
-        if (databaseProvider.getUser().getUser(1) != null) {
+        if (databaseProvider.getUserDB().getUser(1) != null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.mainLayout, com.cashix.kotlin.UI.Home.HomePage.HomeFragment())
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)

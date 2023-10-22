@@ -45,7 +45,7 @@ class VerifyViewModel @Inject constructor(
     }
 
     private fun setUser(user: UserResponse.user, token: String) {
-        databaseProvider.getUser()
+        databaseProvider.getUserDB()
             .setUser(UserDBModel(user.name, user.email, user.mobile, user.pincode, token)).let {
                 sendUserAddedResponse.postValue(true)
             }

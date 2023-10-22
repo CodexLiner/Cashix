@@ -73,7 +73,6 @@ public class userDatabaseHelper extends SQLiteOpenHelper {
                     cursor.getString(cursor.getColumnIndex(AUTHKEY)));
 
             cursor.close();
-            Log.d("TAG", "DaggerTest getUser: "+user.toString());
             return user;
         } catch (Exception ignored) {}
         return null;

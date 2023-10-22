@@ -1,20 +1,20 @@
 package com.cashix.kotlin.UI.more_button
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.cashix.R
+import androidx.fragment.app.viewModels
 import com.cashix.database.DatabaseProvider
 import com.cashix.databinding.FragmentUserProfileBinding
 import com.cashix.utils.SnakeBar
 import com.cashix.utils.common
-import net.one97.paytm.nativesdk.common.model.RiskExtendedInfoHolder.convert
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
-
+    val moreViewModel: MoreViewModel by viewModels()
     lateinit var databaseProvider: DatabaseProvider
     lateinit var binding: FragmentUserProfileBinding
     override fun onCreateView(
@@ -44,8 +44,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun editProfile() {
+        moreViewModel.updateProfile(
+            binding.profilName.text.toString(),
+            binding.userEmailEdit.text.toString(),
+            binding.pinCode.text.toString()
+        )
+        moreViewModel.userUpdateResult.observe(viewLifecycleOwner) {
+            moreViewModel.saveUserInLocalDatabase(it.user, "")
+            SnakeBar(requireActivity()).showSnackbar("Profile Updated Successfully")
+        }
 
-        SnakeBar(requireActivity()).showSnackbar("Profile Updated Successfully")
     }
 
     private fun changeState() {
@@ -60,9 +68,9 @@ class ProfileFragment : Fragment() {
 
     private fun setProfileData() {
         databaseProvider = DatabaseProvider(requireContext())
-        binding.profilName.setText(databaseProvider.getUser().getUser(1).name.toString())
-        binding.userMobileEdit.setText(databaseProvider.getUser().getUser(1).mobile.toString())
-        binding.userEmailEdit.setText(databaseProvider.getUser().getUser(1).email.toString())
-        binding.pinCode.setText(databaseProvider.getUser().getUser(1).pincode.toString())
+        binding.profilName.setText(databaseProvider.getUserDB().getUser(1).name.toString())
+        binding.userMobileEdit.setText(databaseProvider.getUserDB().getUser(1).mobile.toString())
+        binding.userEmailEdit.setText(databaseProvider.getUserDB().getUser(1).email.toString())
+        binding.pinCode.setText(databaseProvider.getUserDB().getUser(1).pincode.toString())
     }
 }

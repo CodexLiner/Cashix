@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cashix.R;
-import com.cashix.kotlin.UI.more_button.BankDetails;
 import com.cashix.kotlin.UI.more_button.ProfileFragment;
 import com.cashix.kotlin.UI.more_button.Transactions;
 import com.cashix.databinding.FragmentMoreButtonBinding;

@@ -4,16 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
-import com.cashix.database.BankDataHelper;
-import com.cashix.database.bankDataModel;
+import com.cashix.database.bank.BankDataHelper;
+import com.cashix.database.bank.bankDataModel;
 import com.cashix.databinding.ActivityBankDetailsBinding;
 
 public class BankDetails extends AppCompatActivity {
     ActivityBankDetailsBinding binding;
     boolean isEnabled = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +23,11 @@ public class BankDetails extends AppCompatActivity {
         binding.bankSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if (!isEnabled){
-                   editBankData();
-               }else {
-                   submittedData();
-               }
+                if (!isEnabled) {
+                    editBankData();
+                } else {
+                    submittedData();
+                }
             }
         });
 
@@ -39,13 +39,13 @@ public class BankDetails extends AppCompatActivity {
         String name = binding.bankName.getText().toString();
         String account = binding.bankAc.getText().toString();
         String ifsc = binding.bankIFSC.getText().toString();
-        if (TextUtils.isEmpty(name)){
+        if (TextUtils.isEmpty(name)) {
             binding.bankName.requestFocus();
         }
-        if (TextUtils.isEmpty(account)){
+        if (TextUtils.isEmpty(account)) {
             binding.bankAc.requestFocus();
         }
-        if (TextUtils.isEmpty(ifsc)){
+        if (TextUtils.isEmpty(ifsc)) {
             binding.bankIFSC.requestFocus();
         }
         binding.bankSubmit.setText("Edit");
@@ -64,7 +64,7 @@ public class BankDetails extends AppCompatActivity {
     }
 
     private void setDataIfAvailable() {
-        allowEditing(false);
+/*        allowEditing(false);
         BankDataHelper db = new BankDataHelper(getApplicationContext());
         bankDataModel model = db.getBank();
         if (model!=null){
@@ -72,8 +72,8 @@ public class BankDetails extends AppCompatActivity {
             isEnabled = false;
             binding.bankName.setText(model.getNAME());
             binding.bankIFSC.setText(model.getIFSC());
-            binding.bankAc.setText(model.getACCOUNT());
-        }
+            binding.bankAc.setText(model.getHOLDERNAME());
+        }*/
 
     }
 
