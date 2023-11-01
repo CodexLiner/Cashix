@@ -1,10 +1,6 @@
 package com.cashix.UIFragments;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.Html;
 import android.text.InputType;
@@ -15,7 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputMethodManager;
+
+import androidx.fragment.app.Fragment;
 
 import com.cashix.R;
 import com.cashix.constants.STATIC;
@@ -64,7 +61,7 @@ public class BankTransfer extends Fragment {
 
         binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
 
-        binding.amountText.setHint(Html.fromHtml("<b color=" +"black"+">₹<b> 0"));
+        binding.amountText.setHint(Html.fromHtml("<b color=" +"black"+">₹<b> 0" , 1));
 
         binding.amountText.addTextChangedListener(new TextWatcher() {
             @Override

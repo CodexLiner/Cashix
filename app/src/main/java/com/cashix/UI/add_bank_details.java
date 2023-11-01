@@ -3,7 +3,6 @@ package com.cashix.UI;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.Toast;
 
 import com.cashix.R;
 import com.cashix.constants.STATIC;
-import com.cashix.database.user.userDatabaseHelper;
+import com.cashix.database.user.UserDatabase;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -116,7 +115,7 @@ public class add_bank_details extends AppCompatActivity {
               public void onResponse(@NonNull Call call, @NonNull Response response)
                   throws IOException {
                   if (response.code() == 200) {
-                  userDatabaseHelper db = new userDatabaseHelper(getApplicationContext());
+                  UserDatabase db = new UserDatabase(getApplicationContext());
 //                  long res = db.setUser(bundle.getString("mobile"), token, 1);
 //                  if (res > -1) {
 ////                    startActivity(new Intent(getApplicationContext(), Home_Activity.class));

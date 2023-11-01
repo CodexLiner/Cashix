@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.cashix.database.bank.BankDataHelper;
-import com.cashix.database.bank.bankDataModel;
 import com.cashix.databinding.ActivityBankDetailsBinding;
 
 public class BankDetails extends AppCompatActivity {
@@ -65,7 +63,7 @@ public class BankDetails extends AppCompatActivity {
 
     private void setDataIfAvailable() {
 /*        allowEditing(false);
-        BankDataHelper db = new BankDataHelper(getApplicationContext());
+        BankDatabase db = new BankDatabase(getApplicationContext());
         bankDataModel model = db.getBank();
         if (model!=null){
             binding.bankSubmit.setText("Edit");

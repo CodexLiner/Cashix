@@ -66,7 +66,7 @@ public class MoreButton extends Fragment {
            change.go(ProfileFragment.class);
        }));
        binding.bankAccount.setOnClickListener((v -> {
-           change.go(BankDetails.class);
+//           change.go(BankDetails.class);
        }));
        binding.mTransactions.setOnClickListener((v -> {
            change.go(Transactions.class);

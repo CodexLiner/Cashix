@@ -5,4 +5,5 @@ data class CardDetailsResponse(
     val cardbank: String,
     val cardtype: String,
     val cardnumber: String,
+    var isSelected: Boolean,
 )

@@ -2,7 +2,7 @@
 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/text"
+    android:id="@+id/mainGroup"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -55,6 +55,7 @@
     </LinearLayout>
 
     <RadioButton
+        android:clickable="false"
         android:id="@+id/radio_button"
         android:layout_gravity="bottom"
         android:gravity="bottom"

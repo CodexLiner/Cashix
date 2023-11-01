@@ -3,26 +3,37 @@ package com.cashix.kotlin.UI
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.cashix.R
 import com.cashix.database.DatabaseProvider
 import com.cashix.kotlin.UI.SignUi.SendOTP.SendFragment
+import com.cashix.kotlin.UI.cardtoBank.CardToBankFragment
+import com.cashix.kotlin.UI.shared.AuthInterceptor
 import com.cashix.utils.SnakeBar
 import com.cashix.utils.change
 import com.cashix.utils.changeHelper
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var databaseProvider: DatabaseProvider
+    @Inject
+    lateinit var authInterceptor : AuthInterceptor
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_v2)
         databaseProvider = DatabaseProvider(this)
+
         val change = change(changeHelper(supportFragmentManager, R.id.mainLayout))
         if (databaseProvider.getUserDB().getUser(1) != null) {
+            if (this::authInterceptor.isInitialized){
+                Log.d("TAG", "DaggerTest onCreate: ${authInterceptor.getToken()}")
+            }
             supportFragmentManager.beginTransaction()
+//                .replace(R.id.mainLayout, CardToBankFragment())
                 .replace(R.id.mainLayout, com.cashix.kotlin.UI.Home.HomePage.HomeFragment())
                 .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                 .commit()

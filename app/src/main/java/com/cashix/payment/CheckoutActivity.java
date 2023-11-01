@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cashix.R;
 import com.cashix.constants.STATIC;
-import com.cashix.database.user.userDatabaseHelper;
+import com.cashix.database.user.UserDatabase;
 import com.cashix.database.user.UserDBModel;
 import com.google.gson.Gson;
 import com.stripe.android.PaymentConfiguration;
@@ -43,7 +43,7 @@ public class CheckoutActivity extends AppCompatActivity {
     TextView payAmountView , CreditAmount;
     private  String UUIDs;
     UserDBModel model;
-    userDatabaseHelper db ;
+    UserDatabase db ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +59,7 @@ public class CheckoutActivity extends AppCompatActivity {
         payButton.setEnabled(false);
         UUIDs = UUID.randomUUID().toString();
         //local dp
-        db = new userDatabaseHelper(getApplicationContext());
+        db = new UserDatabase(getApplicationContext());
         model = db.getUser(1);
         paymentSheet = new PaymentSheet(this, this::onPaymentSheetResult);
         PaymentConfiguration.init(

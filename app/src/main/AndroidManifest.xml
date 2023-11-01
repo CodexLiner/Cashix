@@ -38,7 +38,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".kotlin.UI.SignInActivity"
+            android:name=".kotlin.UI.SplashV2"
             android:exported="true">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />

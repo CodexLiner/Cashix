@@ -19,9 +19,9 @@ import androidx.annotation.Nullable;
 
 import com.cashix.database.user.UserDBModel;
 
-public class BankDataHelper extends SQLiteOpenHelper {
+public class BankDatabase extends SQLiteOpenHelper {
 
-    public BankDataHelper(@Nullable Context context) {
+    public BankDatabase(@Nullable Context context) {
         super(context, UserDBModel.DbName, null, 1);
     }
 

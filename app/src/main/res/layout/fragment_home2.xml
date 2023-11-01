@@ -225,7 +225,7 @@
                         android:background="@drawable/_mat_button"
                         android:fontFamily="@font/poppins"
                         android:padding="15dp"
-                        android:text="Send"
+                        android:text="Wallet"
                         app:icon="@drawable/pay_arrow"
                         app:iconGravity="textStart" />
 

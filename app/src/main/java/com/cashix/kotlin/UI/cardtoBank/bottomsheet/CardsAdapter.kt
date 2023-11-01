@@ -1,20 +1,26 @@
 package com.cashix.kotlin.UI.cardtoBank.bottomsheet
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cashix.R
-import com.stripe.android.view.CardInputWidget
+import com.cashix.kotlin.UI.onBoarding.shared.CardDetailsResponse
 import com.stripe.android.view.CardMultilineWidget
-import org.w3c.dom.Text
+import kotlin.math.log
 
-class cardsadapter : RecyclerView.Adapter<cardsadapter.ItemViewHolder>() {
+private var checkPosition = 0;
+
+class CardsAdapter(val list: ArrayList<CardDetailsResponse>) :
+    RecyclerView.Adapter<CardsAdapter.ItemViewHolder>() {
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val radioButton = itemView.findViewById<RadioButton>(R.id.radio_button)
+        val radioGroup = itemView.findViewById<RadioGroup>(R.id.mainGroup)
         val bankName = itemView.findViewById<TextView>(R.id.bankName)
         val lastDigit = itemView.findViewById<TextView>(R.id.last_digit)
         val bankLogo = itemView.findViewById<ImageView>(R.id.bank_logo)
@@ -28,13 +34,35 @@ class cardsadapter : RecyclerView.Adapter<cardsadapter.ItemViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 2;
+        return list.size;
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val card = list[position]
+
+        Log.d("TAG", "DaggerTest onBindViewHolder: $card $position")
+
+        holder.radioGroup.setOnClickListener {
+            if (!holder.radioButton.isChecked) {
+                holder.radioButton.isChecked = true
+                changeSelectionToTrue(list, position)
+            } else {
+                card.isSelected = false;
+                holder.radioButton.isChecked = false
+            }
+
+        }
+
         holder.cardInputWidget.setCardNumber("4341680200693892")
         holder.cardInputWidget.setExpiryDate(2, 2025)
         holder.cardInputWidget.setCvcCode("354")
+    }
+
+    private fun changeSelectionToTrue(list: ArrayList<CardDetailsResponse>, selectedPosition: Int) {
+        Log.d("TAG", "DaggerTest changeSelection: $selectedPosition")
+        for (index in list.indices) {
+            list[index].isSelected = index == selectedPosition
+        }
     }
 
 }

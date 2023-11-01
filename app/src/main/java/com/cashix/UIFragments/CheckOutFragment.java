@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cashix.constants.STATIC;
-import com.cashix.database.user.userDatabaseHelper;
+import com.cashix.database.user.UserDatabase;
 import com.cashix.database.user.UserDBModel;
 import com.cashix.databinding.FragmentCheckOutBinding;
 import com.cashix.utils.Bar;
@@ -57,7 +57,7 @@ public class CheckOutFragment extends Fragment {
     private double CreditableMoney;
     private Button payButton;
     UserDBModel model;
-    userDatabaseHelper db ;
+    UserDatabase db ;
     public CheckOutFragment(Bundle bundle) {
         this.bundle = bundle;
     }
@@ -94,7 +94,7 @@ public class CheckOutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentCheckOutBinding.inflate(inflater);
-        db = new userDatabaseHelper(requireContext());
+        db = new UserDatabase(requireContext());
         model = db.getUser(1);
         binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
         payAmountView = binding.payAmount;

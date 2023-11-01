@@ -12,10 +12,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-public class userDatabaseHelper extends SQLiteOpenHelper {
-    public userDatabaseHelper(Context context) {
+public class UserDatabase extends SQLiteOpenHelper {
+    public UserDatabase(Context context) {
         super(context, UserDBModel.DbName, null, 1);
     }
 

@@ -9,7 +9,7 @@ public class AddBankResponse {
     public AddBankResponse() {
     }
 
-    public AddBankResponse(String status, List<com.cashix.kotlin.UI.onBoarding.shared.accounts> accounts) {
+    public AddBankResponse(String status, List<accounts> accounts) {
         this.status = status;
         this.accounts = accounts;
     }
@@ -18,7 +18,7 @@ public class AddBankResponse {
         return status;
     }
 
-    public List<com.cashix.kotlin.UI.onBoarding.shared.accounts> getAccounts() {
+    public List<accounts> getAccounts() {
         return accounts;
     }
 }

@@ -13,7 +13,7 @@ import com.cashix.R;
 import com.cashix.adapters.TransactionAdapters;
 import com.cashix.adapters.models.TransactionModel;
 import com.cashix.constants.STATIC;
-import com.cashix.database.user.userDatabaseHelper;
+import com.cashix.database.user.UserDatabase;
 import com.cashix.database.user.UserDBModel;
 import com.cashix.databinding.ActivityTransactionsBinding;
 import com.google.gson.Gson;
@@ -48,7 +48,7 @@ public class Transactions extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this , RecyclerView.VERTICAL , false);
         transactionAllRecy.setLayoutManager(layoutManager);
         findTransactions();
-        userDatabaseHelper db = new userDatabaseHelper(this);
+        UserDatabase db = new UserDatabase(this);
         model = db.getUser(1);
         getTransactions();
     }

@@ -1,7 +1,6 @@
 package com.cashix.kotlin.UI.cardtoBank.bottomsheet
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cashix.databinding.FragmentItemListDialogListDialogBinding
 import com.cashix.kotlin.UI.cardtoBank.shared.bottomSheetListener
+import com.cashix.kotlin.UI.onBoarding.shared.CardDetailsResponse
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.model.ConfirmPaymentIntentParams
@@ -62,7 +62,11 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.cardRecycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.cardRecycler.adapter = cardsadapter()
+        val list: ArrayList<CardDetailsResponse> = arrayListOf()
+        list.add(CardDetailsResponse("Gopal Meena", "HDFC Bank", "master card", "", false))
+        list.add(CardDetailsResponse("Kamlesh Meena", "HDFC Bank", "master card", "", false))
+        list.add(CardDetailsResponse("Gopal Meena", "HDFC Bank", "master card", "", false))
+        binding.cardRecycler.adapter = CardsAdapter(list)
 
         PaymentConfiguration.init(
             requireContext(),
