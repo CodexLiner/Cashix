@@ -59,7 +59,7 @@ class CardToBankFragment : Fragment(), bottomSheetListener {
             if (result.status == "success" && viewModel.isNotLoading) {
                 viewModel.isNotLoading = !viewModel.isNotLoading
                 paymentIntentClientSecret = result.clientSecret
-                modalBottomSheet = ModalBottomSheet.newInstance(paymentIntentClientSecret, this)
+                modalBottomSheet = ModalBottomSheet.newInstance(paymentIntentClientSecret  , binding.transferAmount.text.toString(), this)
                 modalBottomSheet?.isCancelable = false
                 modalBottomSheet?.show(childFragmentManager, ModalBottomSheet.TAG)
             }

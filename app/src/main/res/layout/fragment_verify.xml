@@ -106,9 +106,9 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="0dp"
-                    android:cursorVisible="true"
+                    android:cursorVisible="false"
                     android:hint="0000"
-                    android:inputType="numberPassword"
+                    android:inputType="number"
                     android:itemBackground="@drawable/login_mobile_number_bg"
                     android:padding="8dp"
                     android:textColor="#000000"
@@ -127,10 +127,10 @@
                     app:viewType="none" />
 
                 <LinearLayout
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
 
@@ -143,10 +143,10 @@
                         android:layout_marginTop="-2dp"
                         android:layout_weight="1"
                         android:gravity="center|start"
+                        android:text="RESEND OTP IN 10 SEC"
                         android:textColor="#000000"
                         android:textSize="12sp"
                         android:textStyle="normal"
-                        android:text="RESEND OTP IN 10 SEC"
                         android:tooltipText="RESEND OTP IN #) SEC" />
 
                     <TextView
@@ -166,16 +166,17 @@
                 </LinearLayout>
 
                 <Button
-                    android:layout_marginTop="20dp"
                     android:id="@+id/submit_otp_button"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="start"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/button_shape_primary"
                     android:gravity="center"
                     android:text="@string/continue_here"
+                    android:textAllCaps="false"
                     android:textColor="@color/white" />
 
             </LinearLayout>

@@ -60,11 +60,11 @@ class VerifyFragment : Fragment() {
         binding.firstPinView.setOnClickListener {
             binding.ScrollOtp.postDelayed({
                 val lastChild: View =
-                    binding.ScrollOtp.getChildAt(binding.ScrollOtp.getChildCount() - 1)
+                    binding.ScrollOtp.getChildAt(binding.ScrollOtp.childCount - 1)
                 val bottom: Int =
-                    lastChild.bottom + binding.ScrollOtp.getPaddingBottom()
-                val sy: Int = binding.ScrollOtp.getScrollY()
-                val sh: Int = binding.ScrollOtp.getHeight()
+                    lastChild.bottom + binding.ScrollOtp.paddingBottom
+                val sy: Int = binding.ScrollOtp.scrollY
+                val sh: Int = binding.ScrollOtp.height
                 val delta = bottom - (sy + sh)
                 binding.ScrollOtp.smoothScrollBy(0, delta)
             }, 200)
@@ -88,14 +88,12 @@ class VerifyFragment : Fragment() {
                     requireActivity().supportFragmentManager.beginTransaction()
                         .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
                         .replace(R.id.mainLayout, CreateUserFragment.newInstance(it.token)).commit()
-                    loading.show()
                 }
             } else {
                 binding.submitOtpButton.isEnabled = true
-                loading.hide();
-                SnakeBar(requireActivity()).showSnackbar(it.status)
             }
-            SnakeBar(requireActivity()).showSnackbar("login success")
+            loading.hide();
+            SnakeBar(requireActivity()).showSnackbar(it.status)
         }
     }
 

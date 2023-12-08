@@ -25,7 +25,6 @@ class VerifyViewModel @Inject constructor(
     fun updateToken(token: String) {
         authInterceptor.updateToken(token)
     }
-
     fun validateOTP(otp: String, token: String) {
         SafeApiRequest.safe {
             repo.validateOTP(otp, token).let {
@@ -33,7 +32,6 @@ class VerifyViewModel @Inject constructor(
             }
         }
     }
-
     fun getUser(token: String) {
         SafeApiRequest.safe {
             repoUser.getUser().let {
@@ -43,7 +41,6 @@ class VerifyViewModel @Inject constructor(
             }
         }
     }
-
     private fun setUser(user: UserResponse.user, token: String) {
         databaseProvider.getUserDB()
             .setUser(UserDBModel(user.name, user.email, user.mobile, user.pincode, token)).let {

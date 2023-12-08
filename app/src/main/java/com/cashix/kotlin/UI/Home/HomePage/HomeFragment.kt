@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getCards()
         val change = change(changeHelper(requireActivity().supportFragmentManager, R.id.mainLayout))
-        binding.BankTransfer.setOnClickListener { v -> change.go(CardToBankFragment::class.java) }
+        binding.BankTransfer.setOnClickListener { change.go(CardToBankFragment::class.java) }
         binding.payRent.setOnClickListener { change.go(PayRent::class.java) }
         binding.walletButton.setOnClickListener { change.go(WalletTransfer::class.java) }
         binding.moreButton.setOnClickListener { change.go(MoreButton::class.java) }
@@ -52,9 +52,9 @@ class HomeFragment : Fragment() {
 
 
         val tList = ArrayList<TransactionModel>()
-        tList.add(TransactionModel("id", "ad", "success", "500", "Bank Transfer", "dd", "dd"))
-        tList.add(TransactionModel("id", "ad", "success", "100", "Wallet Transfer", "dd", "dd"))
-        tList.add(TransactionModel("id", "ad", "success", "1582", "Credit Card", "dd", "dd"))
+        tList.add(TransactionModel("id", "ad", "pending", "500", "Bank Transfer", "dd", "from hdfc card"))
+        tList.add(TransactionModel("id", "ad", "success", "100", "Wallet Transfer", "dd", "home rent paid"))
+        tList.add(TransactionModel("id", "ad", "failed", "1582", "Credit Card", "dd", "demo transaction"))
         tList.add(TransactionModel("id", "ad", "success", "69845", "Rent Pay", "dd", "dd"))
         val transactionAdapters = TransactionAdapters(tList, "")
         BindViews(requireContext()).setVerticalRecycler(

@@ -14,12 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cashix.R;
+import com.cashix.database.user.UserDBModel;
+import com.cashix.kotlin.UI.MainActivity;
+import com.cashix.kotlin.UI.SignUi.SendOTP.SendFragment;
+import com.cashix.kotlin.UI.more_button.BankDetailsFragment;
 import com.cashix.kotlin.UI.more_button.ProfileFragment;
 import com.cashix.kotlin.UI.more_button.Transactions;
 import com.cashix.databinding.FragmentMoreButtonBinding;
 import com.cashix.utils.change;
 import com.cashix.utils.changeHelper;
 import com.cashix.utils.common;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +44,7 @@ public class MoreButton extends Fragment {
     public MoreButton() {
         // Required empty public constructor
     }
+
     public static MoreButton newInstance(String param1, String param2) {
         MoreButton fragment = new MoreButton();
         Bundle args = new Bundle();
@@ -60,42 +67,50 @@ public class MoreButton extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       binding = FragmentMoreButtonBinding.inflate(inflater);
-        change change = new change(new changeHelper(requireActivity().getSupportFragmentManager() , R.id.mainLayout));
-       binding.userDetails.setOnClickListener((v -> {
-           change.go(ProfileFragment.class);
-       }));
-       binding.bankAccount.setOnClickListener((v -> {
-//           change.go(BankDetails.class);
-       }));
-       binding.mTransactions.setOnClickListener((v -> {
-           change.go(Transactions.class);
-       }));
-       binding.mBillers.setOnClickListener((v -> {
+        binding = FragmentMoreButtonBinding.inflate(inflater);
+        change change = new change(new changeHelper(requireActivity().getSupportFragmentManager(), R.id.mainLayout));
+        binding.userDetails.setOnClickListener((v -> {
+            change.go(ProfileFragment.class);
+        }));
+        binding.bankAccount.setOnClickListener((v -> {
+           change.go(BankDetailsFragment.class);
+        }));
+        binding.mTransactions.setOnClickListener((v -> {
+            change.go(Transactions.class);
+        }));
+        binding.mBillers.setOnClickListener((v -> {
 
-       }));
-       binding.helpSupport.setOnClickListener((v -> {
+        }));
+        binding.helpSupport.setOnClickListener((v -> {
 
-       }));
-       binding.termCondtion.setOnClickListener((v -> {
+        }));
+        binding.termCondtion.setOnClickListener((v -> {
 
-       }));
-       binding.privacyPolicy.setOnClickListener((v -> {
+        }));
+        binding.privacyPolicy.setOnClickListener((v -> {
 
-       }));
-       binding.rateUs.setOnClickListener((v -> {
-           try {
-               Uri marketUri = Uri.parse("market://details?id=" + requireActivity().getPackageName());
-               Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
-               startActivity(marketIntent);
-           }catch(ActivityNotFoundException e) {
-               common.Open(requireContext() , "https://play.google.com/store/apps/details?id=" + requireActivity().getPackageName());
-           }
-       }));
-       binding.aboutUs.setOnClickListener((v -> {
+        }));
+        binding.rateUs.setOnClickListener((v -> {
+            try {
+                Uri marketUri = Uri.parse("market://details?id=" + requireActivity().getPackageName());
+                Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                startActivity(marketIntent);
+            } catch (ActivityNotFoundException e) {
+                common.Open(requireContext(), "https://play.google.com/store/apps/details?id=" + requireActivity().getPackageName());
+            }
+        }));
+        binding.aboutUs.setOnClickListener((v -> {
 
-       }));
-       binding.backButton.setOnClickListener(v -> { common.back(requireActivity());});
+        }));
+        binding.backButton.setOnClickListener(v -> {
+            common.back(requireActivity());
+        });
+        binding.logOut.setOnClickListener(v -> {
+            requireContext().deleteDatabase(UserDBModel.DbName);
+            startActivity(new Intent(requireContext() , MainActivity.class));
+            requireActivity().overridePendingTransition(0,0);
+            requireActivity().finishAffinity();
+        });
         return binding.getRoot();
     }
 

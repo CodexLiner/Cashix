@@ -11,7 +11,7 @@
             <gradient
                 android:endColor="#4568dc"
                 android:startColor="#4EAFCD"
-                android:type="sweep" />
+                android:type="linear" />
         </shape>
     </item>
 </layer-list>

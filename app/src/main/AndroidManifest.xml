@@ -48,7 +48,7 @@
 
                 <data
                     android:host="yash.meenagopal24.live"
-                    android:pathPrefix="/src/html"
+                    android:pathPrefix="/link/html"
                     android:scheme="https" />
             </intent-filter>
         </activity>

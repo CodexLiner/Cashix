@@ -19,6 +19,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SendFragment : Fragment() {
     lateinit var binding: FragmentSendBinding
+
     @Inject
     lateinit var loading: Bar
     private val viewModel: SendViewModel by viewModels()
@@ -29,6 +30,7 @@ class SendFragment : Fragment() {
         binding = FragmentSendBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loading = Bar(requireContext());
@@ -50,16 +52,19 @@ class SendFragment : Fragment() {
 
     private fun next() {
         viewModel.otpResponseMutableLiveData.observe(viewLifecycleOwner) {
-            if (it.status == "success") {
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .addToBackStack("sendOTP")
-                    .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                    .replace(R.id.mainLayout, VerifyFragment.newInstance(it.mobile, it.token))
-                    .commit()
-            } else {
-                SnakeBar(requireActivity()).showSnackbar(it.status)
+            if (viewModel.isNotLoading) {
+                loading.hide()
+                if (it.status == "success") {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .addToBackStack("sendOTP")
+                        .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                        .replace(R.id.mainLayout, VerifyFragment.newInstance(it.mobile, it.token))
+                        .commit()
+                } else {
+                    SnakeBar(requireActivity()).showSnackbar(it.status)
+                }
             }
-            loading.hide()
+
         }
     }
 }

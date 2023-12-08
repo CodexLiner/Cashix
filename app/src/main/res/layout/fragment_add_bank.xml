@@ -59,6 +59,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Almost there"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="add your primary bank details to get payout\'s instantly"
+                    android:textStyle="normal" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -211,13 +228,12 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:layout_weight="1"
-                        android:text="Continue" />
+                        android:text="Continue"
+                        android:textAllCaps="false" />
 
                     <Button
-                        style="?attr/materialButtonOutlinedStyle"
-                        app:strokeWidth="1dp"
-                        app:strokeColor="@color/black"
                         android:id="@+id/skipButton"
+                        style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
@@ -225,7 +241,10 @@
                         android:layout_marginEnd="20dp"
                         android:layout_weight="1"
                         android:padding="10dp"
-                        android:text="Do it Later" />
+                        android:text="Do it Later"
+                        android:textAllCaps="false"
+                        app:strokeColor="@color/black"
+                        app:strokeWidth="1dp" />
 
 
                 </LinearLayout>

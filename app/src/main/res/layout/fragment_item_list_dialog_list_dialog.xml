@@ -81,12 +81,12 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/ogAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="₹ 5000"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -190,10 +190,10 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/finalAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:text="₹5000"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>
