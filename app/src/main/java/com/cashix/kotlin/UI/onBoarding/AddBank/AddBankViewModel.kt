@@ -1,5 +1,6 @@
 package com.cashix.kotlin.UI.onBoarding.AddBank
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cashix.database.DatabaseProvider
@@ -31,15 +32,18 @@ class AddBankViewModel @Inject constructor(
         accountNumber: String,
         ifsc: String,
     ) {
-        databaseProvider.getBankDB()
+        val x = databaseProvider.getBankDB()
             .insertNewAccount(
                 bankDataModel(
                     holdername,
                     bankname,
                     ifsc,
                     accountNumber,
-                    databaseProvider.getUserDB().getUser(1).mobile
+                    databaseProvider.getUserDB().getUser(1).mobile,
+                    "1"
                 )
             )
+
+        Log.d("TAG", " localBankDetails addBankToLocalDatabase: $x")
     }
 }

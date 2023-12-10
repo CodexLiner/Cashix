@@ -12,14 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cashix.R
 import com.cashix.kotlin.UI.onBoarding.shared.CardDetailsResponse
 import com.stripe.android.view.CardMultilineWidget
-import kotlin.math.log
 
 private var checkPosition = 0;
 
 class CardsAdapter(val list: ArrayList<CardDetailsResponse>) :
     RecyclerView.Adapter<CardsAdapter.ItemViewHolder>() {
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val radioButton = itemView.findViewById<RadioButton>(R.id.radio_button)
+//        val radioButton = itemView.findViewById<RadioButton>(R.id.radio_button)
         val radioGroup = itemView.findViewById<RadioGroup>(R.id.mainGroup)
         val bankName = itemView.findViewById<TextView>(R.id.bankName)
         val lastDigit = itemView.findViewById<TextView>(R.id.last_digit)
@@ -39,19 +38,14 @@ class CardsAdapter(val list: ArrayList<CardDetailsResponse>) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val card = list[position]
-
-        Log.d("TAG", "DaggerTest onBindViewHolder: $card $position")
-
         holder.radioGroup.setOnClickListener {
-            if (!holder.radioButton.isChecked) {
-                holder.radioButton.isChecked = true
+            if (!card.isSelected) {
                 changeSelectionToTrue(list, position)
-            } else {
-                card.isSelected = false;
-                holder.radioButton.isChecked = false
+            }else{
+                list[position].isSelected = true
             }
-
         }
+//        holder.radioButton.isChecked = list[position].isSelected
 
         holder.cardInputWidget.setCardNumber("4341680200693892")
         holder.cardInputWidget.setExpiryDate(2, 2025)
@@ -59,9 +53,9 @@ class CardsAdapter(val list: ArrayList<CardDetailsResponse>) :
     }
 
     private fun changeSelectionToTrue(list: ArrayList<CardDetailsResponse>, selectedPosition: Int) {
-        Log.d("TAG", "DaggerTest changeSelection: $selectedPosition")
         for (index in list.indices) {
             list[index].isSelected = index == selectedPosition
+            notifyDataSetChanged()
         }
     }
 

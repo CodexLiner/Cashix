@@ -14,6 +14,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -22,7 +23,7 @@ import com.cashix.database.user.UserDBModel;
 public class BankDatabase extends SQLiteOpenHelper {
 
     public BankDatabase(@Nullable Context context) {
-        super(context, UserDBModel.DbName, null, 1);
+        super(context, bankDataModel.DbName, null, 1);
     }
 
     @Override
@@ -37,6 +38,10 @@ public class BankDatabase extends SQLiteOpenHelper {
 
     public long insertNewAccount(bankDataModel ac) {
         try {
+            bankDataModel c = getBank(String.valueOf(1));
+            if (c != null && c.getId().equals("1")) {
+                delete(1);
+            }
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(HOLDERNAME, ac.holdername);
@@ -58,9 +63,8 @@ public class BankDatabase extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getReadableDatabase();
             Cursor cursor = db.query(
                     TABLE_NAME,
-                    new String[]{
-                            HOLDERNAME, ACCOUNTNUMBER, IFSC, BANKNAME, USER, COLUMN_ID},
-                    USER + "=?",
+                    new String[]{HOLDERNAME, ACCOUNTNUMBER, IFSC, BANKNAME, USER, COLUMN_ID},
+                    COLUMN_ID + "=?",
                     new String[]{user}, null, null, null, null);
             if (cursor != null) {
                 cursor.moveToFirst();
@@ -70,7 +74,8 @@ public class BankDatabase extends SQLiteOpenHelper {
                     cursor.getString(cursor.getColumnIndex(BANKNAME)),
                     cursor.getString(cursor.getColumnIndex(IFSC)),
                     cursor.getString(cursor.getColumnIndex(ACCOUNTNUMBER)),
-                    cursor.getString(cursor.getColumnIndex(USER))
+                    cursor.getString(cursor.getColumnIndex(USER)),
+                    cursor.getString(cursor.getColumnIndex(COLUMN_ID))
             );
 
             cursor.close();
@@ -78,5 +83,10 @@ public class BankDatabase extends SQLiteOpenHelper {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public void delete(int id) {
+        String[] args = {String.valueOf(id)};
+        int x = getWritableDatabase().delete(TABLE_NAME, COLUMN_ID + "=?", args);
     }
 }

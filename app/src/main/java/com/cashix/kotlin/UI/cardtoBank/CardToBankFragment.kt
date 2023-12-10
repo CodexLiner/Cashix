@@ -51,6 +51,12 @@ class CardToBankFragment : Fragment(), bottomSheetListener {
             )
             next()
         }
+
+
+        viewModel.getStripeIntent(
+            (binding.transferAmount.text.toString().toInt() * 100).toString(), "transaction"
+        )
+        next()
     }
 
     private var modalBottomSheet: ModalBottomSheet? = null

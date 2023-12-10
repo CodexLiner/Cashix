@@ -1,20 +1,13 @@
 package com.cashix.kotlin.UI
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.cashix.R
 import com.cashix.database.DatabaseProvider
 import com.cashix.kotlin.UI.SignUi.SendOTP.SendFragment
-import com.cashix.kotlin.UI.onBoarding.AddBank.AddBankFragment
-import com.cashix.kotlin.UI.onBoarding.AddCard.AddCardFragment
+import com.cashix.kotlin.UI.cardtoBank.CardToBankFragment
 import com.cashix.kotlin.UI.shared.AuthInterceptor
-import com.cashix.utils.SnakeBar
-import com.cashix.utils.change
-import com.cashix.utils.changeHelper
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -32,13 +25,13 @@ class MainActivity : AppCompatActivity() {
 
         if (databaseProvider.getUserDB().getUser(1) != null) {
             authInterceptor.updateToken(databaseProvider.getUserDB().getUser(1).authKey)
-//            go(AddCardFragment()::class.java)
-            go(com.cashix.kotlin.UI.Home.HomePage.HomeFragment()::class.java)
+            go(CardToBankFragment()::class.java)
+//            go(com.cashix.kotlin.UI.Home.HomePage.HomeFragment()::class.java)
         } else {
             go(SendFragment::class.java);
         }
 //        try {
-////            Q025010065@ybl
+//            Q025010065@ybl
 //            val uri: Uri =
 //                Uri.parse("upi://pay?pa=paytmqr1iuefqme1i@paytm&pn=Cashix&tn=cashix payment&am=1&cu=inr")
 //            val intent = Intent(Intent.ACTION_VIEW, uri)

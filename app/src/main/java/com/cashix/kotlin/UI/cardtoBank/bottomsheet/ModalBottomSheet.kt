@@ -75,10 +75,20 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
         binding.ogAmount.text = mAmount
         binding.finalAmount.text = finalAmount(mAmount)
-        list.add(CardDetailsResponse("Gopal Meena", "HDFC Bank", "master card", "", false))
-        list.add(CardDetailsResponse("Kamlesh Meena", "HDFC Bank", "master card", "", false))
-        list.add(CardDetailsResponse("Gopal Meena", "HDFC Bank", "master card", "", false))
+        list.add(CardDetailsResponse("Gopal Meena", "HDFC Bank", "master card", "2532", true))
+        list.add(CardDetailsResponse("Kamlesh Meena", "HDFC Bank", "master card", "3892", false))
+        list.add(CardDetailsResponse("Gopal Meena", "HDFC Bank", "master card", "8602", false))
         binding.cardRecycler.adapter = CardsAdapter(list)
+
+        val adapter = CustomSpinnerAdapter(requireContext(), R.layout.fragment_item_list_dialog_list_dialog_item, list)
+
+        adapter.setDropDownViewResource(android.R.layout.activity_list_item)
+
+        binding.spinner.adapter = adapter
+
+
+
+
 
         PaymentConfiguration.init(
             requireContext(),
@@ -127,7 +137,7 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun onPaymentResult(paymentResult: PaymentResult) {
-        val alert: Dialog = Dialog(requireContext())
+        val alert = Dialog(requireContext())
         alert.setContentView(R.layout.info_dialog)
         alert.window?.setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         alert.window!!.setBackgroundDrawable(null)

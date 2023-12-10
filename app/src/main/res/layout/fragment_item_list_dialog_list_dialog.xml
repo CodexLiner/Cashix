@@ -115,9 +115,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/select_payment_method"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
 
             <com.stripe.android.view.CardMultilineWidget
@@ -126,6 +126,14 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:shouldShowPostalCode="false" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp" />
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/card_recycler"
@@ -137,17 +145,18 @@
                 android:text="₹ 5000"
                 android:textColor="@color/black"
                 android:textSize="14sp"
+                android:visibility="gone"
                 tools:itemCount="2"
                 tools:listitem="@layout/fragment_item_list_dialog_list_dialog_item" />
 
             <TextView
                 android:id="@+id/addNewCard"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_medium"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
                 android:text="add new card"
                 android:textColor="@color/colorMain"

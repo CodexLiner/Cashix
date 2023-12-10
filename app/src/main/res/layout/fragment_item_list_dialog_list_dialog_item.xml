@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainGroup"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginStart="10dp"
-    android:maxWidth="10dp"
+    android:layout_marginTop="@dimen/dimen_100dp"
     android:background="?attr/selectableItemBackground"
-    android:orientation="horizontal">
+    android:maxWidth="10dp"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/dimen_5dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="@dimen/dimen_5dp"
+    android:paddingBottom="@dimen/dimen_5dp">
 
     <ImageView
         android:id="@+id/bank_logo"
-        android:layout_gravity="center"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_gravity="center"
         android:src="@drawable/hdfc_" />
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/bank_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/poppins_medium"
-            android:layout_gravity="bottom"
             android:text="hdfc bank"
             android:textSize="12sp" />
 
@@ -40,12 +42,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/poppins_medium"
             android:text="XXXX 3893"
-            android:layout_marginEnd="20dp"
-            android:textSize="12sp"
             android:textColor="@color/black"
+            android:textSize="12sp"
             app:drawableEndCompat="@drawable/visa_" />
+
         <com.stripe.android.view.CardMultilineWidget
             android:id="@+id/cardInputWidget"
             android:layout_width="match_parent"
@@ -54,16 +57,14 @@
             app:shouldShowPostalCode="false" />
     </LinearLayout>
 
-    <RadioButton
-        android:clickable="false"
-        android:id="@+id/radio_button"
-        android:layout_gravity="bottom"
-        android:gravity="bottom"
-        android:width="5dp"
-        android:height="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <!--    <RadioButton-->
+    <!--        android:id="@+id/radio_button"-->
+    <!--        android:layout_gravity="bottom"-->
+    <!--        android:gravity="bottom"-->
+    <!--        android:width="5dp"-->
+    <!--        android:height="5dp"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content" />-->
 
 
-
-</RadioGroup>
+</LinearLayout>

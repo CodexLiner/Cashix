@@ -25,6 +25,17 @@ class BankDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.localBankDetails()
+        next()
+
+    }
+
+    private fun next() {
+        viewModel.bankDetails.observe(viewLifecycleOwner) {
+            binding.bankAc.setText(it.accountnumber.toString())
+            binding.bankIFSC.setText(it.bankifsc.toString())
+            binding.bankName.setText(it.holdername.toString())
+        }
     }
 
 }
