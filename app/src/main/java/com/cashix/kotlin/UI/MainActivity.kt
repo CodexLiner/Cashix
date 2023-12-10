@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.cashix.R
 import com.cashix.database.DatabaseProvider
 import com.cashix.kotlin.UI.SignUi.SendOTP.SendFragment
-import com.cashix.kotlin.UI.cardtoBank.CardToBankFragment
+import com.cashix.kotlin.UI.onBoarding.AddCard.AddCardFragment
 import com.cashix.kotlin.UI.shared.AuthInterceptor
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         if (databaseProvider.getUserDB().getUser(1) != null) {
             authInterceptor.updateToken(databaseProvider.getUserDB().getUser(1).authKey)
-            go(CardToBankFragment()::class.java)
-//            go(com.cashix.kotlin.UI.Home.HomePage.HomeFragment()::class.java)
+//            go(AddCardFragment()::class.java)
+            go(com.cashix.kotlin.UI.Home.HomePage.HomeFragment()::class.java)
         } else {
             go(SendFragment::class.java);
         }

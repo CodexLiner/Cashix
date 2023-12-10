@@ -1,23 +1,13 @@
 package com.cashix.kotlin.UI.onBoarding.shared;
 
 public class AddNewCardRequest {
-    String cardholdername, cardnumber, expirationdate;
+    String cardholdername, cardnumber, cardExpMonth , cardExpYear , cardcvv;
 
-    public AddNewCardRequest(String cardholdername, String cardnumber, String expirationdate) {
+    public AddNewCardRequest(String cardholdername, String cardnumber, String cardExpMonth, String cardExpYear, String cardcvv) {
         this.cardholdername = cardholdername;
         this.cardnumber = cardnumber;
-        this.expirationdate = expirationdate;
-    }
-
-    public String getCardholdername() {
-        return cardholdername;
-    }
-
-    public String getCardnumber() {
-        return cardnumber;
-    }
-
-    public String getExpirationdate() {
-        return expirationdate;
+        this.cardExpMonth = cardExpMonth;
+        this.cardExpYear = cardExpYear;
+        this.cardcvv = cardcvv;
     }
 }

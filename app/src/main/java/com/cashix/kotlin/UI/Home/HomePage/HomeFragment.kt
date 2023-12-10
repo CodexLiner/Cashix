@@ -57,6 +57,7 @@ class HomeFragment : Fragment() {
         tList.add(TransactionModel("id", "ad", "failed", "1582", "Credit Card", "dd", "demo transaction"))
         tList.add(TransactionModel("id", "ad", "success", "69845", "Rent Pay", "dd", "dd"))
         val transactionAdapters = TransactionAdapters(tList, "")
+
         BindViews(requireContext()).setVerticalRecycler(
             binding.TransactionRecycler,
             transactionAdapters
